@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "appName": "AYUSH",
+  "appTagline": "Your Ayurvedic Health Companion",
+  "signIn": "Sign In",
+  "createAccount": "Create Account",
+  "continueBtn": "Continue",
+  "skipForNow": "Skip for now",
+  "ojasTitle": "Your OJAS Score",
+  "ojasDisclaimer": "This OJAS score is a wellness indicator, not a medical diagnosis. Consult a qualified practitioner for medical advice."
+}
