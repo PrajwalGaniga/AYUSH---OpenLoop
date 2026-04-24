@@ -16,7 +16,7 @@ from config.settings import settings
 from database.mongodb import get_db
 from middleware.auth_middleware import get_current_user
 from modules.onboarding.models import (
-    RegisterRequest, LoginRequest,
+    RegisterRequest, LoginRequest, UpdateProfileRequest,
     Step1Request, Step2BodyScanRequest, PhysicalTraitsRequest,
     Step3AnswersRequest, Step3CalculateRequest,
     Step4LifestyleRequest, Step5HealthConditionsRequest,
@@ -144,6 +144,40 @@ async def get_me(current_user: dict = Depends(get_current_user)):
         "ojasScore": user.get("ojasScore"),
         "prakritiResult": user.get("prakritiResult"),
     })
+
+
+@router.put("/auth/profile")
+async def update_profile(req: UpdateProfileRequest, current_user: dict = Depends(get_current_user)):
+    user = await get_user_by_id(current_user["sub"])
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    updates = {}
+    profile = user.get("profile", {})
+    if req.fullName is not None: profile["fullName"] = req.fullName
+    if req.age is not None: profile["age"] = req.age
+    if req.gender is not None: profile["gender"] = req.gender
+    if req.heightCm is not None: profile["heightCm"] = req.heightCm
+    if req.weightKg is not None: profile["weightKg"] = req.weightKg
+    if req.bloodGroup is not None: profile["bloodGroup"] = req.bloodGroup
+
+    db = get_db()
+    await db["users"].update_one(
+        {"userId": current_user["sub"]},
+        {"$set": {"profile": profile, "updatedAt": _now()}}
+    )
+
+    # Return updated user
+    updated_user = await get_user_by_id(current_user["sub"])
+    return success_response(data={
+        "userId": updated_user["userId"],
+        "phone": updated_user["phone"],
+        "isOnboarded": updated_user.get("isOnboarded", False),
+        "onboardingStep": updated_user.get("onboardingStep", 0),
+        "profile": updated_user.get("profile", {}),
+        "ojasScore": updated_user.get("ojasScore"),
+        "prakritiResult": updated_user.get("prakritiResult"),
+    }, message="Profile updated successfully")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

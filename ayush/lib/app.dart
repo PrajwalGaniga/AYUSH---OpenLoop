@@ -25,6 +25,8 @@ import 'features/yoga/presentation/screens/yoga_home_screen.dart';
 import 'features/yoga/presentation/screens/asana_detail_screen.dart';
 import 'features/yoga/presentation/screens/pose_check_screen.dart';
 import 'features/yoga/models/asana.dart';
+import 'features/auth/presentation/screens/profile_screen.dart';
+import 'features/auth/presentation/screens/edit_profile_screen.dart';
 import 'core/theme/app_theme.dart';
 
 final _router = GoRouter(
@@ -68,6 +70,10 @@ final _router = GoRouter(
       path: '/yoga/check',
       builder: (_, state) => PoseCheckScreen(asanaId: state.extra as String),
     ),
+
+    // Profile Module
+    GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen()),
+    GoRoute(path: '/profile/edit', builder: (_, __) => const EditProfileScreen()),
   ],
 );
 class AyushApp extends StatelessWidget {

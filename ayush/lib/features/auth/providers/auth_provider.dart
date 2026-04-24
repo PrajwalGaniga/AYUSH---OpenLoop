@@ -78,6 +78,19 @@ class AuthNotifier extends StateNotifier<AsyncValue<UserModel?>> {
     state = const AsyncValue.data(null);
   }
 
+  Future<void> updateProfile(Map<String, dynamic> updates) async {
+    final currentState = state.value;
+    if (currentState == null) return;
+    try {
+      final updatedUser = await _repo.updateProfile(updates);
+      // Restore the local token since the update response doesn't include it
+      final fullUser = updatedUser.copyWith(token: currentState.token);
+      state = AsyncValue.data(fullUser);
+    } catch (e) {
+      throw Exception('Failed to update profile: $e');
+    }
+  }
+
   Future<void> _persistUser(UserModel user) async {
     await SecureStorage.saveToken(user.token);
     await SecureStorage.saveUserId(user.userId);

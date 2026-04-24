@@ -58,4 +58,22 @@ class AuthRepository {
       return null;
     }
   }
+
+  Future<UserModel> updateProfile(Map<String, dynamic> updates) async {
+    final response = await _dio.put(
+      '/auth/profile',
+      data: updates,
+    );
+    final data = response.data['data'] as Map<String, dynamic>;
+    return UserModel(
+      userId: data['userId'],
+      phone: data['phone'] ?? '',
+      token: '', // Token is maintained in state
+      isOnboarded: data['isOnboarded'] ?? false,
+      onboardingStep: data['onboardingStep'] ?? 0,
+      profile: data['profile'] as Map<String, dynamic>?,
+      ojasScore: (data['ojasScore'] as num?)?.toInt(),
+      prakritiResult: data['prakritiResult'] as Map<String, dynamic>?,
+    );
+  }
 }

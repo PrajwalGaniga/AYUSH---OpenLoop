@@ -22,6 +22,14 @@ class AuthResponse(BaseModel):
     onboardingStep: int
     profile: Optional[Dict] = None
 
+class UpdateProfileRequest(BaseModel):
+    fullName: Optional[str] = None
+    age: Optional[int] = None
+    gender: Optional[str] = None
+    heightCm: Optional[float] = None
+    weightKg: Optional[float] = None
+    bloodGroup: Optional[str] = None
+
 
 # ─── Onboarding Step Models ───────────────────────────────────────────────────
 
