@@ -240,7 +240,9 @@ const ctx = canvas.getContext("2d");
 // Fetch asana info to populate header
 async function loadAsanaInfo() {
   try {
-    const resp = await fetch(`${BASE_URL}/api/v1/yoga/asanas`);
+    const resp = await fetch(`${BASE_URL}/api/v1/yoga/asanas`, {
+      headers: { "ngrok-skip-browser-warning": "true" }
+    });
     const data = await resp.json();
     const asana = data.asanas.find(a => a.id === ASANA_ID);
     if (asana) {
@@ -361,7 +363,10 @@ async function startAnalysisLoop() {
       const frame = captureFrame();
       const response = await fetch(`${BASE_URL}/api/v1/yoga/check-pose`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "true"
+        },
         body: JSON.stringify({
           asana_id: ASANA_ID,
           frame_base64: frame,
