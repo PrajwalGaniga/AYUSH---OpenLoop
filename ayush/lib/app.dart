@@ -17,6 +17,8 @@ import 'features/food_scan/screens/detection_confirm_screen.dart';
 import 'features/food_scan/screens/meal_source_screen.dart';
 import 'features/food_scan/screens/deep_audit_screen.dart';
 import 'features/food_scan/screens/food_results_screen.dart';
+import 'features/recipe/presentation/screens/ingredient_selection_screen.dart';
+import 'features/recipe/presentation/screens/recipe_display_screen.dart';
 import 'core/theme/app_theme.dart';
 
 final _router = GoRouter(
@@ -43,6 +45,10 @@ final _router = GoRouter(
     GoRoute(path: '/food/source', builder: (_, __) => const MealSourceScreen()),
     GoRoute(path: '/food/audit', builder: (_, __) => const DeepAuditScreen()),
     GoRoute(path: '/food/results', builder: (_, __) => const FoodResultsScreen()),
+
+    // Recipe Generator Module
+    GoRoute(path: '/recipe/select', builder: (_, __) => const IngredientSelectionScreen()),
+    GoRoute(path: '/recipe/display', builder: (_, __) => const RecipeDisplayScreen()),
   ],
 );
 class AyushApp extends StatelessWidget {

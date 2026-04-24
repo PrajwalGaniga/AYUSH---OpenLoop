@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from database.mongodb import connect_db, close_db
 from modules.onboarding.router import router as onboarding_router
 from modules.food.router import router as food_router
+from modules.recipe.router import router as recipe_router
 from config.settings import settings
 
 
@@ -38,6 +39,9 @@ app.include_router(onboarding_router, prefix="/api/v1", tags=["Auth + Onboarding
 
 # Food scan & analysis routes
 app.include_router(food_router, prefix="/api/v1")
+
+# Recipe generation routes
+app.include_router(recipe_router, prefix="/api/v1")
 
 
 @app.get("/health", tags=["System"])

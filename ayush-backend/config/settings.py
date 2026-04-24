@@ -11,6 +11,8 @@ class Settings(BaseSettings):
     jwt_expire_hours: int = 8760  # 1 year — "remember forever" per spec
     app_env: str = "development"
     cors_origins: str = '["*"]'
+    module_3_api_key: str
+    youtube_api_key: str
 
     class Config:
         env_file = ".env"

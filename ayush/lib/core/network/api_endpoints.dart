@@ -25,4 +25,8 @@ class ApiEndpoints {
   static const String foodScan = '/food/scan';
   static const String foodAnalyze = '/food/analyze';
   static const String foodLog = '/food/log';
+
+  // ── Recipe Generator (Module 3) ─────────────────────────────────────────────
+  static const String recipeGenerate = '/recipe/generate';
+  static const String recipeYoutube = '/recipe/youtube';
 }
