@@ -12,6 +12,11 @@ import 'features/onboarding/presentation/screens/step5_health_conditions.dart';
 import 'features/onboarding/presentation/screens/step6_report_upload.dart';
 import 'features/onboarding/presentation/screens/ojas_reveal_screen.dart';
 import 'features/home/presentation/screens/home_screen.dart';
+import 'features/food_scan/screens/camera_scan_screen.dart';
+import 'features/food_scan/screens/detection_confirm_screen.dart';
+import 'features/food_scan/screens/meal_source_screen.dart';
+import 'features/food_scan/screens/deep_audit_screen.dart';
+import 'features/food_scan/screens/food_results_screen.dart';
 import 'core/theme/app_theme.dart';
 
 final _router = GoRouter(
@@ -31,6 +36,13 @@ final _router = GoRouter(
 
     GoRoute(path: '/ojas-reveal', builder: (_, __) => const OjasRevealScreen()),
     GoRoute(path: '/home', builder: (_, __) => const HomeScreen()),
+
+    // Food Scan Module
+    GoRoute(path: '/food/scan', builder: (_, __) => const CameraScanScreen()),
+    GoRoute(path: '/food/confirm', builder: (_, __) => const DetectionConfirmScreen()),
+    GoRoute(path: '/food/source', builder: (_, __) => const MealSourceScreen()),
+    GoRoute(path: '/food/audit', builder: (_, __) => const DeepAuditScreen()),
+    GoRoute(path: '/food/results', builder: (_, __) => const FoodResultsScreen()),
   ],
 );
 class AyushApp extends StatelessWidget {

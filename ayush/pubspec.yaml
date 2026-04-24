@@ -58,5 +58,6 @@ flutter:
     - assets/images/
     - assets/lottie/
     - assets/l10n/
+    - assets/data/yolo_classs_and_food_qna.json
 
   fonts: []

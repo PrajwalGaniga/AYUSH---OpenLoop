@@ -176,10 +176,10 @@ class HomeScreen extends ConsumerWidget {
                       mainAxisSpacing: 12,
                       childAspectRatio: 1.5,
                       children: [
-                        _buildActionCard('My Prakriti', Icons.person_outline, AyushColors.vata, AyushColors.vataLight),
-                        _buildActionCard('Diet Plan', Icons.restaurant_outlined, AyushColors.herbalGreen, AyushColors.herbalGreenLight),
-                        _buildActionCard('Herb Guide', Icons.eco_outlined, AyushColors.kapha, AyushColors.kaphaLight),
-                        _buildActionCard('Track Health', Icons.monitor_heart_outlined, AyushColors.pitta, AyushColors.pittaLight),
+                        _buildActionCard(context, 'My Prakriti', Icons.person_outline, AyushColors.vata, AyushColors.vataLight, () {}),
+                        _buildActionCard(context, 'Food Scan', Icons.camera_alt_outlined, AyushColors.herbalGreen, AyushColors.herbalGreenLight, () => context.push('/food/scan')),
+                        _buildActionCard(context, 'Herb Guide', Icons.eco_outlined, AyushColors.kapha, AyushColors.kaphaLight, () {}),
+                        _buildActionCard(context, 'Track Health', Icons.monitor_heart_outlined, AyushColors.pitta, AyushColors.pittaLight, () {}),
                       ],
                     ),
                   ],
@@ -225,21 +225,24 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildActionCard(String label, IconData icon, Color color, Color bgColor) {
-    return Container(
-      padding: const EdgeInsets.all(AyushSpacing.cardPaddingSmall),
-      decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(AyushSpacing.radiusLg),
-        border: Border.all(color: color.withOpacity(0.2)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Icon(icon, color: color, size: 28),
-          Text(label, style: AyushTextStyles.labelMedium.copyWith(color: color)),
-        ],
+  Widget _buildActionCard(BuildContext context, String label, IconData icon, Color color, Color bgColor, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(AyushSpacing.cardPaddingSmall),
+        decoration: BoxDecoration(
+          color: bgColor,
+          borderRadius: BorderRadius.circular(AyushSpacing.radiusLg),
+          border: Border.all(color: color.withOpacity(0.2)),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Icon(icon, color: color, size: 28),
+            Text(label, style: AyushTextStyles.labelMedium.copyWith(color: color)),
+          ],
+        ),
       ),
     );
   }

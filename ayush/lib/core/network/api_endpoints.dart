@@ -20,4 +20,9 @@ class ApiEndpoints {
   static const String calculateOjas = '/calculate-ojas';
   static const String completeOnboarding = '/complete';
   static String onboardingStatus(String userId) => '/status/$userId';
+
+  // ── Food Scan (Module 2) ────────────────────────────────────────────────────
+  static const String foodScan = '/food/scan';
+  static const String foodAnalyze = '/food/analyze';
+  static const String foodLog = '/food/log';
 }

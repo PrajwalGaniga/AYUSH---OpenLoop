@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from database.mongodb import connect_db, close_db
 from modules.onboarding.router import router as onboarding_router
+from modules.food.router import router as food_router
 from config.settings import settings
 
 
@@ -32,8 +33,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mount all routes — auth lives under same router for simplicity
+# Onboarding + Auth routes
 app.include_router(onboarding_router, prefix="/api/v1", tags=["Auth + Onboarding"])
+
+# Food scan & analysis routes
+app.include_router(food_router, prefix="/api/v1")
 
 
 @app.get("/health", tags=["System"])
