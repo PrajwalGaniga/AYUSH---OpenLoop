@@ -30,15 +30,13 @@ class _RecipeHistoryScreenState extends ConsumerState<RecipeHistoryScreen> {
     try {
       final repo = ref.read(recipeRepositoryProvider);
       final user = ref.read(authProvider).value;
-      if (user != null) {
-        final recipes = await repo.getHistory(user.userId);
-        setState(() {
-          _recipes = recipes;
-          _isLoading = false;
-        });
-      } else {
-        setState(() => _isLoading = false);
-      }
+      final userId = (user != null && user.userId.isNotEmpty) ? user.userId : "demo_user";
+      
+      final recipes = await repo.getHistory(userId);
+      setState(() {
+        _recipes = recipes;
+        _isLoading = false;
+      });
     } catch (e) {
       setState(() => _isLoading = false);
     }
