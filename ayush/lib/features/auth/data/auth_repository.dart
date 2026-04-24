@@ -16,7 +16,7 @@ class AuthRepository {
       data: {'phone': phone, 'password': password},
     );
     final data = response.data['data'] as Map<String, dynamic>;
-    // Register returns userId + token, phone is passed in
+    // Register only returns userId + token; profile is filled during onboarding
     return UserModel(
       userId: data['userId'],
       phone: phone,
@@ -43,14 +43,16 @@ class AuthRepository {
     try {
       final response = await _dio.get(ApiEndpoints.me);
       final data = response.data['data'] as Map<String, dynamic>;
-      // getMe doesn't return token — preserve from storage
+      // getMe doesn't return token — it is preserved from secure storage by the caller
       return UserModel(
         userId: data['userId'],
         phone: data['phone'] ?? '',
-        token: '', // Will be filled from secure storage
+        token: '', // Will be filled from secure storage in AuthNotifier.restoreSession
         isOnboarded: data['isOnboarded'] ?? false,
         onboardingStep: data['onboardingStep'] ?? 0,
-        profile: data['profile'],
+        profile: data['profile'] as Map<String, dynamic>?,
+        ojasScore: (data['ojasScore'] as num?)?.toInt(),
+        prakritiResult: data['prakritiResult'] as Map<String, dynamic>?,
       );
     } catch (_) {
       return null;

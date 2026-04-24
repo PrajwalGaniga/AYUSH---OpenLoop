@@ -18,9 +18,33 @@ class HomeScreen extends ConsumerWidget {
     final prakriti = onboarding.prakritiResult;
     final ojas = onboarding.ojasResult;
 
-    final name = user?.profile?['fullName'] ?? 'Friend';
-    final ojasScore = ojas?.ojasScore ?? 0;
-    final dominantDosha = prakriti?.dominant ?? '';
+    // ── Name resolution ───────────────────────────────────────────────────────
+    // Priority: onboarding state (fresh registration this session)
+    //           → profile from server (login / session restore)
+    //           → fallback 'Friend'
+    final String name = () {
+      final fromOnboarding = onboarding.fullName;
+      if (fromOnboarding != null && fromOnboarding.trim().isNotEmpty) {
+        return fromOnboarding.trim();
+      }
+      final fromProfile = user?.profile?['fullName']?.toString().trim() ?? '';
+      if (fromProfile.isNotEmpty) return fromProfile;
+      return 'Friend';
+    }();
+
+    // ── OJAS score resolution ─────────────────────────────────────────────────
+    // Priority: live onboarding result (just completed onboarding this session)
+    //           → server value persisted in UserModel (login / session restore)
+    //           → 0 (triggers "Complete onboarding" prompt)
+    final int ojasScore = ojas?.ojasScore ?? user?.ojasScore ?? 0;
+
+    // ── Prakriti resolution ───────────────────────────────────────────────────
+    // Same layered priority as OJAS score
+    final String dominantDosha = () {
+      final fromOnboarding = prakriti?.dominant ?? '';
+      if (fromOnboarding.isNotEmpty) return fromOnboarding;
+      return user?.prakritiResult?['dominant']?.toString() ?? '';
+    }();
 
     Color ojasColor = AyushColors.ojasGood;
     if (ojasScore >= 80) ojasColor = AyushColors.ojasExcellent;

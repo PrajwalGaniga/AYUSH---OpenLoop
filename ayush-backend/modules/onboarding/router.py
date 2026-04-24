@@ -122,6 +122,8 @@ async def login(req: LoginRequest):
             "isOnboarded": user.get("isOnboarded", False),
             "onboardingStep": user.get("onboardingStep", 0),
             "profile": user.get("profile", {}),
+            "ojasScore": user.get("ojasScore"),
+            "prakritiResult": user.get("prakritiResult"),
         },
         message="Login successful",
     )
@@ -139,6 +141,8 @@ async def get_me(current_user: dict = Depends(get_current_user)):
         "isOnboarded": user.get("isOnboarded", False),
         "onboardingStep": user.get("onboardingStep", 0),
         "profile": user.get("profile", {}),
+        "ojasScore": user.get("ojasScore"),
+        "prakritiResult": user.get("prakritiResult"),
     })
 
 
