@@ -53,4 +53,21 @@ class RecipeRepository {
       return [];
     }
   }
+
+  Future<List<RecipeModel>> getHistory(String userId) async {
+    final response = await _dio.get(ApiEndpoints.recipeHistory(userId));
+    if (response.statusCode == 200) {
+      final List data = response.data ?? [];
+      return data.map((json) => RecipeModel.fromJson(json)).toList();
+    }
+    return [];
+  }
+
+  Future<bool> deleteHistory(String recipeHash) async {
+    final response = await _dio.delete(ApiEndpoints.deleteRecipe(recipeHash));
+    if (response.statusCode == 200) {
+      return response.data['success'] == true;
+    }
+    return false;
+  }
 }

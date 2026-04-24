@@ -178,21 +178,39 @@ class RecipeDisplayScreen extends ConsumerWidget {
               ),
             ],
             
-            const SizedBox(height: 32),
+            const SizedBox(height: 16),
+
+            // Start Cooking Button
+            SizedBox(
+              width: double.infinity,
+              height: AyushSpacing.buttonHeight,
+              child: ElevatedButton.icon(
+                icon: const Icon(Icons.play_arrow, color: Colors.white),
+                onPressed: () => context.push('/recipe/cooking'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AyushColors.primary,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AyushSpacing.radiusLg)),
+                ),
+                label: const Text("Start Cooking (Play Mode)", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+              ),
+            ),
+            
+            const SizedBox(height: 16),
             
             SizedBox(
               width: double.infinity,
               height: AyushSpacing.buttonHeight,
-              child: ElevatedButton(
+              child: OutlinedButton(
                 onPressed: () {
                   ref.read(recipeProvider.notifier).clearSelection();
                   context.go('/home');
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AyushColors.herbalGreen,
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: AyushColors.herbalGreen,
+                  side: const BorderSide(color: AyushColors.herbalGreen),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AyushSpacing.radiusLg)),
                 ),
-                child: const Text("Done", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+                child: const Text("Back to Home", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               ),
             ),
           ],
@@ -203,18 +221,41 @@ class RecipeDisplayScreen extends ConsumerWidget {
 
   Widget _buildTag(String dosha, String impact) {
     Color color;
-    if (impact.toLowerCase().contains("pacif")) color = AyushColors.herbalGreen;
-    else if (impact.toLowerCase().contains("aggrav")) color = AyushColors.error;
-    else color = AyushColors.textMuted;
+    IconData icon;
+    if (impact.toLowerCase().contains("pacif")) {
+      color = AyushColors.herbalGreen;
+      icon = Icons.trending_down;
+    } else if (impact.toLowerCase().contains("aggrav")) {
+      color = AyushColors.error;
+      icon = Icons.trending_up;
+    } else {
+      color = AyushColors.textMuted;
+      icon = Icons.horizontal_rule;
+    }
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
-        border: Border.all(color: color),
-        borderRadius: BorderRadius.circular(16),
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.1),
+          border: Border.all(color: color.withValues(alpha: 0.3)),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          children: [
+            Text(dosha, style: TextStyle(color: color, fontSize: 12, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 4),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(icon, size: 14, color: color),
+                const SizedBox(width: 4),
+                Text(impact, style: TextStyle(color: color, fontSize: 10)),
+              ],
+            ),
+          ],
+        ),
       ),
-      child: Text("$dosha: $impact", style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.bold)),
     );
   }
 }

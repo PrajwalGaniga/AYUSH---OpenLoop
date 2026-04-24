@@ -19,7 +19,7 @@ class ApiEndpoints {
   static const String step6ConfirmReport = '/step6/confirm-report';
   static const String calculateOjas = '/calculate-ojas';
   static const String completeOnboarding = '/complete';
-  static String onboardingStatus(String userId) => '/status/$userId';
+  static String onboardingStatus(String userId) => '/status/';
 
   // ── Food Scan (Module 2) ────────────────────────────────────────────────────
   static const String foodScan = '/food/scan';
@@ -29,4 +29,6 @@ class ApiEndpoints {
   // ── Recipe Generator (Module 3) ─────────────────────────────────────────────
   static const String recipeGenerate = '/recipe/generate';
   static const String recipeYoutube = '/recipe/youtube';
+  static String recipeHistory(String userId) => '/recipe/history/';
+  static String deleteRecipe(String hash) => '/recipe/history/';
 }

@@ -50,6 +50,12 @@ class _IngredientSelectionScreenState extends ConsumerState<IngredientSelectionS
         elevation: 0,
         centerTitle: true,
         iconTheme: const IconThemeData(color: AyushColors.textPrimary),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.history),
+            onPressed: () => context.push('/recipe/history'),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Column(
@@ -144,9 +150,11 @@ class _IngredientSelectionScreenState extends ConsumerState<IngredientSelectionS
                                   ? state.spices.contains(item)
                                   : state.primaryIngredients.contains(item);
                               return FilterChip(
-                                label: Text(item),
+                                label: Text(item, style: TextStyle(color: isSelected ? Colors.white : AyushColors.textPrimary)),
                                 selected: isSelected,
-                                selectedColor: isSpice ? AyushColors.herbalGreen.withValues(alpha: 0.2) : AyushColors.primary.withValues(alpha: 0.2),
+                                selectedColor: isSpice ? AyushColors.herbalGreen : AyushColors.primary,
+                                backgroundColor: AyushColors.card,
+                                checkmarkColor: Colors.white,
                                 onSelected: (val) {
                                   try {
                                     if (isSpice) {

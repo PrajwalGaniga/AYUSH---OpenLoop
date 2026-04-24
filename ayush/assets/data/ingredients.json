@@ -2,82 +2,82 @@
   {
     "category": "Grains & Lentils",
     "items": [
-      "Basmati Rice",
-      "Sona Masoori",
-      "Brown Rice",
-      "Quinoa",
-      "Oats",
-      "Moong Dal",
-      "Toor Dal",
-      "Masoor Dal",
-      "Chana Dal",
-      "Urad Dal"
+      "🍚 Basmati Rice",
+      "🌾 Sona Masoori",
+      "🍘 Brown Rice",
+      "🌿 Quinoa",
+      "🥣 Oats",
+      "🫘 Moong Dal",
+      "🫘 Toor Dal",
+      "🫘 Masoor Dal",
+      "🫘 Chana Dal",
+      "🫘 Urad Dal"
     ]
   },
   {
     "category": "Vegetables",
     "items": [
-      "Spinach",
-      "Kale",
-      "Broccoli",
-      "Cauliflower",
-      "Carrot",
-      "Sweet Potato",
-      "Potato",
-      "Tomato",
-      "Onion",
-      "Garlic",
-      "Ginger",
-      "Zucchini",
-      "Bottle Gourd (Lauki)",
-      "Bitter Gourd (Karela)",
-      "Eggplant",
-      "Okra (Bhindi)",
-      "Cabbage",
-      "Pumpkin"
+      "🥬 Spinach",
+      "🥬 Kale",
+      "🥦 Broccoli",
+      "🥦 Cauliflower",
+      "🥕 Carrot",
+      "🍠 Sweet Potato",
+      "🥔 Potato",
+      "🍅 Tomato",
+      "🧅 Onion",
+      "🧄 Garlic",
+      "🫚 Ginger",
+      "🥒 Zucchini",
+      "🥒 Bottle Gourd (Lauki)",
+      "🥒 Bitter Gourd (Karela)",
+      "🍆 Eggplant",
+      "🥒 Okra (Bhindi)",
+      "🥬 Cabbage",
+      "🎃 Pumpkin"
     ]
   },
   {
     "category": "Spices & Herbs",
     "items": [
-      "Turmeric",
-      "Cumin Seeds",
-      "Coriander Powder",
-      "Mustard Seeds",
-      "Black Pepper",
-      "Cinnamon",
-      "Cardamom",
-      "Cloves",
-      "Fenugreek (Methi)",
-      "Asafoetida (Hing)",
-      "Fennel Seeds",
-      "Fresh Cilantro",
-      "Mint Leaves",
-      "Curry Leaves"
+      "🟨 Turmeric",
+      "🟤 Cumin Seeds",
+      "🌿 Coriander Powder",
+      "🟤 Mustard Seeds",
+      "⚫ Black Pepper",
+      "🪵 Cinnamon",
+      "🫘 Cardamom",
+      "🪵 Cloves",
+      "🌿 Fenugreek (Methi)",
+      "🟤 Asafoetida (Hing)",
+      "🌿 Fennel Seeds",
+      "🌿 Fresh Cilantro",
+      "🍃 Mint Leaves",
+      "🍃 Curry Leaves"
     ]
   },
   {
     "category": "Dairy & Oils",
     "items": [
-      "Ghee",
-      "Butter",
-      "Milk",
-      "Yogurt (Curd)",
-      "Paneer",
-      "Coconut Oil",
-      "Mustard Oil",
-      "Olive Oil",
-      "Sesame Oil"
+      "🧈 Ghee",
+      "🧈 Butter",
+      "🥛 Milk",
+      "🥣 Yogurt (Curd)",
+      "🧀 Paneer",
+      "🥥 Coconut Oil",
+      "🛢️ Mustard Oil",
+      "🫒 Olive Oil",
+      "🛢️ Sesame Oil"
     ]
   },
   {
     "category": "Proteins & Meats",
     "items": [
-      "Chicken",
-      "Mutton",
-      "Fish",
-      "Eggs",
-      "Tofu"
+      "🍗 Chicken",
+      "🥩 Mutton",
+      "🐟 Fish",
+      "🥚 Eggs",
+      "🧊 Tofu"
     ]
   }
 ]

@@ -73,6 +73,10 @@ class RecipeNotifier extends StateNotifier<RecipeState> {
     state = RecipeState();
   }
 
+  void setRecipe(RecipeModel recipe) {
+    state = state.copyWith(generatedRecipe: recipe);
+  }
+
   Future<void> generateRecipe() async {
     if (state.primaryIngredients.isEmpty) {
       state = state.copyWith(error: "Select at least one ingredient");

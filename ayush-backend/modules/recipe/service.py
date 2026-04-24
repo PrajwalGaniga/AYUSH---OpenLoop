@@ -159,3 +159,17 @@ async def search_youtube(query: str) -> YouTubeSearchResponse:
     )
     
     return YouTubeSearchResponse(videos=videos, cached=False)
+
+
+async def get_history(user_id: str) -> list:
+    db = get_db()
+    cursor = db["recipes"].find({"userId": user_id}).sort("createdAt", -1)
+    history = await cursor.to_list(length=100)
+    for h in history:
+        h.pop("_id", None)
+    return history
+
+async def delete_history(recipe_hash: str) -> bool:
+    db = get_db()
+    result = await db["recipes"].delete_one({"recipeHash": recipe_hash})
+    return result.deleted_count > 0
