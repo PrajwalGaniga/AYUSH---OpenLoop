@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Posture Check</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0d0d0d;
+    color: #f0ede8;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #header {
+    padding: 12px 16px;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 10;
+  }
+  #asana-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #f0ede8;
+  }
+  #dosha-tag {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #2d6a4f;
+    color: #b7e4c7;
+  }
+
+  #camera-container {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  #video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1); /* mirror */
+  }
+  #canvas {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scaleX(-1);
+  }
+
+  /* Accuracy ring overlay */
+  #accuracy-overlay {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 72px;
+    height: 72px;
+    z-index: 20;
+  }
+  #accuracy-svg circle.bg { stroke: rgba(255,255,255,0.15); }
+  #accuracy-svg circle.fill {
+    stroke: #52b788;
+    stroke-dasharray: 188;
+    stroke-dashoffset: 188;
+    transition: stroke-dashoffset 0.5s ease;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+  }
+  #accuracy-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #f0ede8;
+  }
+
+  /* Bottom feedback bar */
+  #feedback-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    padding: 32px 20px 24px;
+    z-index: 20;
+  }
+  #status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  #status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #52b788;
+    animation: pulse 1.5s ease-in-out infinite;
+  }
+  #status-dot.incorrect { background: #e63946; }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.2); }
+  }
+  #status-label {
+    font-size: 12px;
+    color: rgba(240,237,232,0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  #correction-text {
+    font-size: 17px;
+    font-weight: 600;
+    color: #f0ede8;
+    line-height: 1.4;
+    min-height: 48px;
+  }
+
+  /* No body detected overlay */
+  #no-detection-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 30;
+    display: none;
+  }
+  #no-detection-overlay .icon { font-size: 48px; margin-bottom: 16px; }
+  #no-detection-overlay p {
+    font-size: 16px;
+    color: #f0ede8;
+    text-align: center;
+    padding: 0 32px;
+  }
+
+  /* Loading state */
+  #loading {
+    position: absolute;
+    inset: 0;
+    background: #0d0d0d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 40;
+  }
+  .spinner {
+    width: 40px; height: 40px;
+    border: 3px solid rgba(255,255,255,0.1);
+    border-top-color: #52b788;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 16px;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #loading p { color: rgba(240,237,232,0.6); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="spinner"></div>
+  <p>Starting camera...</p>
+</div>
+
+<div id="header">
+  <div>
+    <div id="asana-name">Loading...</div>
+    <div id="dosha-tag">—</div>
+  </div>
+</div>
+
+<div id="camera-container">
+  <video id="video" autoplay muted playsinline></video>
+  <canvas id="canvas"></canvas>
+
+  <div id="accuracy-overlay">
+    <svg id="accuracy-svg" viewBox="0 0 72 72">
+      <circle class="bg" cx="36" cy="36" r="30" fill="none" stroke-width="6"/>
+      <circle class="fill" cx="36" cy="36" r="30" fill="none" stroke-width="6" stroke-linecap="round"/>
+    </svg>
+    <div id="accuracy-text">0%</div>
+  </div>
+
+  <div id="no-detection-overlay">
+    <div class="icon">🧘</div>
+    <p id="no-detection-msg">Step back so your full body is visible</p>
+  </div>
+
+  <div id="feedback-bar">
+    <div id="status-indicator">
+      <div id="status-dot"></div>
+      <span id="status-label">Analyzing...</span>
+    </div>
+    <div id="correction-text">Get into position...</div>
+  </div>
+</div>
+
+<script>
+const ASANA_ID = "__ASANA_ID__";
+const API_URL = "http://10.0.2.2:8000/api/v1/yoga/check-pose";
+// Wait! If accessed from browser on PC it should be localhost, if from emulator 10.0.2.2.
+// We can use relative path or window.location.origin
+const BASE_URL = window.location.origin;
+
+const FRAME_INTERVAL_MS = 600;
+const SKELETON_CONNECTIONS = [
+  [11,12],[11,13],[13,15],[12,14],[14,16],
+  [11,23],[12,24],[23,24],
+  [23,25],[25,27],[24,26],[26,28]
+];
+
+let stream = null;
+let isAnalyzing = false;
+let lastSpokenText = "";
+let speechQueue = [];
+let isSpeaking = false;
+const synth = window.speechSynthesis;
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+// Fetch asana info to populate header
+async function loadAsanaInfo() {
+  try {
+    const resp = await fetch(`${BASE_URL}/api/v1/yoga/asanas`);
+    const data = await resp.json();
+    const asana = data.asanas.find(a => a.id === ASANA_ID);
+    if (asana) {
+      document.getElementById("asana-name").textContent = `${asana.name_sanskrit} — ${asana.name_english}`;
+      const doshaColors = { vata: "#6c63a8", pitta: "#e05c3a", kapha: "#2d6a4f" };
+      const tag = document.getElementById("dosha-tag");
+      tag.textContent = asana.dosha.charAt(0).toUpperCase() + asana.dosha.slice(1) + " Dosha";
+      tag.style.background = doshaColors[asana.dosha] + "40";
+      tag.style.color = doshaColors[asana.dosha];
+    }
+  } catch(e) { console.warn("Could not load asana info", e); }
+}
+
+// Start camera
+async function startCamera() {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 480 } },
+      audio: false
+    });
+    video.srcObject = stream;
+    video.onloadedmetadata = () => {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      document.getElementById("loading").style.display = "none";
+      startAnalysisLoop();
+    };
+  } catch(e) {
+    document.getElementById("loading").querySelector("p").textContent = 
+      "Camera access denied. Please allow camera in browser settings.";
+  }
+}
+
+// Capture frame as base64 JPEG
+function captureFrame() {
+  const tempCanvas = document.createElement("canvas");
+  tempCanvas.width = video.videoWidth;
+  tempCanvas.height = video.videoHeight;
+  const tempCtx = tempCanvas.getContext("2d");
+  tempCtx.drawImage(video, 0, 0, tempCanvas.width, tempCanvas.height);
+  const dataUrl = tempCanvas.toDataURL("image/jpeg", 0.7);
+  return dataUrl.split(",")[1];
+}
+
+// Draw skeleton overlay
+function drawSkeleton(landmarks, jointFeedbacks, w, h) {
+  ctx.clearRect(0, 0, w, h);
+  if (!landmarks || landmarks.length === 0) return;
+
+  const incorrectJoints = new Set();
+  jointFeedbacks.forEach(fb => {
+    if (!fb.is_correct) {
+      const jointMap = {
+        "left_knee_angle": [25], "right_knee_angle": [26],
+        "left_hip_angle": [23], "right_hip_angle": [24],
+        "left_elbow_angle": [13], "right_elbow_angle": [14],
+        "left_shoulder_angle": [11], "right_shoulder_angle": [12],
+        "spine_vertical_angle": [11, 12, 23, 24]
+      };
+      (jointMap[fb.joint_name] || []).forEach(i => incorrectJoints.add(i));
+    }
+  });
+
+  // Draw connections
+  SKELETON_CONNECTIONS.forEach(([i, j]) => {
+    if (i >= landmarks.length || j >= landmarks.length) return;
+    const hasError = incorrectJoints.has(i) || incorrectJoints.has(j);
+    ctx.beginPath();
+    ctx.moveTo(landmarks[i].x * w, landmarks[i].y * h);
+    ctx.lineTo(landmarks[j].x * w, landmarks[j].y * h);
+    ctx.strokeStyle = hasError ? "rgba(230, 57, 70, 0.85)" : "rgba(82, 183, 136, 0.85)";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+  });
+
+  // Draw joint dots
+  landmarks.forEach((lm, i) => {
+    if (lm.visibility < 0.3) return;
+    ctx.beginPath();
+    ctx.arc(lm.x * w, lm.y * h, 5, 0, 2 * Math.PI);
+    ctx.fillStyle = incorrectJoints.has(i) ? "#e63946" : "#52b788";
+    ctx.fill();
+  });
+}
+
+// Speak with debouncing (don't repeat the same correction)
+function speak(text) {
+  if (!text || text === lastSpokenText) return;
+  synth.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate = 0.9;
+  utterance.pitch = 1.0;
+  utterance.volume = 1.0;
+  synth.speak(utterance);
+  lastSpokenText = text;
+  // Reset after 4 seconds so same correction can fire again if still wrong
+  setTimeout(() => { lastSpokenText = ""; }, 4000);
+}
+
+// Update accuracy ring
+function updateAccuracyRing(percent) {
+  const circle = document.querySelector("#accuracy-svg circle.fill");
+  const text = document.getElementById("accuracy-text");
+  const circumference = 188;
+  const offset = circumference - (percent / 100) * circumference;
+  circle.style.strokeDashoffset = offset;
+  circle.style.stroke = percent >= 70 ? "#52b788" : percent >= 40 ? "#f4a261" : "#e63946";
+  text.textContent = Math.round(percent) + "%";
+}
+
+// Main analysis loop
+async function startAnalysisLoop() {
+  setInterval(async () => {
+    if (isAnalyzing) return;
+    isAnalyzing = true;
+    
+    try {
+      const frame = captureFrame();
+      const response = await fetch(`${BASE_URL}/api/v1/yoga/check-pose`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          asana_id: ASANA_ID,
+          frame_base64: frame,
+          frame_width: video.videoWidth,
+          frame_height: video.videoHeight
+        })
+      });
+      
+      const data = await response.json();
+      const noDetect = document.getElementById("no-detection-overlay");
+      const statusDot = document.getElementById("status-dot");
+      const statusLabel = document.getElementById("status-label");
+      const correctionText = document.getElementById("correction-text");
+      
+      if (!data.landmarks_visible) {
+        noDetect.style.display = "flex";
+        document.getElementById("no-detection-msg").textContent = data.visibility_message;
+        speak(data.primary_correction);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        updateAccuracyRing(0);
+      } else {
+        noDetect.style.display = "none";
+        
+        updateAccuracyRing(data.accuracy_percent);
+        correctionText.textContent = data.primary_correction;
+        
+        if (data.overall_correct) {
+          statusDot.className = "status-dot";
+          statusLabel.textContent = "Posture Correct";
+          speak("Good posture. Hold steady.");
+        } else {
+          statusDot.className = "status-dot incorrect";
+          statusLabel.textContent = "Adjust Your Posture";
+          speak(data.primary_correction);
+        }
+        
+        drawSkeleton(data.landmarks, data.joint_feedbacks, canvas.width, canvas.height);
+      }
+    } catch(e) {
+      console.error("Pose check failed:", e);
+    } finally {
+      isAnalyzing = false;
+    }
+  }, FRAME_INTERVAL_MS);
+}
+
+// Init
+loadAsanaInfo();
+startCamera();
+</script>
+</body>
+</html>

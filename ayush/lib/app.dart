@@ -21,6 +21,10 @@ import 'features/recipe/presentation/screens/ingredient_selection_screen.dart';
 import 'features/recipe/presentation/screens/recipe_display_screen.dart';
 import 'features/recipe/presentation/screens/recipe_history_screen.dart';
 import 'features/recipe/presentation/screens/cooking_mode_screen.dart';
+import 'features/yoga/presentation/screens/yoga_home_screen.dart';
+import 'features/yoga/presentation/screens/asana_detail_screen.dart';
+import 'features/yoga/presentation/screens/pose_check_screen.dart';
+import 'features/yoga/models/asana.dart';
 import 'core/theme/app_theme.dart';
 
 final _router = GoRouter(
@@ -53,6 +57,17 @@ final _router = GoRouter(
     GoRoute(path: '/recipe/display', builder: (_, __) => const RecipeDisplayScreen()),
     GoRoute(path: '/recipe/history', builder: (_, __) => const RecipeHistoryScreen()),
     GoRoute(path: '/recipe/cooking', builder: (_, __) => const CookingModeScreen()),
+
+    // Yoga Posture Analyzer Module
+    GoRoute(path: '/yoga/home', builder: (_, __) => const YogaHomeScreen()),
+    GoRoute(
+      path: '/yoga/detail',
+      builder: (_, state) => AsanaDetailScreen(asana: state.extra as Asana),
+    ),
+    GoRoute(
+      path: '/yoga/check',
+      builder: (_, state) => PoseCheckScreen(asanaId: state.extra as String),
+    ),
   ],
 );
 class AyushApp extends StatelessWidget {

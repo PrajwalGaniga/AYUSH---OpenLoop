@@ -1,0 +1,482 @@
+{
+  "metadata": {
+    "project": "AYUSH",
+    "module": "4 — Yoga Posture Analyzer",
+    "mediapipe_model": "pose_landmarker_full",
+    "angle_tolerance_degrees": 15,
+    "landmark_indices": {
+      "nose": 0, "left_shoulder": 11, "right_shoulder": 12,
+      "left_elbow": 13, "right_elbow": 14, "left_wrist": 15,
+      "right_wrist": 16, "left_hip": 23, "right_hip": 24,
+      "left_knee": 25, "right_knee": 26, "left_ankle": 27,
+      "right_ankle": 28
+    }
+  },
+  "asanas": {
+    "tadasana": {
+      "id": "tadasana",
+      "name_sanskrit": "Tadasana",
+      "name_english": "Mountain Pose",
+      "dosha": "vata",
+      "dosha_effect": {
+        "pacifies": ["vata"],
+        "aggravates": [],
+        "neutral": ["pitta", "kapha"]
+      },
+      "difficulty": "beginner",
+      "hold_seconds": 60,
+      "description": "The foundation of all standing poses. Grounds scattered Vata energy by activating Apana Vata — the downward, stabilizing force.",
+      "how_it_helps": "Standing tall with conscious breath activates the parasympathetic nervous system, directly calming Vata's tendency toward anxiety, restlessness, and scattered thought.",
+      "steps": [
+        "Stand with feet together, big toes touching",
+        "Distribute weight evenly across all four corners of both feet",
+        "Engage your thighs, lifting the kneecaps without locking the knees",
+        "Lengthen your tailbone toward the floor",
+        "Lift your chest and roll shoulders back and down",
+        "Arms alongside body, palms facing forward",
+        "Gaze forward, breathe deeply for 60 seconds"
+      ],
+      "reference_angles": {
+        "spine_vertical_angle": 180,
+        "left_hip_angle": 180,
+        "right_hip_angle": 180,
+        "left_knee_angle": 180,
+        "right_knee_angle": 180,
+        "left_elbow_angle": 180,
+        "right_elbow_angle": 180,
+        "left_shoulder_angle": 10,
+        "right_shoulder_angle": 10
+      },
+      "key_joints_to_check": ["spine", "knees", "hips"],
+      "corrections": {
+        "spine_vertical_angle": {
+          "too_low": "Stand taller — lengthen your spine upward",
+          "too_high": "Soften slightly — avoid arching the lower back"
+        },
+        "left_knee_angle": {
+          "too_low": "Straighten your left knee fully",
+          "too_high": "Micro-bend — avoid locking the knee"
+        },
+        "right_knee_angle": {
+          "too_low": "Straighten your right knee fully",
+          "too_high": "Micro-bend — avoid locking the knee"
+        },
+        "left_hip_angle": {
+          "too_low": "Open your hips — stand straight",
+          "too_high": "Ground your hips, avoid tilting forward"
+        }
+      }
+    },
+
+    "vrikshasana": {
+      "id": "vrikshasana",
+      "name_sanskrit": "Vrikshasana",
+      "name_english": "Tree Pose",
+      "dosha": "vata",
+      "dosha_effect": {
+        "pacifies": ["vata"],
+        "aggravates": [],
+        "neutral": ["pitta", "kapha"]
+      },
+      "difficulty": "beginner",
+      "hold_seconds": 45,
+      "description": "Single-leg balance that demands and builds the mental focus Vata types need most.",
+      "how_it_helps": "The challenge of balance forces the scattered Vata mind to become present. Consistent practice builds the stability and groundedness that is Vata's fundamental need.",
+      "steps": [
+        "Begin in Tadasana",
+        "Shift weight to your left foot",
+        "Place right foot on inner left thigh (not on knee joint)",
+        "Press foot and thigh against each other",
+        "Bring palms together at heart center",
+        "Fix your gaze on a single point in front of you",
+        "Hold for 45 seconds, switch sides"
+      ],
+      "reference_angles": {
+        "spine_vertical_angle": 180,
+        "standing_knee_angle": 175,
+        "raised_hip_angle": 60,
+        "raised_knee_angle": 45,
+        "left_elbow_angle": 90,
+        "right_elbow_angle": 90,
+        "left_shoulder_angle": 60,
+        "right_shoulder_angle": 60
+      },
+      "key_joints_to_check": ["spine", "standing_knee", "raised_hip"],
+      "corrections": {
+        "spine_vertical_angle": {
+          "too_low": "Stand tall — do not lean to the side",
+          "too_high": "Keep spine neutral, avoid over-arching"
+        },
+        "standing_knee_angle": {
+          "too_low": "Straighten your standing leg more",
+          "too_high": "Avoid locking the knee — keep a micro bend"
+        },
+        "raised_hip_angle": {
+          "too_low": "Open your raised hip further outward",
+          "too_high": "Lower the raised knee slightly"
+        }
+      }
+    },
+
+    "balasana": {
+      "id": "balasana",
+      "name_sanskrit": "Balasana",
+      "name_english": "Child's Pose",
+      "dosha": "vata",
+      "dosha_effect": {
+        "pacifies": ["vata", "pitta"],
+        "aggravates": [],
+        "neutral": ["kapha"]
+      },
+      "difficulty": "beginner",
+      "hold_seconds": 90,
+      "description": "The ultimate surrender pose. Suppresses upward Vata movement and induces deep parasympathetic calm.",
+      "how_it_helps": "The forward fold and fetal position directly activate the vagus nerve, dropping cortisol and calming the overactive nervous system that characterizes Vata imbalance.",
+      "steps": [
+        "Kneel on the floor, big toes touching",
+        "Sit back on your heels",
+        "Separate knees hip-width apart",
+        "Exhale and fold forward, laying torso between thighs",
+        "Extend arms forward, palms down",
+        "Rest forehead on the mat",
+        "Breathe deeply for 90 seconds"
+      ],
+      "reference_angles": {
+        "hip_angle": 30,
+        "knee_angle": 20,
+        "spine_horizontal_angle": 15,
+        "left_elbow_angle": 165,
+        "right_elbow_angle": 165,
+        "left_shoulder_angle": 170,
+        "right_shoulder_angle": 170
+      },
+      "key_joints_to_check": ["hips", "spine", "shoulders"],
+      "corrections": {
+        "hip_angle": {
+          "too_low": "Sit back further into your heels",
+          "too_high": "Fold forward more deeply"
+        },
+        "spine_horizontal_angle": {
+          "too_low": "Lower your chest toward the mat",
+          "too_high": "Relax forward — let gravity pull you down"
+        },
+        "left_shoulder_angle": {
+          "too_low": "Extend arms further forward",
+          "too_high": "Relax arms, let shoulders drop"
+        }
+      }
+    },
+
+    "paschimottanasana": {
+      "id": "paschimottanasana",
+      "name_sanskrit": "Paschimottanasana",
+      "name_english": "Seated Forward Bend",
+      "dosha": "pitta",
+      "dosha_effect": {
+        "pacifies": ["pitta", "vata"],
+        "aggravates": [],
+        "neutral": ["kapha"]
+      },
+      "difficulty": "beginner",
+      "hold_seconds": 60,
+      "description": "Forward compression cools the solar plexus — the seat of Pitta fire.",
+      "how_it_helps": "The fold compresses the abdomen, stimulating the liver and cooling the digestive Agni that Pitta over-fires. The surrender required directly challenges Pitta's need for control.",
+      "steps": [
+        "Sit on the floor with legs extended straight",
+        "Flex your feet, pressing heels forward",
+        "Inhale and lengthen your spine",
+        "Exhale and hinge forward from the hips (not the waist)",
+        "Reach for your feet, shins, or ankles — wherever you reach without rounding the spine",
+        "Keep the spine long, not rounded",
+        "Hold for 60 seconds, breathe into the stretch"
+      ],
+      "reference_angles": {
+        "hip_fold_angle": 70,
+        "left_knee_angle": 175,
+        "right_knee_angle": 175,
+        "spine_angle": 50,
+        "left_elbow_angle": 140,
+        "right_elbow_angle": 140,
+        "left_shoulder_angle": 160,
+        "right_shoulder_angle": 160
+      },
+      "key_joints_to_check": ["hips", "knees", "spine"],
+      "corrections": {
+        "hip_fold_angle": {
+          "too_low": "Hinge deeper from the hips — not the lower back",
+          "too_high": "You are not folding enough — exhale and release forward"
+        },
+        "left_knee_angle": {
+          "too_low": "Keep your left leg straight",
+          "too_high": "Straighten the knee fully"
+        },
+        "right_knee_angle": {
+          "too_low": "Keep your right leg straight",
+          "too_high": "Straighten the knee fully"
+        }
+      }
+    },
+
+    "ardha_chandrasana": {
+      "id": "ardha_chandrasana",
+      "name_sanskrit": "Ardha Chandrasana",
+      "name_english": "Half Moon Pose",
+      "dosha": "pitta",
+      "dosha_effect": {
+        "pacifies": ["pitta"],
+        "aggravates": [],
+        "neutral": ["vata", "kapha"]
+      },
+      "difficulty": "intermediate",
+      "hold_seconds": 30,
+      "description": "Lateral expansion channels the Pitta force outward and upward, dispersing heat from the core.",
+      "how_it_helps": "The full body extension with one-leg balance demands Pitta's full attention, but the lateral opening disperses the intensity. The moon (Chandra) energy in this pose is the antidote to Pitta's solar nature.",
+      "steps": [
+        "Begin in Trikonasana on your right side",
+        "Bend right knee slightly, shift weight onto right foot",
+        "Place right fingertips on the floor 30cm ahead",
+        "Lift left leg parallel to the floor",
+        "Open left hip to stack on right hip",
+        "Extend left arm straight up",
+        "Turn gaze upward if balance allows",
+        "Hold 30 seconds, switch sides"
+      ],
+      "reference_angles": {
+        "standing_hip_angle": 90,
+        "raised_leg_hip_angle": 90,
+        "standing_knee_angle": 170,
+        "spine_angle": 90,
+        "upper_arm_angle": 170,
+        "lower_arm_angle": 10
+      },
+      "key_joints_to_check": ["standing_hip", "raised_leg", "spine"],
+      "corrections": {
+        "standing_hip_angle": {
+          "too_low": "Open your hip more — rotate it toward the ceiling",
+          "too_high": "Bring your hip down slightly"
+        },
+        "raised_leg_hip_angle": {
+          "too_low": "Lift the raised leg higher — parallel to floor",
+          "too_high": "Lower the raised leg to parallel"
+        },
+        "spine_angle": {
+          "too_low": "Open your chest — rotate torso toward ceiling",
+          "too_high": "Keep spine neutral, do not arch"
+        }
+      }
+    },
+
+    "shavasana": {
+      "id": "shavasana",
+      "name_sanskrit": "Shavasana",
+      "name_english": "Corpse Pose",
+      "dosha": "pitta",
+      "dosha_effect": {
+        "pacifies": ["pitta", "vata"],
+        "aggravates": [],
+        "neutral": ["kapha"]
+      },
+      "difficulty": "beginner",
+      "hold_seconds": 300,
+      "description": "Complete surrender. The hardest pose for Pitta — and the most necessary.",
+      "how_it_helps": "Total physical stillness forces the Pitta mind to stop achieving, controlling, and doing. Five minutes of real Shavasana lowers cortisol, drops blood pressure, and resets the entire Pitta stress cycle.",
+      "steps": [
+        "Lie flat on your back",
+        "Feet fall naturally apart, 45 degrees outward",
+        "Arms at sides, palms facing up",
+        "Close your eyes",
+        "Let every muscle release — start from feet, move upward",
+        "Breathe naturally — no control",
+        "Stay completely still for 5 minutes"
+      ],
+      "reference_angles": {
+        "spine_flat_angle": 180,
+        "left_leg_angle": 170,
+        "right_leg_angle": 170,
+        "left_arm_angle": 160,
+        "right_arm_angle": 160,
+        "foot_rotation_left": 45,
+        "foot_rotation_right": 45
+      },
+      "key_joints_to_check": ["spine", "legs", "arms"],
+      "corrections": {
+        "spine_flat_angle": {
+          "too_low": "Flatten your lower back toward the mat",
+          "too_high": "Relax — let the spine release naturally"
+        },
+        "left_leg_angle": {
+          "too_low": "Straighten your left leg fully",
+          "too_high": "Let the leg relax naturally"
+        }
+      },
+      "note": "Shavasana pose check is minimal — primary feedback is about stillness, not angles. If too much movement is detected, speak: 'Be still — let your body completely release'"
+    },
+
+    "utkatasana": {
+      "id": "utkatasana",
+      "name_sanskrit": "Utkatasana",
+      "name_english": "Chair Pose",
+      "dosha": "kapha",
+      "dosha_effect": {
+        "pacifies": ["kapha"],
+        "aggravates": ["pitta"],
+        "neutral": ["vata"]
+      },
+      "difficulty": "beginner",
+      "hold_seconds": 45,
+      "description": "The pose that demands everything from Kapha. Generates intense internal heat to burn through stagnation.",
+      "how_it_helps": "The sustained isometric hold fires the quadriceps and glutes — the largest muscles in the body. This generates maximum metabolic heat (Agni), directly addressing Kapha's cold, slow metabolism. The discomfort IS the medicine.",
+      "steps": [
+        "Stand in Tadasana",
+        "Raise arms overhead, palms facing each other",
+        "Exhale and bend knees as if sitting into a chair",
+        "Thighs as parallel to floor as possible",
+        "Keep chest lifted, do not round the spine",
+        "Knees stay behind toes",
+        "Hold for 45 seconds — resist the urge to come up early"
+      ],
+      "reference_angles": {
+        "left_knee_angle": 90,
+        "right_knee_angle": 90,
+        "hip_angle": 90,
+        "spine_angle": 160,
+        "left_shoulder_angle": 170,
+        "right_shoulder_angle": 170,
+        "left_elbow_angle": 175,
+        "right_elbow_angle": 175
+      },
+      "key_joints_to_check": ["knees", "hips", "spine", "arms"],
+      "corrections": {
+        "left_knee_angle": {
+          "too_low": "Sit lower — bend your knees more toward 90 degrees",
+          "too_high": "Sit deeper — your thighs should be parallel to the floor"
+        },
+        "right_knee_angle": {
+          "too_low": "Bend your right knee more",
+          "too_high": "Hold the position — do not come up yet"
+        },
+        "spine_angle": {
+          "too_low": "Lift your chest — do not fold forward",
+          "too_high": "Slight forward lean is needed — hinge from hips"
+        },
+        "left_shoulder_angle": {
+          "too_low": "Raise both arms higher — fully overhead",
+          "too_high": "Arms should be straight overhead"
+        }
+      }
+    },
+
+    "bhujangasana": {
+      "id": "bhujangasana",
+      "name_sanskrit": "Bhujangasana",
+      "name_english": "Cobra Pose",
+      "dosha": "kapha",
+      "dosha_effect": {
+        "pacifies": ["kapha", "vata"],
+        "aggravates": [],
+        "neutral": ["pitta"]
+      },
+      "difficulty": "beginner",
+      "hold_seconds": 30,
+      "description": "Chest-opening backbend that stimulates the adrenals and breaks Kapha's characteristic forward slump.",
+      "how_it_helps": "The extension of the spine stimulates the adrenal glands (seated above kidneys, directly accessible in this pose), firing up Kapha's sluggish system. The chest opening counteracts the Kapha tendency toward depression and hunched posture.",
+      "steps": [
+        "Lie face down, legs extended, toes pointing back",
+        "Place hands under shoulders, elbows close to body",
+        "Press tops of feet into the mat",
+        "Inhale and press through palms, lifting chest off the floor",
+        "Keep elbows slightly bent — this is not a full arm extension",
+        "Roll shoulders back, open chest fully",
+        "Gaze forward or slightly upward",
+        "Hold 30 seconds"
+      ],
+      "reference_angles": {
+        "spine_extension_angle": 140,
+        "left_elbow_angle": 120,
+        "right_elbow_angle": 120,
+        "left_shoulder_angle": 30,
+        "right_shoulder_angle": 30,
+        "hip_angle": 175,
+        "left_knee_angle": 175,
+        "right_knee_angle": 175
+      },
+      "key_joints_to_check": ["spine", "elbows", "hips"],
+      "corrections": {
+        "spine_extension_angle": {
+          "too_low": "Lift your chest higher — open through the sternum",
+          "too_high": "Lower slightly — protect your lower back"
+        },
+        "left_elbow_angle": {
+          "too_low": "Do not fully straighten elbows — keep a gentle bend",
+          "too_high": "Bend elbows more — draw them toward your ribs"
+        },
+        "right_elbow_angle": {
+          "too_low": "Do not fully straighten elbows",
+          "too_high": "Bend elbows more"
+        },
+        "hip_angle": {
+          "too_low": "Keep hips pressed into the mat",
+          "too_high": "Relax hips — do not tense the glutes"
+        }
+      }
+    },
+
+    "trikonasana": {
+      "id": "trikonasana",
+      "name_sanskrit": "Trikonasana",
+      "name_english": "Triangle Pose",
+      "dosha": "kapha",
+      "dosha_effect": {
+        "pacifies": ["kapha", "vata"],
+        "aggravates": [],
+        "neutral": ["pitta"]
+      },
+      "difficulty": "beginner",
+      "hold_seconds": 45,
+      "description": "Full lateral stretch that opens every channel of the body, breaking Kapha's physical and energetic stagnation.",
+      "how_it_helps": "The wide-leg stance and full lateral extension stimulates the lymphatic system running along the torso, breaking Kapha's tendency toward fluid retention and energetic sluggishness. The twist opens the liver and spleen — both Kapha-accumulating organs.",
+      "steps": [
+        "Stand with feet 3.5 to 4 feet apart",
+        "Turn right foot out 90 degrees, left foot in 15 degrees",
+        "Extend arms out to the sides, parallel to floor",
+        "Exhale and extend torso over right leg",
+        "Lower right hand to shin, ankle, or the floor",
+        "Left arm extends straight up",
+        "Turn gaze up toward the raised hand",
+        "Hold 45 seconds, switch sides"
+      ],
+      "reference_angles": {
+        "left_hip_angle": 90,
+        "right_hip_angle": 90,
+        "left_knee_angle": 175,
+        "right_knee_angle": 175,
+        "spine_lateral_angle": 90,
+        "upper_arm_angle": 170,
+        "lower_arm_angle": 30
+      },
+      "key_joints_to_check": ["hips", "knees", "spine", "arms"],
+      "corrections": {
+        "left_hip_angle": {
+          "too_low": "Open your left hip — rotate toward the ceiling",
+          "too_high": "Square your hips more toward the front"
+        },
+        "left_knee_angle": {
+          "too_low": "Straighten your left knee fully",
+          "too_high": "Keep the knee straight — do not bend"
+        },
+        "right_knee_angle": {
+          "too_low": "Straighten your right knee — do not bend it",
+          "too_high": "Right leg must stay straight in Triangle"
+        },
+        "spine_lateral_angle": {
+          "too_low": "Lean further sideways over your right leg",
+          "too_high": "You are folding too far — maintain the triangle shape"
+        },
+        "upper_arm_angle": {
+          "too_low": "Raise your top arm fully — straight to the ceiling",
+          "too_high": "Keep the arm vertical"
+        }
+      }
+    }
+  }
+}
