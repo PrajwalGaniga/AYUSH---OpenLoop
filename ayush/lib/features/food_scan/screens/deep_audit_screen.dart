@@ -188,27 +188,35 @@ class _DeepAuditScreenState extends ConsumerState<DeepAuditScreen> {
           
           SizedBox(
             width: double.infinity,
-            height: AyushSpacing.buttonHeight,
             child: ElevatedButton(
               onPressed: () => _onAnswer('positive'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AyushColors.herbalGreen,
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AyushSpacing.radiusLg)),
               ),
-              child: Text(posLabel, style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+              child: Text(
+                posLabel,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           const SizedBox(height: AyushSpacing.md),
           SizedBox(
             width: double.infinity,
-            height: AyushSpacing.buttonHeight,
             child: OutlinedButton(
               onPressed: () => _onAnswer('negative'),
               style: OutlinedButton.styleFrom(
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                 side: const BorderSide(color: AyushColors.error),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AyushSpacing.radiusLg)),
               ),
-              child: Text(negLabel, style: const TextStyle(color: AyushColors.error, fontSize: 16, fontWeight: FontWeight.bold)),
+              child: Text(
+                negLabel,
+                textAlign: TextAlign.center,
+                style: const TextStyle(color: AyushColors.error, fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
         ],

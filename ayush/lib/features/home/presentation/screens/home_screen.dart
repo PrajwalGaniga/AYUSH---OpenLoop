@@ -7,6 +7,8 @@ import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../../auth/providers/auth_provider.dart';
 import '../../../onboarding/providers/onboarding_provider.dart';
+import '../../../food_scan/providers/delayed_meal_provider.dart';
+import '../../../food_scan/providers/food_scan_provider.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -17,6 +19,39 @@ class HomeScreen extends ConsumerWidget {
     final onboarding = ref.watch(onboardingProvider);
     final prakriti = onboarding.prakritiResult;
     final ojas = onboarding.ojasResult;
+
+    ref.listen<DelayedMealState>(delayedMealProvider, (previous, next) {
+      if (next.isTimerComplete && next.pendingScan != null) {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (ctx) => AlertDialog(
+            title: const Text("Reaction Check!"),
+            content: const Text("Did you eat the hotel food you scanned 2 hours ago?"),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  ref.read(delayedMealProvider.notifier).clearPending();
+                  Navigator.pop(ctx);
+                },
+                child: const Text("No, I didn't"),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: AyushColors.primary),
+                onPressed: () {
+                  final state = next.pendingScan!;
+                  ref.read(delayedMealProvider.notifier).clearPending();
+                  ref.read(foodScanProvider.notifier).resumeState(state);
+                  Navigator.pop(ctx);
+                  context.push('/food/audit');
+                },
+                child: const Text("Yes, I ate it", style: TextStyle(color: Colors.white)),
+              ),
+            ],
+          ),
+        );
+      }
+    });
 
     // ── Name resolution ───────────────────────────────────────────────────────
     // Priority: onboarding state (fresh registration this session)

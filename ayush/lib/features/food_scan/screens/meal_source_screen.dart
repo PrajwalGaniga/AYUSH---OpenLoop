@@ -5,6 +5,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../providers/food_scan_provider.dart';
+import '../providers/delayed_meal_provider.dart';
 
 class MealSourceScreen extends ConsumerWidget {
   const MealSourceScreen({super.key});
@@ -55,7 +56,20 @@ class MealSourceScreen extends ConsumerWidget {
                 isSelected: mealSource == 'hotel',
                 onTap: () {
                   ref.read(foodScanProvider.notifier).setMealSource('hotel');
-                  context.push('/food/audit');
+                  final currentState = ref.read(foodScanProvider);
+                  
+                  ref.read(delayedMealProvider.notifier).startDelayedTimer(currentState);
+                  ref.read(foodScanProvider.notifier).reset(); // Clear active scan
+
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text("Hotel meal saved. We'll ask about your reaction in a bit (25s demo)."),
+                      backgroundColor: AyushColors.primary,
+                      duration: Duration(seconds: 4),
+                    ),
+                  );
+
+                  context.go('/home');
                 },
               ),
             ],

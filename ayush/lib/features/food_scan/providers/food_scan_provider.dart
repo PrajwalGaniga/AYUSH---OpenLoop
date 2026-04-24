@@ -68,6 +68,10 @@ class FoodScanNotifier extends StateNotifier<FoodScanState> {
     state = const FoodScanState();
   }
 
+  void resumeState(FoodScanState savedState) {
+    state = savedState;
+  }
+
   Future<void> scanImage(File image) async {
     state = state.copyWith(isLoading: true, error: null);
     try {
