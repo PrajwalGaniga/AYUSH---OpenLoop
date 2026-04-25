@@ -24,3 +24,17 @@ class PoseCheckResponse(BaseModel):
     landmarks_visible: bool   # false if key landmarks not detected
     visibility_message: str   # "Move back so full body is visible" etc
     landmarks: Optional[List[dict]] = []  # Added for frontend skeleton rendering
+
+class SessionCompleteRequest(BaseModel):
+    user_id: str
+    asanas_completed: List[str]
+    total_duration_seconds: int
+    average_accuracy: float
+    per_asana_accuracy: dict
+    session_type: str
+
+class SessionCompleteResponse(BaseModel):
+    session_id: str
+    ojas_delta: int
+    ojas_after: int
+    message: str

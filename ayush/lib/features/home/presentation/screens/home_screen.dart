@@ -212,6 +212,9 @@ class HomeScreen extends ConsumerWidget {
                       childAspectRatio: 1.5,
                       children: [
                         _buildActionCard(context, 'My Prakriti', Icons.person_outline, AyushColors.vata, AyushColors.vataLight, () => context.push('/profile')),
+                        _buildActionCard(context, 'Tongue Scan', Icons.face_retouching_natural, Colors.pinkAccent, Colors.pink.shade50, () => context.push('/tongue-capture')),
+                        _buildActionCard(context, 'Eye Scan', Icons.remove_red_eye_outlined, Colors.blueAccent, Colors.blue.shade50, () => context.push('/eye-capture')),
+                        _buildActionCard(context, 'Nadi Pariksha', Icons.favorite_border, const Color(0xFFE74C3C), const Color(0xFFFDEDEC), () => context.push('/nadi-pariksha')),
                         _buildActionCard(context, 'Food Scan', Icons.camera_alt_outlined, AyushColors.herbalGreen, AyushColors.herbalGreenLight, () => context.push('/food/scan')),
                         _buildActionCard(context, 'Plant ID', Icons.eco_outlined, Colors.teal, Colors.teal.shade50, () => context.push('/plant/camera')),
                         _buildActionCard(context, 'AI Recipe', Icons.restaurant_menu, AyushColors.kapha, AyushColors.kaphaLight, () => context.push('/recipe/select')),

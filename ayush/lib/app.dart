@@ -37,6 +37,11 @@ import 'features/plant/models/plant.dart';
 import 'features/community/screens/community_home_screen.dart';
 import 'features/packaged_food/screens/packaged_food_scan_screen.dart';
 import 'features/packaged_food/screens/packaged_food_result_screen.dart';
+import 'features/nadi_pariksha/screens/nadi_pariksha_screen.dart';
+import 'features/biometrics/screens/tongue_capture_screen.dart';
+import 'features/biometrics/screens/tongue_result_screen.dart';
+import 'features/biometrics/screens/eye_capture_screen.dart';
+import 'features/biometrics/screens/eye_result_screen.dart';
 import 'dart:io';
 
 final _router = GoRouter(
@@ -119,6 +124,17 @@ final _router = GoRouter(
     // Packaged Food OCR Scanner
     GoRoute(path: '/packaged-food/scan', builder: (_, __) => const PackagedFoodScanScreen()),
     GoRoute(path: '/packaged-food/result', builder: (_, __) => const PackagedFoodResultScreen()),
+
+    // Nadi Pariksha Feature
+    GoRoute(path: '/nadi-pariksha', builder: (_, __) => const NadiParikshaScreen()),
+
+    // Biometrics / Tongue Analysis
+    GoRoute(path: '/tongue-capture', builder: (_, __) => const TongueCaptureScreen()),
+    GoRoute(path: '/tongue-result', builder: (_, state) => TongueResultScreen(result: state.extra as Map<String, dynamic>)),
+
+    // Biometrics / Eye Analysis
+    GoRoute(path: '/eye-capture', builder: (_, __) => const EyeCaptureScreen()),
+    GoRoute(path: '/eye-result', builder: (_, state) => EyeResultScreen(result: state.extra as Map<String, dynamic>)),
   ],
 );
 class AyushApp extends StatelessWidget {

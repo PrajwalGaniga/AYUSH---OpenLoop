@@ -26,6 +26,7 @@ from .schemas import (
     ViruddhAharaWarning,
     LogMealRequest,
 )
+from utils.gemini_client import get_gemini_model
 
 logger = logging.getLogger(__name__)
 
@@ -305,15 +306,52 @@ def calculate_analysis(request: FoodAnalysisRequest) -> FoodAnalysisResponse:
 # Function 3 — Log Meal to DB
 # ─────────────────────────────────────────────────────────────────────────────
 
+async def get_gemini_quality_score(food_results: list, user_profile: dict) -> int:
+    try:
+        model = get_gemini_model()
+        food_names = [item.name for item in food_results]
+        prompt = f"""
+        Analyze this meal for a user with the following profile:
+        {json.dumps(user_profile, default=str)}
+        
+        Meal contents: {', '.join(food_names)}
+        
+        Return ONLY a JSON object with a single key "quality_score".
+        "quality_score": integer between 0-100. 
+        0 = highly harmful (fried, incompatible, processed)
+        50 = neutral
+        100 = ideal Ayurvedic meal for this user's prakriti.
+        This is NOT the ojas_delta. It is the intrinsic quality of the meal independent of current ojas baseline.
+        """
+        response = await model.generate_content_async(prompt)
+        text = response.text
+        if "```json" in text:
+            text = text.split("```json")[1].split("```")[0].strip()
+        elif "```" in text:
+            text = text.replace("```", "").strip()
+        data = json.loads(text)
+        return int(data.get("quality_score", 50))
+    except Exception as e:
+        logger.error(f"Gemini quality score failed: {e}")
+        return 50  # Safe default
+
 async def log_meal_to_db(request: LogMealRequest) -> None:
     db = get_db()
     
     now = datetime.now(timezone.utc)
+    
+    user = await db["users"].find_one({"userId": request.user_id})
+    user_profile = user.get("profile", {}) if user else {}
+    current_ojas = user.get("ojasScore") if user else None
+    
+    meal_quality_score = await get_gemini_quality_score(request.food_results, user_profile)
+    
     log_entry = {
         "logId": str(uuid.uuid4()),
         "userId": request.user_id,
         "mealSource": request.meal_source,
         "totalOjasDelta": request.total_ojas_delta,
+        "meal_quality_score": meal_quality_score,
         "foodResults": [item.model_dump() for item in request.food_results],
         "viruddhaWarnings": [warn.model_dump() for warn in request.viruddha_warnings],
         "loggedAt": now,
@@ -322,16 +360,25 @@ async def log_meal_to_db(request: LogMealRequest) -> None:
     # Save the meal log
     await db["food_logs"].insert_one(log_entry)
     
-    # Optionally update the user's total OJAS score if it exists
-    user = await db["users"].find_one({"userId": request.user_id})
-    if user:
-        current_ojas = user.get("ojasScore")
-        if current_ojas is not None:
-            new_ojas = current_ojas + request.total_ojas_delta
-            # Clamp between 0 and 100
-            new_ojas = max(0, min(100, new_ojas))
-            await db["users"].update_one(
-                {"userId": request.user_id},
-                {"$set": {"ojasScore": new_ojas, "updatedAt": now}}
-            )
+    # Update OJAS and create history ledger entry
+    if user and current_ojas is not None:
+        new_ojas = current_ojas + request.total_ojas_delta
+        # Clamp between 0 and 100
+        new_ojas = max(0, min(100, new_ojas))
+        
+        await db["users"].update_one(
+            {"userId": request.user_id},
+            {"$set": {"ojasScore": new_ojas, "updatedAt": now}}
+        )
+        
+        history_entry = {
+            "user_id": request.user_id,
+            "timestamp": now,
+            "value": new_ojas,
+            "delta": request.total_ojas_delta,
+            "source": "food_scan",
+            "source_id": log_entry["logId"]
+        }
+        await db["ojas_history"].insert_one(history_entry)
+
 

@@ -1,52 +1,79 @@
-# AYUSH — Ayurvedic Health Platform (Module 1)
+# AYUSH — Ayurvedic Health & Lifestyle Platform
 
-AYUSH is a premium, AI-powered Ayurvedic health companion platform. This repository contains the complete **Module 1** implementation, which encompasses the core user onboarding, Prakriti (body constitution) calculation, and OJAS (vitality) score generation.
+AYUSH is a premium, AI-powered Ayurvedic health companion platform that bridges ancient Ayurvedic wisdom with modern clinical technology. 
 
-The system is split into a **Flutter mobile application** (Riverpod, modern clinical-lifestyle UI) and a **FastAPI backend** (MongoDB, Gemini 2.5 Flash integration).
+The system uses a highly modular architecture split into a **Flutter mobile application** (Riverpod, modern clinical-lifestyle UI) and a **FastAPI backend** (MongoDB, integrating multiple AI/ML models like Gemini 2.5 Flash, MediaPipe, PyTorch, and PaddleOCR).
 
 ---
 
-## 🌟 Module 1 Features
+## 🌟 Comprehensive Features & Modules
 
-### 1. Authentication
-* **Phone + Password Login:** Secure registration and login flow using `CountryCodePicker` and inline form validation.
-* **Persistent Sessions:** Tokens are securely stored using `flutter_secure_storage`. The splash screen verifies session validity and auto-routes the user, providing a "login once" experience.
-* **Plaintext Password Support:** Built to specific project constraints (passwords transmitted/stored in plaintext).
+AYUSH has evolved beyond its initial onboarding scope into a full-fledged holistic health platform. Here are the core features and modules integrated into the system:
 
-### 2. The 6-Step Onboarding Wizard
-A guided, premium UI featuring custom animations (`flutter_animate`), state preservation, and an engaging clinical-lifestyle hybrid design system.
+### 1. User Profile & Onboarding (`auth` & `onboarding`)
+* **Authentication:** Secure Phone + Password login with persistent sessions (JWT via `flutter_secure_storage`).
+* **The 6-Step Onboarding Wizard:**
+    1. **Basic Profile:** Demographics, metrics (metric/imperial), blood group.
+    2. **Body Scan (Pain Mapping):** Interactive human silhouette with 35+ tappable regions for logging localized pain severity.
+    3. **Prakriti Quiz:** Comprehensive 24-question assessment to determine Vata, Pitta, and Kapha constitution.
+    4. **Lifestyle & Habits:** Diet, stress, sleep, water intake, and habit tracking.
+    5. **Health History:** Expandable clinical condition selection and family history.
+    6. **Report Upload (AI Extraction):** Uses **Gemini 2.5 Flash** to extract vitals and doctor notes from medical PDFs/images automatically.
+* **Prakriti Engine:** Calculates the precise balance of Vata, Pitta, and Kapha.
+* **OJAS Score Engine:** Computes a holistic vitality score (0-100) based on metrics, lifestyle, and medical reports.
+* **Dynamic User Profile:** Includes a high-fidelity triangular radar chart for real-time Dosha visualization and editable profile settings.
 
-1. **Basic Profile:** Name, DOB, height, weight (with metric/imperial toggle), blood group, language, and state.
-2. **Body Scan (Pain Mapping):** An interactive human silhouette using `CustomPainter` with 35+ tappable regions for logging localized pain severity (mild, moderate, severe).
-3. **Prakriti Quiz:** A comprehensive 24-question assessment covering physique, metabolism, psychology, and behavior to determine Vata, Pitta, and Kapha constitution.
-4. **Lifestyle & Habits:** Diet preferences, occupation stress levels, sleep hours, water intake, and habit tracking (smoking, alcohol, etc.).
-5. **Health History:** Selection of existing clinical conditions via an expandable accordion menu, along with medication entry and family history.
-6. **Report Upload (AI Extraction):** Users can upload medical reports (PDF/JPG/PNG). The backend leverages **Gemini 2.5 Flash** to extract vitals, conditions, and doctor notes automatically. Users review and confirm the extracted data.
+### 2. Packaged Food Scanner (`packaged_food`)
+* **OCR Text Extraction:** Utilizes **PaddleOCR** to accurately extract ingredients and nutritional facts from images of packaged food labels.
+* **Personalized AI Analysis:** Evaluates the extracted ingredients against the user's specific health profile (allergies, Dosha balance, medical conditions) using **Gemini 2.5 Flash**.
+* **Actionable Insights:** Delivers a clear "Buy or Skip" recommendation alongside detailed nutritional warnings and benefits.
 
-### 3. The Prakriti & OJAS Engines
-* **Prakriti Engine:** Calculates the precise balance of Vata, Pitta, and Kapha from the 24-question quiz, determining the user's primary constitution type (e.g., Vata-Pitta, pure Kapha).
-* **OJAS Score:** A holistic vitality score (0-100) computed on the backend using the user's body metrics, pain points, lifestyle choices, and confirmed medical reports.
+### 3. Food & Meal Analysis (`food_scan`)
+* Allows users to log and scan their daily meals.
+* Provides AI-driven dietary recommendations tailored to balance the user's specific Prakriti and improve their OJAS score.
 
-### 4. OJAS Reveal & Home Dashboard
-* **Reveal Screen:** A highly animated results page featuring a progressive arc gauge, sliding insight cards, and dosha percentage bars.
-* **Home Dashboard:** A personalized landing page with quick actions (My Prakriti, Diet Plan, Herb Guide) and dynamic color styling based on the user's health metrics.
+### 4. Medicinal Plant Identifier (`plant`)
+* **AI Image Recognition:** Identifies Ayurvedic medicinal plants from user-uploaded photos using a custom-trained **EfficientNet V2** ML model (built with PyTorch).
+* **Botanical Insights:** Provides detailed Ayurvedic properties, benefits, and preparation usage for the identified plants.
+
+### 5. Yoga Posture Analyzer (`yoga`)
+* **Real-time Pose Estimation:** Utilizes Google's **MediaPipe** to track bodily landmarks.
+* Provides users with alignment feedback and posture corrections to ensure Yoga asanas are performed safely and effectively.
+
+### 6. Ayurvedic Recipe Generator (`recipe`)
+* Generates personalized Ayurvedic recipes based on the user's current Dosha state and available ingredients.
+* Features a persistent recipe history for saving favorite health-aligned meals.
+
+### 7. Community & Forums (`community`)
+* A dedicated social space for users to connect and share Ayurvedic practices.
+* **Plant Posts:** Users can share geotagged plant discoveries (using MongoDB Geohash indexing).
+* **Contact Requests:** Peer-to-peer connection management.
+
+### 8. Emergency SOS & Fall Detection (`sos`)
+* Incorporates safety mechanisms for vulnerable users.
+* Integrates **Twilio** to send automated SMS emergency SOS alerts to designated contacts in case of a critical situation or detected fall.
 
 ---
 
 ## 🛠️ Technology Stack
 
-### Mobile Frontend
+### Mobile Frontend (`/ayush`)
 * **Framework:** Flutter (Material 3)
 * **State Management:** Riverpod (`flutter_riverpod`)
 * **Routing:** GoRouter
 * **Networking:** Dio (with custom JWT interceptors)
-* **Design/Animations:** `flutter_animate`, Google Fonts (Playfair Display & Inter)
+* **Design/Animations:** `flutter_animate`, Google Fonts (Playfair Display & Inter), custom canvas drawing (`CustomPainter`).
 * **Storage:** `flutter_secure_storage`, `shared_preferences`
 
-### Backend Service
+### Backend Service (`/ayush-backend`)
 * **Framework:** FastAPI (Python 3.10+)
 * **Database:** MongoDB (Motor async driver)
-* **AI Integration:** Google GenAI SDK (Gemini 2.5 Flash)
+* **AI/ML Integrations:**
+    * **Google GenAI SDK (Gemini 2.5 Flash):** Medical report extraction and food analysis.
+    * **PaddleOCR & PaddlePaddle:** Packaged food label text extraction.
+    * **PyTorch & TorchVision:** EfficientNet V2 plant identification.
+    * **MediaPipe:** Yoga posture analysis.
+* **External APIs:** Twilio (SOS Messaging).
 * **Data Validation:** Pydantic
 
 ---
@@ -68,12 +95,14 @@ A guided, premium UI featuring custom animations (`flutter_animate`), state pres
    pip install -r requirements.txt
    ```
 4. Configure environment variables:
-   Copy `.env.example` to `.env` and fill in your MongoDB URI and Gemini API Key:
+   Copy `.env.example` to `.env` and fill in your keys:
    ```env
    MONGODB_URL=mongodb://localhost:27017
    DATABASE_NAME=ayush_db
    JWT_SECRET=your_jwt_secret_key_here
    GEMINI_API_KEY=your_gemini_api_key_here
+   TWILIO_ACCOUNT_SID=your_twilio_sid
+   TWILIO_AUTH_TOKEN=your_twilio_token
    ```
 5. Run the FastAPI server:
    ```bash
@@ -95,7 +124,7 @@ A guided, premium UI featuring custom animations (`flutter_animate`), state pres
    API_BASE_URL=http://10.0.2.2:8000/api/v1  # Use 10.0.2.2 for Android Emulator, or localhost for iOS/Web
    GEMINI_API_KEY=your_gemini_api_key_here
    ```
-4. Ensure image and animation assets are placed in `assets/images/` and `assets/lottie/`. Placeholder lottie files have been provided.
+4. Ensure image and animation assets are placed in `assets/images/` and `assets/lottie/`.
 5. Run the app:
    ```bash
    flutter run
@@ -105,11 +134,11 @@ A guided, premium UI featuring custom animations (`flutter_animate`), state pres
 
 ## 🎨 Design System
 
-AYUSH employs a **Clinical-Lifestyle Hybrid** aesthetic.
-* **Typography:** `Playfair Display` for elegant, premium headings. `Inter` for clean, highly readable clinical data.
+AYUSH employs a **Clinical-Lifestyle Hybrid** aesthetic to feel both medically trustworthy and holistically inviting.
+* **Typography:** `Playfair Display` for elegant headings. `Inter` for highly readable clinical data.
 * **Colors:**
   * Primary: Deep Teal (`#1F7A8C`) - Trust, stability, modern healthcare.
-  * Secondary: Herbal Green (`#6BA368`) & Warm Sand (`#F4EDE4`) - Ayurvedic grounding and natural elements.
+  * Secondary: Herbal Green (`#6BA368`) & Warm Sand (`#F4EDE4`) - Ayurvedic grounding.
   * Accents: Soft Gold (`#C8A951`) - Premium touches.
 * **Dosha Palette:**
   * Vata: Indigo-purple
@@ -119,13 +148,6 @@ AYUSH employs a **Clinical-Lifestyle Hybrid** aesthetic.
 ---
 
 ## 🔒 Notes on Implementation Details
-* **Password Hashing:** As per specific project requirements, passwords are sent and stored in **plaintext**. In a production environment outside of these specific parameters, standard bcrypt hashing must be reintroduced.
-* **Component Modularity:** The app utilizes a highly modular structure. Shared UI elements (like `AyushButton` and `OnboardingShell`) are abstracted to ensure consistency across the application.
-
----
-
-## ? Latest Updates (Module 1 Day 1 Completed)
-* **End-to-End Build Resolved:** Flutter app successfully communicates with the FastAPI backend.
-* **Ngrok Integration:** Added support for external physical device testing via secure Ngrok tunnels for the backend.
-* **Localization Fixes:** Integrated `flutter_localizations` to resolve third-party UI package crashes (`CountryCodePicker`).
-* **Algorithmic Documentation:** The exact computational logic for the Vitality score has been documented. See [ojas_algorithm.md](./ojas_algorithm.md) for details on base scores, medical penalties, and lifestyle bonuses.
+* **Password Handling:** Passwords are currently configured to specific project requirements. In a production environment outside of these parameters, standard bcrypt hashing must be reintroduced.
+* **Component Modularity:** The app utilizes a highly modular structure. Shared UI elements are abstracted to ensure consistency across the application.
+* **Algorithmic Documentation:** The computational logic for the Vitality score has been documented. See [ojas_algorithm.md](./ojas_algorithm.md) for details on base scores, medical penalties, and lifestyle bonuses.

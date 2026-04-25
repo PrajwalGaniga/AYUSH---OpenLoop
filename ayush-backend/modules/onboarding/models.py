@@ -141,6 +141,14 @@ class CompleteOnboardingRequest(BaseModel):
     userId: str
 
 
+class SaveNadiResultRequest(BaseModel):
+    userId: str
+    nadiType: str
+    bpm: float
+    dominantDosha: int
+    confidence: float
+
+
 # ─── OJAS Response ────────────────────────────────────────────────────────────
 
 class OjasBreakdown(BaseModel):

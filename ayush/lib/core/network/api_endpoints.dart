@@ -6,6 +6,7 @@ class ApiEndpoints {
   static const String register = '/auth/register';
   static const String login = '/auth/login';
   static const String me = '/auth/me';
+  static const String saveNadiResult = '/auth/nadi-history';
 
   // ── Onboarding ──────────────────────────────────────────────────────────────
   static const String step1BasicProfile = '/step1/basic-profile';
@@ -31,4 +32,8 @@ class ApiEndpoints {
   static const String recipeYoutube = '/recipe/youtube';
   static String recipeHistory(String userId) => '/recipe/history/';
   static String deleteRecipe(String hash) => '/recipe/history/';
+
+  // ── Biometrics (Tongue & Eye Analysis) ────────────────────────────────────
+  static const String tongueAnalyze = '/biometrics/tongue';
+  static const String eyeAnalyze = '/biometrics/eye';
 }

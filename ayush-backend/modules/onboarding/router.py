@@ -21,6 +21,7 @@ from modules.onboarding.models import (
     Step3AnswersRequest, Step3CalculateRequest,
     Step4LifestyleRequest, Step5HealthConditionsRequest,
     ConfirmReportRequest, CalculateOjasRequest, CompleteOnboardingRequest,
+    SaveNadiResultRequest
 )
 from modules.onboarding.service import (
     calculate_prakriti, calculate_ojas,
@@ -89,6 +90,7 @@ async def register(req: RegisterRequest):
         "ojasScore": None,
         "ojasBreakdown": {"base": 100, "penalties": [], "bonuses": [], "final": None},
         "healthSnapshots": [],
+        "nadiHistory": [],
     }
 
     await db["users"].insert_one(user_doc)
@@ -124,6 +126,7 @@ async def login(req: LoginRequest):
             "profile": user.get("profile", {}),
             "ojasScore": user.get("ojasScore"),
             "prakritiResult": user.get("prakritiResult"),
+            "nadiHistory": user.get("nadiHistory", []),
         },
         message="Login successful",
     )
@@ -143,6 +146,7 @@ async def get_me(current_user: dict = Depends(get_current_user)):
         "profile": user.get("profile", {}),
         "ojasScore": user.get("ojasScore"),
         "prakritiResult": user.get("prakritiResult"),
+        "nadiHistory": user.get("nadiHistory", []),
     })
 
 
@@ -177,7 +181,31 @@ async def update_profile(req: UpdateProfileRequest, current_user: dict = Depends
         "profile": updated_user.get("profile", {}),
         "ojasScore": updated_user.get("ojasScore"),
         "prakritiResult": updated_user.get("prakritiResult"),
+        "nadiHistory": updated_user.get("nadiHistory", []),
     }, message="Profile updated successfully")
+
+
+@router.post("/auth/nadi-history")
+async def save_nadi_history(req: SaveNadiResultRequest, current_user: dict = Depends(get_current_user)):
+    user = await get_user_by_id(current_user["sub"])
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+        
+    db = get_db()
+    nadi_entry = {
+        "nadiType": req.nadiType,
+        "bpm": req.bpm,
+        "dominantDosha": req.dominantDosha,
+        "confidence": req.confidence,
+        "timestamp": _now()
+    }
+    
+    await db["users"].update_one(
+        {"userId": current_user["sub"]},
+        {"$push": {"nadiHistory": nadi_entry}}
+    )
+    
+    return success_response(message="Nadi Pariksha result saved successfully")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════

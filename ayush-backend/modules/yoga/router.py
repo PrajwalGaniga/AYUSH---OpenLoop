@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from fastapi.responses import HTMLResponse
 from pathlib import Path
-from modules.yoga.schemas import PoseCheckRequest, PoseCheckResponse
+from modules.yoga.schemas import PoseCheckRequest, PoseCheckResponse, SessionCompleteRequest
 from modules.yoga import service
 
 router = APIRouter(tags=["yoga"])
@@ -19,6 +19,12 @@ async def serve_pose_check_page(asana_id: str):
 @router.post("/api/v1/yoga/check-pose", response_model=PoseCheckResponse)
 async def check_pose_endpoint(request: PoseCheckRequest):
     result = service.check_pose(request)
+    return result
+
+# Session complete endpoint
+@router.post("/api/v1/yoga/session/complete")
+async def complete_yoga_session(request: SessionCompleteRequest):
+    result = await service.complete_yoga_session(request, request.user_id)
     return result
 
 # Asana list endpoint (Flutter calls this to load the 9 asanas)

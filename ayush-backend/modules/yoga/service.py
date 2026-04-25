@@ -9,7 +9,9 @@ from mediapipe.tasks.python.components.containers import landmark as mp_landmark
 import mediapipe as mp
 import urllib.request
 from pathlib import Path
-from modules.yoga.schemas import PoseCheckRequest, PoseCheckResponse, JointFeedback
+from modules.yoga.schemas import PoseCheckRequest, PoseCheckResponse, JointFeedback, SessionCompleteRequest
+from database.mongodb import get_db
+from datetime import datetime, timezone
 
 # Load reference poses once at startup
 REFERENCE_POSES_PATH = Path("yolo-model/asana_reference_poses.json")
@@ -236,3 +238,78 @@ def check_pose(request: PoseCheckRequest) -> PoseCheckResponse:
         visibility_message="Full body detected",
         landmarks=landmark_list
     )
+
+def calculate_prakriti_alignment(asanas_completed: list, prakriti: str) -> int:
+    # simple stub for now
+    return 1 if prakriti else 0
+
+def calculate_yoga_ojas_delta(accuracy: float, duration: int, prakriti_dict: dict) -> int:
+    duration_minutes = duration / 60
+    base = (accuracy / 100) * min(duration_minutes, 60) * 0.15
+    prakriti_type = prakriti_dict.get("type", "vata").lower() if isinstance(prakriti_dict, dict) else "vata"
+    prakriti_multiplier = 1.2 if prakriti_type else 1.0
+    delta = int(base * prakriti_multiplier)
+    return max(0, min(10, delta))
+
+async def complete_yoga_session(request: SessionCompleteRequest, user_id: str) -> dict:
+    db = get_db()
+    now = datetime.now(timezone.utc)
+    
+    user = await db["users"].find_one({"userId": user_id})
+    user_profile = user.get("profile", {}) if user else {}
+    current_ojas = user.get("ojasScore") if user else 50
+    prakriti_dict = user_profile.get("prakriti", {})
+    
+    session_entry = {
+        "user_id": user_id,
+        "timestamp": now,
+        "date_key": now.strftime("%Y-%m-%d"),
+        "asanas_completed": request.asanas_completed,
+        "asana_count": len(request.asanas_completed),
+        "total_duration_seconds": request.total_duration_seconds,
+        "average_accuracy": request.average_accuracy,
+        "per_asana_accuracy": request.per_asana_accuracy,
+        "session_type": request.session_type,
+        "prakriti_alignment_score": calculate_prakriti_alignment(
+            request.asanas_completed, 
+            prakriti_dict.get("type", "vata") if isinstance(prakriti_dict, dict) else "vata"
+        ),
+    }
+    
+    result = await db["session_logs"].insert_one(session_entry)
+    
+    yoga_ojas_delta = calculate_yoga_ojas_delta(
+        accuracy=request.average_accuracy,
+        duration=request.total_duration_seconds,
+        prakriti_dict=prakriti_dict
+    )
+    
+    new_ojas = max(0, min(100, current_ojas + yoga_ojas_delta))
+    
+    if user:
+        await db["users"].update_one(
+            {"userId": user_id},
+            {
+                "$set": {
+                    "ojasScore": new_ojas,
+                    "updatedAt": now
+                }
+            }
+        )
+        
+        history_entry = {
+            "user_id": user_id,
+            "timestamp": now,
+            "value": new_ojas,
+            "delta": yoga_ojas_delta,
+            "source": "yoga_session",
+            "source_id": str(result.inserted_id)
+        }
+        await db["ojas_history"].insert_one(history_entry)
+        
+    return {
+        "session_id": str(result.inserted_id),
+        "ojas_delta": yoga_ojas_delta,
+        "ojas_after": new_ojas,
+        "message": "Session saved."
+    }

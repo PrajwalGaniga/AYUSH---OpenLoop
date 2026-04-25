@@ -14,6 +14,7 @@ from modules.plant.router import router as plant_router
 from modules.community.router import router as community_router
 from modules.sos.router import router as sos_router
 from modules.packaged_food.router import router as packaged_food_router
+from modules.biometrics.router import router as biometrics_router
 from config.settings import settings
 from pathlib import Path
 from fastapi.staticfiles import StaticFiles
@@ -22,23 +23,33 @@ from database.mongodb import get_db
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    print("\n[Startup] Starting application lifespan...")
+    print("[Startup] Connecting to database...")
     await connect_db()
+    print("[Startup] Database connected.")
     
     # Community module startup
+    print("[Startup] Setting up community module...")
     Path("uploads/community").mkdir(parents=True, exist_ok=True)
     db = get_db()
     plant_posts_collection = db["plant_posts"]
     contact_requests_collection = db["contact_requests"]
     
+    print("[Startup] Creating MongoDB indexes...")
     await plant_posts_collection.create_index([("status", 1), ("created_at", -1)])
     await plant_posts_collection.create_index([("user_id", 1)])
     await plant_posts_collection.create_index([("plant_name", "text")])
     await plant_posts_collection.create_index([("location.geohash", 1)])
     await contact_requests_collection.create_index([("to_user_id", 1), ("status", 1)])
     await contact_requests_collection.create_index([("from_user_id", 1)])
+    print("[Startup] Indexes created successfully.")
     
+    print("[Startup] Application is ready on the selected port!")
     yield
+    
+    print("\n[Shutdown] Closing database connection...")
     await close_db()
+    print("[Shutdown] Complete.")
 
 
 app = FastAPI(
@@ -79,6 +90,9 @@ app.include_router(sos_router)
 
 # Packaged Food OCR Scanner routes
 app.include_router(packaged_food_router)
+
+# Biometrics / Tongue Analysis routes
+app.include_router(biometrics_router, prefix="/api/v1/biometrics", tags=["Biometrics"])
 
 # Mount static files for uploads
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")

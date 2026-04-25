@@ -1,0 +1,1919 @@
+{
+  "food_feedback": [
+    {
+      "_id": {
+        "$oid": "69e9d4de895b5370b4ff81ee"
+      },
+      "analysisId": "unknown",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "mealName": "this meal",
+      "feedback": "heavy",
+      "ojasDelta": -5,
+      "newOjasScore": 94,
+      "timestamp": "2026-04-23T08:14:22.306167"
+    }
+  ],
+  "recipes": [
+    {
+      "_id": {
+        "$oid": "69ecf792c544e97538379233"
+      },
+      "name": "Nourishing Vasanta Vata Kichadi",
+      "description": "This Kichadi is specifically designed for Vata Prakriti during the Vasanta (Spring) season. It is warm, moist, grounding, and easy to digest, which are essential qualities for pacifying Vata. The combination of rice, moong dal, sweet potato, and greens provides wholesome nourishment without being heavy, aligning with the season's call for lighter, yet satisfying, meals. Warming spices like ginger, cumin, and asafoetida support digestion and reduce Vata's tendency for dryness and gas. Fenugreek leaves also aid in digestion and add a balancing bitter note.",
+      "ingredients": [
+        {
+          "name": "Raw Rice (Basmati or Sona Masoori preferred)",
+          "quantity": "1/2 cup"
+        },
+        {
+          "name": "Moong Dal (split yellow moong)",
+          "quantity": "1/2 cup"
+        },
+        {
+          "name": "Sweet Potato",
+          "quantity": "1 medium, peeled and diced"
+        },
+        {
+          "name": "Spinach (fresh)",
+          "quantity": "1 cup, chopped"
+        },
+        {
+          "name": "Fenugreek Leaves (fresh or Kasuri Methi)",
+          "quantity": "1/4 cup fresh, or 1 tbsp dried"
+        },
+        {
+          "name": "Ghee (clarified butter)",
+          "quantity": "2 tablespoons"
+        },
+        {
+          "name": "Cumin Seeds (Jeera)",
+          "quantity": "1 teaspoon"
+        },
+        {
+          "name": "Asafoetida (Hing)",
+          "quantity": "1/4 teaspoon"
+        },
+        {
+          "name": "Fresh Ginger",
+          "quantity": "1 inch piece, grated or finely minced"
+        },
+        {
+          "name": "Turmeric Powder (Haldi)",
+          "quantity": "1/2 teaspoon"
+        },
+        {
+          "name": "Coriander Powder (Dhania)",
+          "quantity": "1 teaspoon"
+        },
+        {
+          "name": "Salt (Himalayan pink salt preferred)",
+          "quantity": "To taste"
+        },
+        {
+          "name": "Water",
+          "quantity": "4-5 cups (adjust for desired consistency)"
+        }
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "instruction": "Rinse the raw rice and moong dal thoroughly under cold water until the water runs clear. For better digestion, you may soak the moong dal for 15-30 minutes, then drain."
+        },
+        {
+          "step_number": 2,
+          "instruction": "In a heavy-bottomed pot or pressure cooker, heat the ghee over medium heat."
+        },
+        {
+          "step_number": 3,
+          "instruction": "Add cumin seeds and asafoetida. Saut\u00e9 until the cumin seeds splutter and become fragrant (about 30 seconds)."
+        },
+        {
+          "step_number": 4,
+          "instruction": "Add the grated ginger and saut\u00e9 for another minute until its raw aroma disappears."
+        },
+        {
+          "step_number": 5,
+          "instruction": "Add the diced sweet potato and saut\u00e9 for 2-3 minutes, stirring occasionally."
+        },
+        {
+          "step_number": 6,
+          "instruction": "Stir in the turmeric powder and coriander powder. Cook for 15-20 seconds, being careful not to burn the spices."
+        },
+        {
+          "step_number": 7,
+          "instruction": "Add the rinsed rice and moong dal to the pot. Stir well to coat with the spices and ghee."
+        },
+        {
+          "step_number": 8,
+          "instruction": "Pour in 4 cups of water and add salt to taste. Bring the mixture to a rolling boil."
+        },
+        {
+          "step_number": 9,
+          "instruction": "If using a regular pot, reduce the heat to low, cover, and simmer for 20-25 minutes, or until the rice and dal are tender and the water is absorbed. If using a pressure cooker, close the lid and cook for 3-4 whistles on medium heat, then let the pressure release naturally."
+        },
+        {
+          "step_number": 10,
+          "instruction": "Once the Kichadi is cooked, stir in the chopped fresh spinach and fenugreek leaves. Cook for an additional 2-3 minutes, stirring until the greens wilt. If using dried fenugreek leaves (Kasuri Methi), crush them lightly between your palms before adding."
+        },
+        {
+          "step_number": 11,
+          "instruction": "Check the consistency; if it's too thick, add a little more hot water and stir. The Kichadi should be soft, moist, and easily digestible. Serve warm, optionally with an extra drizzle of ghee."
+        },
+        {
+          "step_number": 12,
+          "instruction": "Enjoy this nourishing and grounding meal."
+        }
+      ],
+      "dosha_impact": {
+        "vata": "Pacifies",
+        "pitta": "Neutral",
+        "kapha": "Neutral",
+        "overall_ojas": 5
+      },
+      "best_time": "Lunch",
+      "is_viruddha": false,
+      "viruddha_reason": "",
+      "recipeHash": "1f60194ee2864fbaa1d628366d5e95c8",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "createdAt": {
+        "$date": "2026-04-25T17:19:14.462Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69ecd7d146dfabb7c5edaf54"
+      },
+      "name": "Spring Vata Balancing Root Vegetable & Red Lentil Kichari",
+      "description": "This recipe is specifically designed to pacify Vata dosha, offering grounding, warm, and moist qualities essential for Vata individuals, especially during the changeable Vasanta (Spring) season. It incorporates sweet and warming root vegetables with easily digestible red lentils and basmati rice, enhanced with Vata-pacifying and subtly Kapha-balancing spices. Please note: While 'Beef' was listed as a primary ingredient, the 'Diet: Vegetarian' input was prioritized, hence this recipe is vegetarian.",
+      "ingredients": [
+        {
+          "name": "Ghee",
+          "quantity": "2 tbsp"
+        },
+        {
+          "name": "Mustard Seeds",
+          "quantity": "1/2 tsp"
+        },
+        {
+          "name": "Cumin Seeds",
+          "quantity": "1 tsp"
+        },
+        {
+          "name": "Asafoetida (Hing)",
+          "quantity": "1/4 tsp"
+        },
+        {
+          "name": "Fresh Ginger (grated)",
+          "quantity": "1 inch piece"
+        },
+        {
+          "name": "Turmeric Powder",
+          "quantity": "1 tsp"
+        },
+        {
+          "name": "Coriander Powder",
+          "quantity": "1 tsp"
+        },
+        {
+          "name": "Cumin Powder",
+          "quantity": "1 tsp"
+        },
+        {
+          "name": "Red Lentils (Masoor Dal, split and husked)",
+          "quantity": "1 cup (rinsed well)"
+        },
+        {
+          "name": "Basmati Rice",
+          "quantity": "1/2 cup (rinsed well)"
+        },
+        {
+          "name": "Sweet Potato (peeled, diced)",
+          "quantity": "1 medium"
+        },
+        {
+          "name": "Carrots (peeled, diced)",
+          "quantity": "2 medium"
+        },
+        {
+          "name": "Spinach (chopped)",
+          "quantity": "2 cups"
+        },
+        {
+          "name": "Water",
+          "quantity": "6 cups (adjust for desired consistency)"
+        },
+        {
+          "name": "Rock Salt (Sendha Namak)",
+          "quantity": "to taste"
+        },
+        {
+          "name": "Fresh Coriander Leaves (chopped, for garnish)",
+          "quantity": "1/4 cup"
+        }
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "instruction": "Heat ghee in a large pot or Dutch oven over medium heat."
+        },
+        {
+          "step_number": 2,
+          "instruction": "Add mustard seeds. Once they pop, add cumin seeds and hing. Saut\u00e9 for 30 seconds until fragrant."
+        },
+        {
+          "step_number": 3,
+          "instruction": "Add grated ginger and saut\u00e9 for another minute."
+        },
+        {
+          "step_number": 4,
+          "instruction": "Stir in turmeric powder, coriander powder, and cumin powder. Cook for 30 seconds, stirring constantly to prevent burning."
+        },
+        {
+          "step_number": 5,
+          "instruction": "Add the rinsed red lentils, basmati rice, diced sweet potato, and carrots to the pot. Stir well to coat with the spices."
+        },
+        {
+          "step_number": 6,
+          "instruction": "Pour in 6 cups of water and add rock salt. Bring to a boil, then reduce heat to low, cover, and simmer for 20-25 minutes, or until the lentils and rice are tender and the vegetables are cooked through. Stir occasionally to prevent sticking."
+        },
+        {
+          "step_number": 7,
+          "instruction": "If the mixture becomes too thick, add a little more hot water."
+        },
+        {
+          "step_number": 8,
+          "instruction": "Stir in the chopped spinach and cook for another 2-3 minutes until wilted."
+        },
+        {
+          "step_number": 9,
+          "instruction": "Remove from heat, let it rest for a few minutes."
+        },
+        {
+          "step_number": 10,
+          "instruction": "Garnish with fresh coriander leaves before serving."
+        }
+      ],
+      "dosha_impact": {
+        "vata": "Pacifies",
+        "pitta": "Neutral",
+        "kapha": "Neutral",
+        "overall_ojas": 5
+      },
+      "best_time": "Lunch",
+      "is_viruddha": true,
+      "viruddha_reason": "The request for 'Primary Ingredients: Beef' directly contradicts the stated 'Diet: Vegetarian.' An Ayurvedic Chef cannot recommend beef for a vegetarian diet. This recipe has been crafted as a vegetarian option suitable for a Vata individual in Vasanta, prioritizing the dietary restriction.",
+      "recipeHash": "80f03e3c18e9bac24e1d96939924ddde",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "createdAt": {
+        "$date": "2026-04-25T15:03:45.069Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69eb7b8e89420d69ced4a1f2"
+      },
+      "name": "Vata-Balancing Creamy Spring Porridge",
+      "description": "This nourishing and grounding porridge combines the comfort of Basmati rice and oats with warming vegetables and spices, perfectly designed to pacify Vata dosha. The use of ghee, coconut oil, and warm milk provides deep moisture and sustenance, while the gentle warmth from black pepper and turmeric helps balance the Kapha tendencies of Vasanta (Spring), ensuring easy digestion and revitalization.",
+      "ingredients": [
+        {
+          "name": "Basmati Rice",
+          "quantity": "1/2 cup"
+        },
+        {
+          "name": "Oats",
+          "quantity": "1/4 cup"
+        },
+        {
+          "name": "Potato",
+          "quantity": "1 medium, peeled and diced"
+        },
+        {
+          "name": "Tomato",
+          "quantity": "1 small, diced"
+        },
+        {
+          "name": "Onion",
+          "quantity": "1/2 small, finely chopped"
+        },
+        {
+          "name": "Garlic",
+          "quantity": "2 cloves, minced"
+        },
+        {
+          "name": "Ghee",
+          "quantity": "1 tbsp"
+        },
+        {
+          "name": "Coconut Oil",
+          "quantity": "1 tsp"
+        },
+        {
+          "name": "Milk",
+          "quantity": "1 cup (warmed)"
+        },
+        {
+          "name": "Turmeric",
+          "quantity": "1/2 tsp"
+        },
+        {
+          "name": "Black Pepper",
+          "quantity": "1/4 tsp, freshly ground"
+        },
+        {
+          "name": "Water",
+          "quantity": "2.5 - 3 cups"
+        },
+        {
+          "name": "Salt",
+          "quantity": "to taste"
+        }
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "instruction": "Rinse Basmati rice thoroughly under cold water until the water runs clear. Set aside. If using steel-cut oats, you may soak them for 15-30 minutes, though for rolled oats this is not strictly necessary."
+        },
+        {
+          "step_number": 2,
+          "instruction": "In a medium pot or Dutch oven, heat Ghee and Coconut Oil over medium heat."
+        },
+        {
+          "step_number": 3,
+          "instruction": "Add finely chopped Onion and minced Garlic to the pot. Saut\u00e9 until the onion is translucent and fragrant, about 3-4 minutes."
+        },
+        {
+          "step_number": 4,
+          "instruction": "Add the diced Potato and diced Tomato to the pot. Saut\u00e9 for another 5-7 minutes, stirring occasionally, until the vegetables begin to soften slightly."
+        },
+        {
+          "step_number": 5,
+          "instruction": "Stir in the Turmeric and freshly ground Black Pepper. Cook for 1 minute more, stirring constantly, until the spices are fragrant."
+        },
+        {
+          "step_number": 6,
+          "instruction": "Add the rinsed Basmati rice and oats to the pot. Stir to coat them with the spices and oils, lightly toasting for 1-2 minutes."
+        },
+        {
+          "step_number": 7,
+          "instruction": "Pour in 2.5-3 cups of water (adjust based on desired consistency) and add salt to taste. Bring the mixture to a boil, then reduce the heat to low, cover the pot, and simmer for 15-20 minutes, or until the rice and oats are fully cooked and most of the water has been absorbed. Stir occasionally to prevent sticking."
+        },
+        {
+          "step_number": 8,
+          "instruction": "Once cooked, stir in the warmed Milk until well combined and the porridge reaches a creamy consistency. Heat gently for a couple of minutes without boiling rapidly."
+        },
+        {
+          "step_number": 9,
+          "instruction": "Serve immediately. A tiny drizzle of extra ghee can be added just before serving for added richness and Vata pacification."
+        }
+      ],
+      "dosha_impact": {
+        "vata": "Pacifies",
+        "pitta": "Neutral",
+        "kapha": "Neutral",
+        "overall_ojas": 5
+      },
+      "best_time": "Lunch",
+      "is_viruddha": false,
+      "viruddha_reason": "While some combinations like milk with onion/garlic or tomato can be considered mildly incompatible in their raw forms, this recipe mitigates potential issues through thorough cooking and the inclusion of warming spices (turmeric, black pepper), making it a harmonious and easily digestible dish for Vata when prepared as described. The ingredients are not combined in a way that creates strong antagonistic effects.",
+      "recipeHash": "2119774bea3ca9c8d1042f5e2b13ae08",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "createdAt": {
+        "$date": "2026-04-24T14:17:50.649Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69eb75a94bd1992e840bd254"
+      },
+      "name": "Vata-Pacifying Golden Root Rice",
+      "description": "A warm, grounding, and nourishing one-pot meal specifically crafted to soothe Vata dosha, promoting stability and comfort. The sweet, moist, and well-spiced nature of this dish, enriched with digestive spices and the unctuousness of ghee, makes it ideal for balancing Vata, especially during the transitioning Vasanta (Spring) season. Eggs have been excluded to adhere to the vegetarian diet.",
+      "ingredients": [
+        {
+          "name": "Basmati Rice",
+          "quantity": "1 cup"
+        },
+        {
+          "name": "Carrot",
+          "quantity": "1 medium, diced"
+        },
+        {
+          "name": "Potato",
+          "quantity": "1 small, peeled and diced"
+        },
+        {
+          "name": "Garlic",
+          "quantity": "2 cloves, minced"
+        },
+        {
+          "name": "Fresh Ginger",
+          "quantity": "1 inch piece, grated"
+        },
+        {
+          "name": "Ghee",
+          "quantity": "2 tablespoons"
+        },
+        {
+          "name": "Water",
+          "quantity": "2.5 cups"
+        },
+        {
+          "name": "Cumin Seeds",
+          "quantity": "1 teaspoon"
+        },
+        {
+          "name": "Mustard Seeds",
+          "quantity": "1/2 teaspoon"
+        },
+        {
+          "name": "Turmeric Powder",
+          "quantity": "1/2 teaspoon"
+        },
+        {
+          "name": "Coriander Powder",
+          "quantity": "1 teaspoon"
+        },
+        {
+          "name": "Cinnamon Stick",
+          "quantity": "1 (1-inch piece)"
+        },
+        {
+          "name": "Salt",
+          "quantity": "to taste (Himalayan pink salt recommended)"
+        },
+        {
+          "name": "Fresh Cilantro (optional)",
+          "quantity": "for garnish"
+        }
+      ],
+      "steps": [
+        {
+          "step_number": 1,
+          "instruction": "Wash the Basmati rice thoroughly under cold water until the water runs clear. Soak it in 2 cups of fresh water for 20-30 minutes, then drain completely."
+        },
+        {
+          "step_number": 2,
+          "instruction": "Prepare the vegetables: dice the carrot and potato into small, uniform pieces (approximately 1/2 inch cubes). Mince the garlic and grate the fresh ginger."
+        },
+        {
+          "step_number": 3,
+          "instruction": "In a heavy-bottomed pot or Dutch oven, heat the ghee over medium heat. Once warm, add the mustard seeds and cumin seeds. Allow them to splutter for a few seconds until fragrant."
+        },
+        {
+          "step_number": 4,
+          "instruction": "Add the minced garlic, grated ginger, and cinnamon stick to the pot. Saut\u00e9 for about 30 seconds until aromatic, being careful not to burn the garlic."
+        },
+        {
+          "step_number": 5,
+          "instruction": "Stir in the turmeric powder and coriander powder. Cook for another 10-15 seconds, stirring constantly, to bloom the spices."
+        },
+        {
+          "step_number": 6,
+          "instruction": "Add the diced carrots and potatoes to the pot. Saut\u00e9 for 3-5 minutes, stirring occasionally, to lightly cook the vegetables and coat them with the spices."
+        },
+        {
+          "step_number": 7,
+          "instruction": "Add the drained Basmati rice to the pot and gently stir for 1 minute, ensuring it's well-coated with the ghee and spices."
+        },
+        {
+          "step_number": 8,
+          "instruction": "Pour in 2.5 cups of water and add salt to taste. Bring the mixture to a boil, then immediately reduce the heat to low, cover the pot tightly, and let it simmer for 15-18 minutes, or until all the water is absorbed and the rice is tender."
+        },
+        {
+          "step_number": 9,
+          "instruction": "Once cooked, remove the pot from heat and let it rest, covered, for 5-10 minutes. This allows the steam to redistribute and the grains to fluff up beautifully."
+        },
+        {
+          "step_number": 10,
+          "instruction": "Gently fluff the rice with a fork. Remove the cinnamon stick. Garnish with fresh cilantro, if using, and serve warm immediately."
+        }
+      ],
+      "dosha_impact": {
+        "vata": "Pacifies",
+        "pitta": "Neutral",
+        "kapha": "Neutral",
+        "overall_ojas": 5
+      },
+      "best_time": "Lunch",
+      "is_viruddha": false,
+      "viruddha_reason": "",
+      "recipeHash": "94b9b109a26f99537b45f5cb440d35b7",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "createdAt": {
+        "$date": "2026-04-24T13:52:41.570Z"
+      }
+    }
+  ],
+  "users": [
+    {
+      "_id": {
+        "$oid": "69e904c72dcf6beafc7a75e5"
+      },
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "phone": "+919110687983",
+      "password": "1234567",
+      "isOnboarded": true,
+      "onboardingStep": 6,
+      "createdAt": {
+        "$date": "2026-04-22T17:26:31.697Z"
+      },
+      "updatedAt": {
+        "$date": "2026-04-25T21:19:48.177Z"
+      },
+      "lastLoginAt": {
+        "$date": "2026-04-25T21:19:48.177Z"
+      },
+      "sessionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1Y2Y3ZDNmYS1kNDc5LTQzYzMtODUwZS03NWU2NDg1YmI4NzAiLCJleHAiOjE4MDg2ODc5ODh9.Fxrq2copqU_qn0VMOjImQjgGiccJNryQNVZY4JiNVk8",
+      "profile": {
+        "fullName": "P Prajwal",
+        "age": 21,
+        "dob": "2005-03-06T00:00:00.000",
+        "gender": "male",
+        "heightCm": 158.0,
+        "weightKg": 52.0,
+        "bloodGroup": "O+",
+        "language": "en",
+        "region": "Karnataka",
+        "completionPercent": 100
+      },
+      "physicalTraits": {},
+      "bodyPainPoints": [],
+      "prakritiAnswers": [
+        {
+          "questionId": "Q1",
+          "selectedDosha": "vata"
+        },
+        {
+          "questionId": "Q2",
+          "selectedDosha": "vata"
+        },
+        {
+          "questionId": "Q3",
+          "selectedDosha": "vata"
+        },
+        {
+          "questionId": "Q4",
+          "selectedDosha": "pitta"
+        },
+        {
+          "questionId": "Q5",
+          "selectedDosha": "pitta"
+        },
+        {
+          "questionId": "Q6",
+          "selectedDosha": "pitta"
+        },
+        {
+          "questionId": "Q7",
+          "selectedDosha": "pitta"
+        },
+        {
+          "questionId": "Q8",
+          "selectedDosha": "kapha"
+        },
+        {
+          "questionId": "Q9",
+          "selectedDosha": "vata"
+        },
+        {
+          "questionId": "Q10",
+          "selectedDosha": "pitta"
+        },
+        {
+          "questionId": "Q11",
+          "selectedDosha": "vata"
+        },
+        {
+          "questionId": "Q12",
+          "selectedDosha": "vata"
+        },
+        {
+          "questionId": "Q13",
+          "selectedDosha": "pitta"
+        },
+        {
+          "questionId": "Q14",
+          "selectedDosha": "vata"
+        },
+        {
+          "questionId": "Q15",
+          "selectedDosha": "kapha"
+        },
+        {
+          "questionId": "Q16",
+          "selectedDosha": "vata"
+        },
+        {
+          "questionId": "Q17",
+          "selectedDosha": "kapha"
+        },
+        {
+          "questionId": "Q18",
+          "selectedDosha": "vata"
+        },
+        {
+          "questionId": "Q19",
+          "selectedDosha": "pitta"
+        },
+        {
+          "questionId": "Q20",
+          "selectedDosha": "pitta"
+        },
+        {
+          "questionId": "Q21",
+          "selectedDosha": "kapha"
+        },
+        {
+          "questionId": "Q22",
+          "selectedDosha": "pitta"
+        },
+        {
+          "questionId": "Q23",
+          "selectedDosha": "vata"
+        },
+        {
+          "questionId": "Q24",
+          "selectedDosha": "pitta"
+        }
+      ],
+      "prakritiResult": {
+        "dominant": "Vata",
+        "secondary": "Pitta",
+        "type": "Vata-Pitta",
+        "scores": {
+          "vata": 42,
+          "pitta": 42,
+          "kapha": 17
+        }
+      },
+      "lifestyle": {
+        "occupationType": "moderate",
+        "stressLevel": "sometimes",
+        "exerciseFrequency": "1_2_week",
+        "dietType": "non_vegetarian",
+        "waterIntakeLiters": 1.5,
+        "sleepHours": 7.0,
+        "smokingStatus": "none",
+        "alcoholStatus": "none",
+        "screenTimeHours": null,
+        "yogaPractice": false,
+        "meditationPractice": false
+      },
+      "healthConditions": {
+        "diagnosedConditions": [
+          "Psoriasis"
+        ],
+        "chronicConditions": [],
+        "allergies": [],
+        "currentMedications": [],
+        "surgeries": [],
+        "familyHistory": [],
+        "mentalHealthConditions": []
+      },
+      "medicalReports": [
+        {
+          "reportId": "0214c89a-b461-48ea-9722-b223b6704772",
+          "fileName": "IMG_20260422_230816.jpg",
+          "uploadedAt": {
+            "$date": "2026-04-22T17:38:43.489Z"
+          },
+          "geminiExtracted": {
+            "conditions": [],
+            "medications": [],
+            "labValues": [
+              {
+                "test": "HAEMOGLOBIN (HB)",
+                "value": "16.2",
+                "unit": "g/dl",
+                "referenceRange": "13 - 17",
+                "status": "normal"
+              },
+              {
+                "test": "RED BLOOD CELL COUNT (RBC)",
+                "value": "5.29",
+                "unit": "million/ cumm",
+                "referenceRange": "4.5 - 5.5",
+                "status": "normal"
+              },
+              {
+                "test": "PACKED CELL VOLUME (PCV)",
+                "value": "45.3",
+                "unit": "%",
+                "referenceRange": "40 - 54",
+                "status": "normal"
+              },
+              {
+                "test": "MCV",
+                "value": "85.6",
+                "unit": "fl",
+                "referenceRange": "83 - 101",
+                "status": "normal"
+              },
+              {
+                "test": "MCH",
+                "value": "30.6",
+                "unit": "pg",
+                "referenceRange": "27 - 32",
+                "status": "normal"
+              },
+              {
+                "test": "MCHC",
+                "value": "35.8",
+                "unit": "g/dl",
+                "referenceRange": "31.5 - 34.5",
+                "status": "high"
+              },
+              {
+                "test": "RDW",
+                "value": "12.7",
+                "unit": "%",
+                "referenceRange": "11.6 - 14",
+                "status": "normal"
+              },
+              {
+                "test": "PLATELET COUNT",
+                "value": "309000",
+                "unit": "cells/cumm",
+                "referenceRange": "150000 - 410000",
+                "status": "normal"
+              },
+              {
+                "test": "LEUKOCYTE COUNT TOTAL (TC)",
+                "value": "7290",
+                "unit": "cells/cumm",
+                "referenceRange": "4000 - 10000",
+                "status": "normal"
+              },
+              {
+                "test": "NEUTROPHILS",
+                "value": "47.5",
+                "unit": "%",
+                "referenceRange": "48 - 80",
+                "status": "low"
+              },
+              {
+                "test": "LYMPHOCYTES",
+                "value": "39.4",
+                "unit": "%",
+                "referenceRange": "20 - 40",
+                "status": "normal"
+              },
+              {
+                "test": "EOSINOPHILS",
+                "value": "4.1",
+                "unit": "%",
+                "referenceRange": "1 - 6",
+                "status": "normal"
+              }
+            ],
+            "vitalSigns": {
+              "bloodPressure": null,
+              "heartRate": null,
+              "temperature": null,
+              "weight": null,
+              "height": null
+            },
+            "doctorNotes": null,
+            "reportDate": "13-08-2024 18:08"
+          },
+          "userConfirmed": false
+        }
+      ],
+      "ojasScore": 83,
+      "ojasBreakdown": {
+        "base": 100,
+        "penalties": [
+          {
+            "reason": "Diagnosed: Psoriasis",
+            "value": -5
+          }
+        ],
+        "bonuses": [
+          {
+            "reason": "Healthy sleep (7\u20139 hrs)",
+            "value": 4
+          }
+        ],
+        "totalPenalty": -5,
+        "totalBonus": 4,
+        "final": 99
+      },
+      "healthSnapshots": [],
+      "nadiHistory": [
+        {
+          "nadiType": "Kapha",
+          "bpm": 41.35649326299887,
+          "dominantDosha": 2,
+          "confidence": 13.985388595828619,
+          "timestamp": {
+            "$date": "2026-04-25T21:21:42.613Z"
+          }
+        },
+        {
+          "nadiType": "Kapha",
+          "bpm": 49.64832323284932,
+          "dominantDosha": 2,
+          "confidence": 48.534680136872176,
+          "timestamp": {
+            "$date": "2026-04-25T21:25:04.324Z"
+          }
+        }
+      ]
+    }
+  ],
+  "eye_captures": [
+    {
+      "_id": {
+        "$oid": "69ed35ecc60805632e53f944"
+      },
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "date_key": "2026-04-25",
+      "dosha_signal": "Eyes are clear. Liver and Pitta are balanced.",
+      "eye_health_score": 83,
+      "jaundice_flag": false,
+      "jaundice_score": 35,
+      "redness_classification": "clear",
+      "redness_index": 8,
+      "timestamp": {
+        "$date": "2026-04-25T21:48:42.821Z"
+      }
+    }
+  ],
+  "food_history": [
+    {
+      "_id": {
+        "$oid": "69e9c6f0238c73dae2134327"
+      },
+      "analysisId": "88e6d348-22c1-40a6-9424-8af8d6bdc9d3",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "timestamp": "2026-04-23T07:14:56.963404",
+      "mode": "yolo",
+      "detectedItems": [
+        "Dosa"
+      ],
+      "cookingMode": "home",
+      "overallRecommendation": "avoid",
+      "mealName": "Simple Dosa",
+      "analysisResult": {
+        "mealName": "Simple Dosa",
+        "viruddhahara": {
+          "hasConflict": false,
+          "conflicts": []
+        },
+        "individualFoods": [
+          {
+            "name": "Dosa",
+            "displayName": "Dosa",
+            "rasa": [
+              "sour",
+              "sweet"
+            ],
+            "virya": "hot",
+            "vipaka": "sour",
+            "doshaImpact": {
+              "vata": "aggravates",
+              "pitta": "aggravates",
+              "kapha": "pacifies"
+            },
+            "doshaReason": {
+              "vata": "Its sour and light nature from fermentation can increase Vata's mobile and subtle qualities, despite being warm.",
+              "pitta": "The heating potency (Ushna Virya) and sour post-digestive effect (Amla Vipaka) strongly aggravate Pitta.",
+              "kapha": "Its light, heating, and sour properties help to liquefy and expel Kapha."
+            },
+            "ojasImpact": "neutral",
+            "ojasReason": "The Ojas quality of Dosa heavily depends on the freshness of the batter and proper preparation, generally considered neutral if optimal.",
+            "ayurvedicNote": "Dosa, a fermented dish of rice and urad dal, possesses heating potency and a sour post-digestive effect, primarily due to the fermentation process which also adds lightness."
+          }
+        ],
+        "combinedDoshaImpact": {
+          "vata": "aggravates",
+          "pitta": "aggravates",
+          "kapha": "pacifies"
+        },
+        "ojasImpact": {
+          "direction": "neutral",
+          "points": 0,
+          "reason": "The Ojas impact is heavily dependent on the freshness of the Dosa batter and preparation method; without these details, it is considered neutral for your high Ojas."
+        },
+        "overallRecommendation": "avoid",
+        "overallNote": "For your Vata-Pitta Prakriti with dominant Vata, and especially with Psoriasis, Dosa is generally not recommended. Its heating and sour qualities will significantly aggravate both Pitta (potentially worsening Psoriasis) and Vata (increasing dryness and instability). In Vasanta Ritu, which requires lightness and detoxification, Dosa's fermented nature can hinder these processes and potentially increase Ama.",
+        "bestTimeToEat": "If consumed at all, the best time would be during Pitta Kala (10 AM - 2 PM), when your digestive fire (Agni) is strongest, to mitigate its heavy and sour aspects.",
+        "modifications": [
+          {
+            "tip": "Ensure the batter is very fresh, ideally less than 12 hours old, to minimize sourness and Ama formation.",
+            "reason": "Old or overly fermented batter increases sourness, heat, and Ama (toxins), which is detrimental for Vata, Pitta, and Psoriasis.",
+            "category": "timing"
+          },
+          {
+            "tip": "Prepare Dosa soft and light (like Set Dosa), avoiding crispy, oily roast varieties.",
+            "reason": "Excess oil and crispiness exacerbate Pitta and Vata, making the dish heavier and more aggravating for your conditions.",
+            "category": "cooking"
+          },
+          {
+            "tip": "Serve with a fresh, cooling coconut chutney rather than a very sour Sambar or highly pungent chutneys.",
+            "reason": "Cooling and mildly spiced accompaniments help balance Dosa's heating and sour qualities, soothing Pitta.",
+            "category": "substitute"
+          },
+          {
+            "tip": "Incorporate balancing spices like a pinch of cumin, coriander, or fennel into the batter or chutney.",
+            "reason": "These spices aid digestion, reduce gas (Vata), and help cool excess heat (Pitta) without adding aggravation.",
+            "category": "spice"
+          },
+          {
+            "tip": "Keep portion sizes small and consume only when truly hungry, ensuring full digestion.",
+            "reason": "Small portions prevent overtaxing Agni, which is crucial for Vata-Pitta individuals and for managing Psoriasis.",
+            "category": "portion"
+          }
+        ],
+        "seasonalNote": "In Vasanta Ritu, when the body needs to shed Kapha and prevent Ama accumulation, the sour and fermenting qualities of Dosa are generally counterproductive, potentially increasing Pitta and contributing to Ama, making it less suitable.",
+        "foodItems": [
+          {
+            "name": "Dosa",
+            "displayName": "Dosa",
+            "doshaImpact": {
+              "vata": "aggravates",
+              "pitta": "aggravates",
+              "kapha": "pacifies"
+            },
+            "ojasImpact": "neutral",
+            "ojasReason": "The Ojas quality of Dosa heavily depends on the freshness of the batter and proper preparation, generally considered neutral if optimal.",
+            "recommendation": "avoid",
+            "recommendationReason": "For your Vata-Pitta Prakriti with dominant Vata, and especially with Psoriasis, Dosa is generally not recommended. Its heating and sour qualities will significantly aggravate both Pitta (potentially worsening Psoriasis) and Vata (increasing dryness and instability). In Vasanta Ritu, which requires lightness and detoxification, Dosa's fermented nature can hinder these processes and potentially increase Ama.",
+            "bestTimeToEat": "If consumed at all, the best time would be during Pitta Kala (10 AM - 2 PM), when your digestive fire (Agni) is strongest, to mitigate its heavy and sour aspects.",
+            "modifications": "Its sour and light nature from fermentation can increase Vata's mobile and subtle qualities, despite being warm.",
+            "ayurvedicNote": "Dosa, a fermented dish of rice and urad dal, possesses heating potency and a sour post-digestive effect, primarily due to the fermentation process which also adds lightness."
+          }
+        ]
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69e9c75b238c73dae2134328"
+      },
+      "analysisId": "92287d80-4358-475f-9b81-0028cf915aff",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "timestamp": "2026-04-23T07:16:43.938960",
+      "mode": "ocr",
+      "detectedItems": [
+        "Whole milk",
+        "Sugars (sugar, strawberry puree, raspberry puree, blueberry puree, blackberry puree)",
+        "Water",
+        "Milk protein concentrate",
+        "Modified corn starch"
+      ],
+      "cookingMode": "packaged",
+      "overallRecommendation": "avoid",
+      "mealName": "Scanned Product (Likely a Fruit Yogurt or Dairy Dessert)",
+      "analysisResult": {
+        "productName": "Scanned Product (Likely a Fruit Yogurt or Dairy Dessert)",
+        "cleanedIngredients": [
+          "Whole milk",
+          "Sugars (sugar, strawberry puree, raspberry puree, blueberry puree, blackberry puree)",
+          "Water",
+          "Milk protein concentrate",
+          "Modified corn starch",
+          "Natural and artificial flavour",
+          "Guar gum",
+          "Bacterial cultures",
+          "Carrageenan",
+          "Sodium citrate",
+          "Citric acid",
+          "Potassium sorbate",
+          "Sucralose"
+        ],
+        "ingredients": [
+          {
+            "name": "Whole milk",
+            "status": "avoid",
+            "doshaEffect": "Aggravates Vata (due to cold consumption/processing), Pitta (due to Viruddhahara), and Kapha (due to heaviness/Ama with incompatible ingredients).",
+            "reason": "While fresh, warm milk can be nourishing, this product combines whole milk with sour fruit purees, creating a classic 'Viruddhahara' (incompatible food combination). This generates Ama (toxins) and clogs channels, which is highly detrimental for your Vata-Pitta Prakriti and especially your Psoriasis.",
+            "ayurvedicClassification": "Tamasic (due to Viruddhahara combination and processing)",
+            "personalizedRisk": "High risk of Ama generation, exacerbating Psoriasis and Vata-Pitta imbalances. Can lead to inflammation and digestive distress."
+          },
+          {
+            "name": "Sugars (sugar, strawberry puree, raspberry puree, blueberry puree, blackberry puree)",
+            "status": "avoid",
+            "doshaEffect": "Aggravates Vata (processed sugar, cold/sour fruits), Pitta (sour fruits, inflammation from sugar), and Kapha (sugar, heavy fruits).",
+            "reason": "Refined sugar fuels inflammation and Ama. The fruit purees, while natural, create a significant 'Viruddhahara' (incompatible food combination) when mixed with milk, leading to Ama formation. For your Vata-Pitta and Psoriasis, this combination is very harmful.",
+            "ayurvedicClassification": "Tamasic (due to refined sugar, processing, and Viruddhahara)",
+            "personalizedRisk": "High risk of Ama, inflammation, and aggravated Psoriasis due to the incompatible combination with milk and refined sugar's inflammatory potential."
+          },
+          {
+            "name": "Water",
+            "status": "safe",
+            "doshaEffect": "Neutral",
+            "reason": "Water is essential and neutral in its pure form.",
+            "ayurvedicClassification": "Sattvic",
+            "personalizedRisk": null
+          },
+          {
+            "name": "Milk protein concentrate",
+            "status": "avoid",
+            "doshaEffect": "Aggravates Kapha (heavy, concentrated), Vata (difficult to digest), and Pitta (Ama-generating).",
+            "reason": "Processed and concentrated, it is heavy and more difficult to digest than whole milk. This can contribute to Ama and further burden your digestion, which is crucial for managing Psoriasis.",
+            "ayurvedicClassification": "Tamasic",
+            "personalizedRisk": "Increased Ama formation, potential for digestive stagnation, and inflammation, worsening Psoriasis."
+          },
+          {
+            "name": "Modified corn starch",
+            "status": "caution",
+            "doshaEffect": "Aggravates Kapha (heavy), Vata (processed, drying in excess), and Pitta (Ama-generating).",
+            "reason": "As a processed ingredient, it contributes to Ama and can be difficult for your Vata-Pitta digestion to handle, potentially leading to stagnation.",
+            "ayurvedicClassification": "Rajasic/Tamasic",
+            "personalizedRisk": "Potential for Ama formation and digestive sluggishness, which can aggravate Psoriasis."
+          },
+          {
+            "name": "Natural and artificial flavour",
+            "status": "avoid",
+            "doshaEffect": "Aggravates all Doshas, especially Vata and Pitta due to artificial nature.",
+            "reason": "Artificial flavors lack 'prana' (life force) and introduce synthetic chemicals to the body, increasing Ama and inflammation. For Psoriasis, avoiding such additives is critical.",
+            "ayurvedicClassification": "Tamasic",
+            "personalizedRisk": "High risk of Ama, inflammatory response, and toxic burden, severely impacting Psoriasis and Vata-Pitta balance."
+          },
+          {
+            "name": "Guar gum",
+            "status": "caution",
+            "doshaEffect": "Aggravates Vata (can be drying/constipating in excess), Kapha (heavy, thickening).",
+            "reason": "Gums can sometimes be hard to digest and contribute to a feeling of heaviness or blockages, which is not ideal for your Vata-Pitta digestion or Psoriasis.",
+            "ayurvedicClassification": "Rajasic/Tamasic",
+            "personalizedRisk": "Potential for digestive discomfort, gas, or sluggishness, contributing to Ama."
+          },
+          {
+            "name": "Bacterial cultures",
+            "status": "caution",
+            "doshaEffect": "Generally Pitta increasing (fermentation), but beneficial for gut health.",
+            "reason": "While probiotics are beneficial for gut health, their benefit is overshadowed by the numerous Ama-forming and Viruddhahara ingredients in this product. Fermented foods in general should be consumed with awareness for Pitta conditions like Psoriasis.",
+            "ayurvedicClassification": "Rajasic (in this context)",
+            "personalizedRisk": "Potential to aggravate Pitta if the overall product leads to Ama and inflammation. The benefits are negated by other ingredients."
+          },
+          {
+            "name": "Carrageenan",
+            "status": "avoid",
+            "doshaEffect": "Aggravates all Doshas, especially Pitta due to inflammatory potential.",
+            "reason": "Carrageenan is a known inflammatory agent that can irritate the digestive tract. For your Psoriasis, a condition rooted in inflammation, this ingredient is highly detrimental and should be strictly avoided.",
+            "ayurvedicClassification": "Tamasic",
+            "personalizedRisk": "Extremely high risk of exacerbating inflammation and Psoriasis symptoms, contributing significantly to Ama and gut irritation."
+          },
+          {
+            "name": "Sodium citrate",
+            "status": "caution",
+            "doshaEffect": "Aggravates Pitta (sour/salty), Kapha (salty). Can aggravate Vata in excess.",
+            "reason": "The sour and salty qualities can aggravate your Pitta and Rakta Dhatu (blood tissue), which are key factors in Psoriasis. Processed salts/acids also increase Ama.",
+            "ayurvedicClassification": "Rajasic/Tamasic",
+            "personalizedRisk": "Potential to increase Pitta and Rakta imbalance, worsening Psoriasis."
+          },
+          {
+            "name": "Citric acid",
+            "status": "caution",
+            "doshaEffect": "Aggravates Pitta (sour, heating), can aggravate Vata if too drying.",
+            "reason": "As a sour agent, citric acid directly aggravates Pitta and Rakta Dhatu, which is problematic for your Psoriasis. It also contributes to the Viruddhahara by enhancing the sourness in a milk-based product.",
+            "ayurvedicClassification": "Rajasic",
+            "personalizedRisk": "Potential to increase Pitta and Rakta imbalance, exacerbating Psoriasis and Ama."
+          },
+          {
+            "name": "Potassium sorbate",
+            "status": "avoid",
+            "doshaEffect": "Aggravates all Doshas, especially Vata and Pitta due to chemical nature.",
+            "reason": "As a chemical preservative, it lacks 'prana' and introduces a toxic burden, directly contributing to Ama and inflammation. This is highly unsuitable for Psoriasis and maintaining Ojas.",
+            "ayurvedicClassification": "Tamasic",
+            "personalizedRisk": "High risk of Ama, inflammatory response, and toxic burden, severely impacting Psoriasis and Vata-Pitta balance."
+          },
+          {
+            "name": "Sucralose",
+            "status": "avoid",
+            "doshaEffect": "Aggravates all Doshas due to artificial nature and confusing the body.",
+            "reason": "Artificial sweeteners like Sucralose are Tamasic, devoid of Prana, and can negatively impact gut microbiome and metabolic health. For Psoriasis and high Ojas, artificial chemicals are strictly to be avoided.",
+            "ayurvedicClassification": "Tamasic",
+            "personalizedRisk": "High risk of Ama, gut dysbiosis, inflammatory responses, and toxic burden, severely exacerbating Psoriasis and depleting Ojas."
+          }
+        ],
+        "safetyScore": 5,
+        "safetyScoreReason": "This product contains multiple major Ayurvedic contraindications, including Viruddhahara, excessive processed ingredients, and highly inflammatory artificial additives, making it profoundly unsuitable.",
+        "topConcerns": [
+          {
+            "ingredient": "Milk + Sugars (fruit purees)",
+            "concern": "Creation of 'Viruddhahara' (incompatible food combination)",
+            "forThisUser": "This combination generates significant Ama, clogs channels, and directly exacerbates Vata-Pitta imbalances and Psoriasis, leading to inflammation and skin issues.",
+            "severity": "high"
+          },
+          {
+            "ingredient": "Carrageenan",
+            "concern": "Known inflammatory agent",
+            "forThisUser": "Carrageenan can directly trigger and worsen inflammation in the body, which is a core issue in Psoriasis, making it highly detrimental for your condition.",
+            "severity": "high"
+          },
+          {
+            "ingredient": "Artificial & Natural Flavours, Potassium sorbate, Sucralose",
+            "concern": "Synthetic chemicals and lack of Prana",
+            "forThisUser": "These Tamasic additives introduce a toxic burden, create Ama, and can provoke immune responses and inflammation, which are direct aggravators for your Vata-Pitta Prakriti and Psoriasis.",
+            "severity": "high"
+          }
+        ],
+        "medicationInteractions": [],
+        "combinedDoshaImpact": {
+          "vata": "aggravates",
+          "pitta": "aggravates",
+          "kapha": "aggravates"
+        },
+        "ojasImpact": {
+          "direction": "negative",
+          "reason": "The product's heavy reliance on incompatible food combinations (Viruddhahara), processed ingredients, and artificial chemicals generates Ama, depletes 'prana' (life force), and burdens the body, leading to a significant reduction in your high Ojas."
+        },
+        "overallSuitability": "avoid",
+        "personalizedNote": "Dear Vata-Pitta with Psoriasis, this product is highly unsuitable for your unique constitution and health condition. The combination of milk with sour fruits creates Ama (toxins) and the numerous artificial ingredients will severely aggravate inflammation and your Psoriasis. Focus on wholesome, freshly prepared foods to maintain your excellent Ojas.",
+        "healthierAlternative": "Instead of this processed product, consider a warm, homemade smoothie with a plant-based milk (like almond or oat) and naturally sweet, ripe fruits like banana, mango, or dates. You could also enjoy a small bowl of plain, unsweetened fresh yogurt (if tolerated, not with fruit) or a plant-based alternative, perhaps with a pinch of cardamom for digestion, consumed away from meals."
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69e9cd048e5b2251adc1c7bc"
+      },
+      "analysisId": "12a63a31-ef56-4d35-b858-95bc79e450d9",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "timestamp": "2026-04-23T07:40:52.299467",
+      "mode": "yolo",
+      "detectedItems": [
+        "Dosa"
+      ],
+      "cookingMode": "home",
+      "overallRecommendation": "avoid",
+      "mealName": "Fermented Dosa",
+      "analysisResult": {
+        "mealName": "Fermented Dosa",
+        "viruddhahara": {
+          "hasConflict": false,
+          "conflicts": []
+        },
+        "individualFoods": [
+          {
+            "name": "Dosa",
+            "displayName": "Dosa",
+            "rasa": [
+              "sour",
+              "sweet",
+              "astringent"
+            ],
+            "virya": "hot",
+            "vipaka": "sour",
+            "doshaImpact": {
+              "vata": "aggravates",
+              "pitta": "aggravates",
+              "kapha": "aggravates"
+            },
+            "doshaReason": {
+              "vata": "Fermentation and sourness can aggravate Vata, especially if batter is old or digestion is weak.",
+              "pitta": "Its Ushna (heating) Virya, Amla (sour) Vipaka, and fermented nature significantly increase Pitta.",
+              "kapha": "Heavy (Guru) quality combined with potential for Ama formation can aggravate Kapha, particularly in Vasanta."
+            },
+            "ojasImpact": "negative",
+            "ojasReason": "The fermented, sour, and heating nature of Dosa can contribute to Ama (toxin) formation, which directly diminishes Ojas, especially detrimental for Psoriasis.",
+            "ayurvedicNote": "Dosa, being a fermented preparation of rice and urad dal, typically possesses Ushna Virya and Amla Vipaka. While traditionally nourishing, its fermented nature can lead to an increase in Ama and an aggravation of Pitta and Vata, especially if the batter is old or excessively sour. For conditions like Psoriasis, such qualities are considered highly unfavorable."
+          }
+        ],
+        "combinedDoshaImpact": {
+          "vata": "aggravates",
+          "pitta": "aggravates",
+          "kapha": "aggravates"
+        },
+        "ojasImpact": {
+          "direction": "negative",
+          "points": -5,
+          "reason": "For a Vata-Pitta individual with Psoriasis, the fermented, sour, and heating qualities of Dosa can create Ama and imbalance Agni, directly leading to a reduction in Ojas."
+        },
+        "overallRecommendation": "avoid",
+        "overallNote": "For your Vata-Pitta Prakriti and existing Psoriasis, Dosa is generally not recommended. Its fermented, sour, and heating qualities can significantly aggravate both Pitta and Vata, and contribute to Ama formation, which is detrimental for Psoriasis. In Vasanta Ritu, which calls for lightness and detoxification, Dosa's heavy and potentially Kapha-aggravating nature is also unfavorable. It would be best to choose lighter, less fermented options.",
+        "bestTimeToEat": "If consumed, only during lunch (10 AM - 2 PM) when Agni (digestive fire) is strongest, to aid in processing the heavy and fermented qualities.",
+        "modifications": [
+          {
+            "tip": "Ensure the batter is very fresh, fermented minimally (6-8 hours at most), and not overly sour.",
+            "reason": "Minimizes the Amla (sour) Rasa and Ushna (heating) Virya, reducing Pitta and Ama formation.",
+            "category": "cooking"
+          },
+          {
+            "tip": "Prepare dosas that are soft and light, not very crispy or oily ('roast' style).",
+            "reason": "Reduces the Guru (heavy) and Snigdha (oily) Gunas, making it easier to digest and less Kapha-aggravating.",
+            "category": "cooking"
+          },
+          {
+            "tip": "Add a pinch of Hing (asafoetida) and ginger to the batter, and serve with a cooling, non-fermented coconut chutney.",
+            "reason": "Hing and ginger aid digestion and reduce Vata aggravation from fermentation. Cooling chutney helps balance Pitta.",
+            "category": "spice"
+          },
+          {
+            "tip": "Consider alternative batters made from lighter grains like moong dal (green gram) for a less aggravating option.",
+            "reason": "Moong dal is tridoshic and lighter to digest, reducing the potential for Ama and dosha aggravation.",
+            "category": "substitute"
+          },
+          {
+            "tip": "Consume in very small portions.",
+            "reason": "Reduces the overall load on Agni and mitigates dosha aggravation.",
+            "category": "portion"
+          }
+        ],
+        "seasonalNote": "In Vasanta Ritu, Dosa's heavy, fermented, and Kapha-aggravating qualities are counterproductive to the season's requirement for light, drying, and purifying foods to help eliminate accumulated Kapha.",
+        "foodItems": [
+          {
+            "name": "Dosa",
+            "displayName": "Dosa",
+            "doshaImpact": {
+              "vata": "aggravates",
+              "pitta": "aggravates",
+              "kapha": "aggravates"
+            },
+            "ojasImpact": "negative",
+            "ojasReason": "The fermented, sour, and heating nature of Dosa can contribute to Ama (toxin) formation, which directly diminishes Ojas, especially detrimental for Psoriasis.",
+            "recommendation": "avoid",
+            "recommendationReason": "For your Vata-Pitta Prakriti and existing Psoriasis, Dosa is generally not recommended. Its fermented, sour, and heating qualities can significantly aggravate both Pitta and Vata, and contribute to Ama formation, which is detrimental for Psoriasis. In Vasanta Ritu, which calls for lightness and detoxification, Dosa's heavy and potentially Kapha-aggravating nature is also unfavorable. It would be best to choose lighter, less fermented options.",
+            "bestTimeToEat": "If consumed, only during lunch (10 AM - 2 PM) when Agni (digestive fire) is strongest, to aid in processing the heavy and fermented qualities.",
+            "modifications": "Fermentation and sourness can aggravate Vata, especially if batter is old or digestion is weak.",
+            "ayurvedicNote": "Dosa, being a fermented preparation of rice and urad dal, typically possesses Ushna Virya and Amla Vipaka. While traditionally nourishing, its fermented nature can lead to an increase in Ama and an aggravation of Pitta and Vata, especially if the batter is old or excessively sour. For conditions like Psoriasis, such qualities are considered highly unfavorable."
+          }
+        ]
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69e9cff69cd2176d99ee68a8"
+      },
+      "analysisId": "a25d46c7-4858-4c7f-a9cc-d8b4acf2800c",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "timestamp": "2026-04-23T07:53:26.360791",
+      "mode": "yolo",
+      "detectedItems": [
+        "Dosa"
+      ],
+      "cookingMode": "restaurant",
+      "overallRecommendation": "avoid",
+      "mealName": "Restaurant Dosa Meal",
+      "analysisResult": {
+        "mealName": "Restaurant Dosa Meal",
+        "viruddhahara": {
+          "hasConflict": false,
+          "conflicts": []
+        },
+        "individualFoods": [
+          {
+            "name": "Dosa",
+            "displayName": "Dosa (Fermented Rice & Lentil Crepe)",
+            "rasa": [
+              "sour",
+              "sweet"
+            ],
+            "virya": "hot",
+            "vipaka": "sour",
+            "doshaImpact": {
+              "vata": "neutral",
+              "pitta": "aggravates",
+              "kapha": "aggravates"
+            },
+            "doshaReason": {
+              "vata": "While its warmth and grounding nature can balance Vata, the sourness and heating potency can also mildly aggravate, especially in a Vata-Pitta individual.",
+              "pitta": "Its inherent heating potency (Ushna Virya) and sour post-digestive taste (Amla Vipaka) strongly increase Pitta.",
+              "kapha": "The heavy, oily, and sour qualities tend to increase Kapha, particularly when prepared in a restaurant style."
+            },
+            "ojasImpact": "negative",
+            "ojasReason": "A very crispy and oily restaurant Dosa (Roast) can create digestive burden, leading to an indirect reduction of Ojas.",
+            "ayurvedicNote": "Dosa, traditionally made from fermented rice and urad dal, possesses heating and sour qualities. Its nature can be grounding but also stimulating due to fermentation."
+          }
+        ],
+        "combinedDoshaImpact": {
+          "vata": "neutral",
+          "pitta": "aggravates",
+          "kapha": "aggravates"
+        },
+        "ojasImpact": {
+          "direction": "negative",
+          "points": -6,
+          "reason": "For your Vata-Pitta Prakriti and existing Psoriasis, the oily and crispy restaurant Dosa (Roast) diminishes Ojas by creating ama (toxins) and digestive strain."
+        },
+        "overallRecommendation": "avoid",
+        "overallNote": "As a Vata-Pitta individual with dominant Vata and Psoriasis, consuming a restaurant-prepared Dosa is not ideal for you, especially during Vasanta. Its inherent heating potency (Ushna Virya), sour post-digestive taste (Amla Vipaka), and the potential for excess oil and crispiness will significantly aggravate your Pitta dosha. This can exacerbate your Psoriasis, which is a condition deeply linked to vitiated Pitta and Vata. Furthermore, its Kapha-aggravating qualities are counterproductive during the Kapha-heavy Vasanta season in Karnataka.",
+        "bestTimeToEat": "If consumed, ideally during lunch (12 PM - 2 PM) when Agni (digestive fire) is strongest, to aid in processing its heavy and heating qualities. However, due to its overall aggravating nature for your constitution and condition, it is best avoided.",
+        "modifications": [
+          {
+            "tip": "Choose a softer, 'set dosa' or 'plain dosa' with minimal oil instead of a crispy 'dosa roast' or ghee roast.",
+            "reason": "Reduces heating and aggravating qualities from excess oil and crispiness, lessening Pitta impact and digestive burden.",
+            "category": "cooking"
+          },
+          {
+            "tip": "Pair with cooling coconut chutney (without green chilies) and avoid overly spicy or sour sambar.",
+            "reason": "Helps to mitigate the heating and sour qualities of Dosa and sambar, balancing Pitta and reducing inflammation.",
+            "category": "substitute"
+          },
+          {
+            "tip": "If preparing at home, ensure the batter is fresh (less than 2 days old) and add a pinch of turmeric and cumin powder.",
+            "reason": "Fresh batter reduces sourness and Ama formation. Spices improve digestibility and reduce Kapha/Pitta aggravation.",
+            "category": "cooking"
+          },
+          {
+            "tip": "Limit portion size to a single, medium-sized Dosa.",
+            "reason": "Prevents digestive burden and excessive aggravation of Pitta and Kapha, which are already prone to imbalance in your case.",
+            "category": "portion"
+          }
+        ],
+        "seasonalNote": "In Vasanta (Spring), when Kapha is liquefying and Pitta can easily rise, the heavy, sour, and heating nature of Dosa can further imbalance both Kapha and Pitta, which is particularly detrimental for your Psoriasis.",
+        "foodItems": [
+          {
+            "name": "Dosa",
+            "displayName": "Dosa (Fermented Rice & Lentil Crepe)",
+            "doshaImpact": {
+              "vata": "neutral",
+              "pitta": "aggravates",
+              "kapha": "aggravates"
+            },
+            "ojasImpact": "negative",
+            "ojasReason": "A very crispy and oily restaurant Dosa (Roast) can create digestive burden, leading to an indirect reduction of Ojas.",
+            "recommendation": "avoid",
+            "recommendationReason": "As a Vata-Pitta individual with dominant Vata and Psoriasis, consuming a restaurant-prepared Dosa is not ideal for you, especially during Vasanta. Its inherent heating potency (Ushna Virya), sour post-digestive taste (Amla Vipaka), and the potential for excess oil and crispiness will significantly aggravate your Pitta dosha. This can exacerbate your Psoriasis, which is a condition deeply linked to vitiated Pitta and Vata. Furthermore, its Kapha-aggravating qualities are counterproductive during the Kapha-heavy Vasanta season in Karnataka.",
+            "bestTimeToEat": "If consumed, ideally during lunch (12 PM - 2 PM) when Agni (digestive fire) is strongest, to aid in processing its heavy and heating qualities. However, due to its overall aggravating nature for your constitution and condition, it is best avoided.",
+            "modifications": "While its warmth and grounding nature can balance Vata, the sourness and heating potency can also mildly aggravate, especially in a Vata-Pitta individual.",
+            "ayurvedicNote": "Dosa, traditionally made from fermented rice and urad dal, possesses heating and sour qualities. Its nature can be grounding but also stimulating due to fermentation."
+          }
+        ]
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69e9d4ba895b5370b4ff81ed"
+      },
+      "analysisId": "192aba89-62ee-4492-ab49-efd8e0f9cb28",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "timestamp": "2026-04-23T08:13:46.723087",
+      "mode": "yolo",
+      "detectedItems": [
+        "Dosa"
+      ],
+      "cookingMode": "restaurant",
+      "overallRecommendation": "avoid",
+      "mealName": "Restaurant Dosa",
+      "analysisResult": {
+        "mealName": "Restaurant Dosa",
+        "viruddhahara": {
+          "hasConflict": false,
+          "conflicts": []
+        },
+        "individualFoods": [
+          {
+            "name": "Dosa",
+            "displayName": "Dosa",
+            "rasa": [
+              "sour",
+              "sweet"
+            ],
+            "virya": "hot",
+            "vipaka": "sour",
+            "doshaImpact": {
+              "vata": "aggravates",
+              "pitta": "aggravates",
+              "kapha": "neutral"
+            },
+            "doshaReason": {
+              "vata": "The restaurant-style crispy and oily preparation, combined with fermentation, can increase Vata.",
+              "pitta": "Its inherently heating (Ushna Virya) and sour (Amla Vipaka) nature strongly aggravates Pitta.",
+              "kapha": "The heating potency (Ushna Virya) helps balance Kapha, though sourness can be slightly increasing."
+            },
+            "ojasImpact": "negative",
+            "ojasReason": "Restaurant-prepared dosa, especially if crispy and oily (roast style), is difficult to digest and lacks the fresh vitality (Prana) needed to build Ojas.",
+            "ayurvedicNote": "Dosa, typically made from fermented rice and lentil batter, carries heating and sour qualities. While a soft, freshly made dosa can be nourishing, restaurant versions often become Pitta-aggravating due to excessive oil and fermentation, potentially increasing Ama (toxins)."
+          }
+        ],
+        "combinedDoshaImpact": {
+          "vata": "aggravates",
+          "pitta": "aggravates",
+          "kapha": "neutral"
+        },
+        "ojasImpact": {
+          "direction": "negative",
+          "points": -6,
+          "reason": "The crispy and oily restaurant preparation of Dosa significantly reduces its Ojas potential, directly impacting your high Ojas score (99/100) and making it harder to sustain vitality."
+        },
+        "overallRecommendation": "avoid",
+        "overallNote": "For your Vata-Pitta Prakriti with dominant Vata, and especially with Psoriasis, this restaurant Dosa is not advisable. Its heating, sour, and fermented nature, amplified by potentially excessive oil and crispiness from restaurant preparation, will strongly aggravate both your Vata and Pitta. This can directly trigger or worsen your Psoriasis by increasing inflammation (Pitta) and contributing to Ama (toxin) formation, which is particularly undesirable during Vasanta (Spring) when your body is naturally trying to cleanse.",
+        "bestTimeToEat": "Midday (10 AM - 2 PM)",
+        "modifications": [
+          {
+            "tip": "Opt for soft, home-made dosa using fresh batter (less than 24 hours old).",
+            "reason": "Freshly made and softer dosa is easier to digest and less likely to aggravate Vata and Pitta than crispy, old-batter restaurant versions.",
+            "category": "cooking"
+          },
+          {
+            "tip": "Request minimal oil or cook with Ghee at home.",
+            "reason": "Excessive oil, especially low-quality restaurant oil, increases heaviness and Ama, further aggravating Pitta and Vata.",
+            "category": "cooking"
+          },
+          {
+            "tip": "Pair with mild, cooling coconut chutney instead of very spicy sambar.",
+            "reason": "Coconut chutney helps balance the heating effect of the Dosa and can soothe Pitta.",
+            "category": "spice"
+          },
+          {
+            "tip": "Avoid completely during Psoriasis flare-ups.",
+            "reason": "The heating and sour qualities can exacerbate skin conditions like Psoriasis.",
+            "category": "timing"
+          }
+        ],
+        "seasonalNote": "During Vasanta (Spring), it is generally advised to consume lighter, drying foods to balance Kapha. Heavy, sour, and fermented restaurant Dosa can increase Ama and hinder the body's natural cleansing processes during this season, especially for a Vata-Pitta individual with Psoriasis.",
+        "foodItems": [
+          {
+            "name": "Dosa",
+            "displayName": "Dosa",
+            "doshaImpact": {
+              "vata": "aggravates",
+              "pitta": "aggravates",
+              "kapha": "neutral"
+            },
+            "ojasImpact": "negative",
+            "ojasReason": "Restaurant-prepared dosa, especially if crispy and oily (roast style), is difficult to digest and lacks the fresh vitality (Prana) needed to build Ojas.",
+            "recommendation": "avoid",
+            "recommendationReason": "For your Vata-Pitta Prakriti with dominant Vata, and especially with Psoriasis, this restaurant Dosa is not advisable. Its heating, sour, and fermented nature, amplified by potentially excessive oil and crispiness from restaurant preparation, will strongly aggravate both your Vata and Pitta. This can directly trigger or worsen your Psoriasis by increasing inflammation (Pitta) and contributing to Ama (toxin) formation, which is particularly undesirable during Vasanta (Spring) when your body is naturally trying to cleanse.",
+            "bestTimeToEat": "Midday (10 AM - 2 PM)",
+            "modifications": "The restaurant-style crispy and oily preparation, combined with fermentation, can increase Vata.",
+            "ayurvedicNote": "Dosa, typically made from fermented rice and lentil batter, carries heating and sour qualities. While a soft, freshly made dosa can be nourishing, restaurant versions often become Pitta-aggravating due to excessive oil and fermentation, potentially increasing Ama (toxins)."
+          }
+        ]
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69e9d506895b5370b4ff81ef"
+      },
+      "analysisId": "03e080a3-ac84-425c-92b6-efb3dab35cca",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "timestamp": "2026-04-23T08:15:02.687501",
+      "mode": "ocr",
+      "detectedItems": [
+        "Unknown Additives"
+      ],
+      "cookingMode": "packaged",
+      "overallRecommendation": "avoid",
+      "mealName": "Scanned Product",
+      "analysisResult": {
+        "safetyScore": 40,
+        "topConcerns": [
+          {
+            "ingredient": "Unknown Processed Ingredient",
+            "rating": "concern",
+            "reason": "Analysis failed, defaulting to high caution."
+          }
+        ],
+        "combinedDoshaImpact": {
+          "vata": "aggravates",
+          "pitta": "aggravates",
+          "kapha": "aggravates"
+        },
+        "overallSuitability": "avoid",
+        "personalizedNote": "We could not analyze this label fully due to poor image quality or AI limits. We strongly recommend avoiding unknown processed foods.",
+        "cleanedIngredients": [
+          "Unknown Additives"
+        ],
+        "ojasImpact": {
+          "direction": "negative",
+          "points": 5,
+          "reason": "Default 5-point penalty applied due to failed analysis of processed food."
+        },
+        "_fallback": true
+      }
+    }
+  ],
+  "food_logs": [
+    {
+      "_id": {
+        "$oid": "69eb531ce1877bab5ba2cff1"
+      },
+      "logId": "54d25c77-3d67-48e7-b8d8-9a2cb43de9e9",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "mealSource": "home",
+      "totalOjasDelta": -3,
+      "foodResults": [
+        {
+          "class_id": "6",
+          "name": "Dosa",
+          "dosha": "Pitta increasing",
+          "virya": "Ushna (Heating)",
+          "vipaka": "Amla (Sour)",
+          "ojas_delta": -3,
+          "question_asked": "Is the batter fresh (less than 2 days old)?",
+          "answer_given": "negative"
+        }
+      ],
+      "viruddhaWarnings": [],
+      "loggedAt": {
+        "$date": "2026-04-24T11:25:16.904Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69eb6916820fe18e4175cfe2"
+      },
+      "logId": "7a171362-9375-4b26-a958-25d1fa92a403",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "mealSource": "hotel",
+      "totalOjasDelta": -7,
+      "foodResults": [
+        {
+          "class_id": "14",
+          "name": "Mutton Biryani",
+          "classification": "Rice with Mutton \u2014 Heavy Rajasic Feast Food",
+          "base_ojas_delta": -3,
+          "audit_ojas_adjustment": -4,
+          "total_ojas_delta": -7,
+          "dosha_summary": "Kapha-Pitta aggravating; beneficial for Vata when prepared correctly with digestive spices",
+          "vata_effect": "pacifies",
+          "pitta_effect": "aggravates",
+          "kapha_effect": "aggravates",
+          "virya": "Ushna (Very Hot)",
+          "vipaka": "Guru (Heavy \u2014 Madhura with heavy post-digestion load)",
+          "guna": [
+            "Guru (Heaviest of all biryanis)",
+            "Snigdha (High fat from mutton)",
+            "Ushna (Hot)"
+          ],
+          "agni_impact": "Requires maximum Agni (Tikshna Agni) to digest without Ama. The whole spices are Deepana but the heavy fat and protein dominate post-digestively.",
+          "ama_risk": "high (especially in restaurant versions)",
+          "digestibility": "heavy",
+          "best_meal_time": "Lunch only \u2014 earliest possible (11:30 AM\u20131 PM). Never at dinner. Never on empty stomach.",
+          "question_asked": "Is there a visible orange oil/fat layer floating on top of the biryani, and does the meat pull apart easily or remain tough?",
+          "positive_label": "Moderate Glistening, Tender Meat that Falls Off Bone",
+          "negative_label": "Visible Fat Layer Pooling, Tough Chewy Meat",
+          "answer_given": "Moderate Glistening, Tender Meat that Falls Off Bone",
+          "reasoning": "Tender meat confirms proper slow cooking (Dum method) which breaks down collagen into gelatin \u2014 making heavy protein digestible. Moderate glistening (not pooling) means appropriate fat used. Well-cooked biryani has harmonized flavors \u2014 rice, spice, and meat are one.",
+          "ideal_seasons": [
+            "Shishira (Jan\u2013Feb)",
+            "Hemanta (Nov\u2013Dec) \u2014 Agni is at maximum strength"
+          ],
+          "avoid_seasons": [
+            "Grishma (May\u2013Jun)",
+            "Sharad (Sep\u2013Oct) \u2014 Pitta is elevated; adding Ushna-Guru mutton creates inflammatory cascade"
+          ],
+          "ritucharya_reason": "Mutton is the heaviest meat in Ayurvedic classification. Only the body's winter-maximum Agni can process it without accumulating Ama in the Mamsa and Meda dhatus.",
+          "prakriti_advice_vata": "Best meat for Vata \u2014 heavy, warm, nourishing, and specifically Brimhana for Vata's depleted Dhatus. With proper digestive spices, this is Vata's feast food.",
+          "prakriti_advice_pitta": "Limit to once a month maximum. Ushna virya of mutton directly aggravates Pitta. Never eat with hot chutneys.",
+          "prakriti_advice_kapha": "Minimize or avoid \u2014 the heaviest food for the heaviest dosha. If eating, small portion with maximum pepper and no dessert after.",
+          "pairings_ideal": [
+            "Puthina Chutney (24) \u2014 cooling digestive",
+            "Plain Raita \u2014 probiotics for heavy protein",
+            "Fresh lime with salt \u2014 digestive Agni support"
+          ],
+          "pairings_avoid": [
+            "Paal Kolukattai (17) \u2014 Meat + Milk: critical Viruddha Ahara (skin disorders, allergic cascade)",
+            "Any cold drinks \u2014 suppresses Agni needed to process meat",
+            "Medu Vadai (12) or any other fried food in same meal"
+          ],
+          "condition_warnings": [
+            {
+              "condition": "Gout (Vatarakta)",
+              "advice": "High purine content. Contraindicated during flare-ups. Strict limitation even in remission."
+            },
+            {
+              "condition": "Cardiovascular disease",
+              "advice": "Avoid restaurant versions. Home version with good quality meat and ghee, once a month, may be acceptable under Vaidya guidance."
+            },
+            {
+              "condition": "Any active Pitta disorder",
+              "advice": "Contraindicated \u2014 Ushna virya of mutton + Pitta disorders = inflammatory aggravation."
+            }
+          ],
+          "red_flags": [
+            "Visible orange-red oil pool at bottom of container",
+            "Tough, chewy mutton pieces (old meat or under-cooked)",
+            "Extremely thirsty 30 min after (MSG)",
+            "Very heavy, bloated feeling lasting 4+ hours",
+            "Unnaturally yellow or orange colored rice"
+          ]
+        }
+      ],
+      "viruddhaWarnings": [],
+      "loggedAt": {
+        "$date": "2026-04-24T12:59:02.879Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69eb6c03820fe18e4175cfe3"
+      },
+      "logId": "0d9cc039-550b-4d04-b5da-8c70c21b6d4f",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "mealSource": "hotel",
+      "totalOjasDelta": 2,
+      "foodResults": [
+        {
+          "class_id": "26",
+          "name": "Sambar Satham",
+          "classification": "Spiced Lentil-Vegetable Rice \u2014 Comfort Meal with Therapeutic Depth",
+          "base_ojas_delta": 7,
+          "audit_ojas_adjustment": -5,
+          "total_ojas_delta": 2,
+          "dosha_summary": "Pitta-Vata pacifying; Kapha should moderate portion",
+          "vata_effect": "pacifies",
+          "pitta_effect": "pacifies",
+          "kapha_effect": "neutral",
+          "virya": "Sama (Balanced \u2014 the Ushna spices of Sambar neutralize the Sheeta of rice)",
+          "vipaka": "Madhura (Sweet)",
+          "guna": [
+            "Guru (Slightly Heavy \u2014 rice + dal combination is more filling than individual components)",
+            "Snigdha (Unctuous \u2014 from ghee and dal)",
+            "Mridu (Soft \u2014 mushy texture is the correct preparation)"
+          ],
+          "agni_impact": "Deepana-Brimhana \u2014 the Sambar spices (mustard, cumin, pepper, turmeric, tamarind) kindle Agni while the rice-dal matrix provides Brimhana (nourishment). The one-pot cooking ensures spice oils permeate every grain \u2014 a superior absorption versus eating rice and Sambar separately.",
+          "ama_risk": "low when mushy; moderate if grains are separate and undercooked",
+          "digestibility": "moderate",
+          "best_meal_time": "Lunch \u2014 the heavier Guru guna needs strong midday Agni for full digestion. Never as dinner.",
+          "question_asked": "Is the Sambar Satham a sticky, mushy, aromatic preparation, or does it look like dry rice floating in watery Sambar with no integration?",
+          "positive_label": "Mushy, Aromatic, Well-Integrated \u2014 One-Pot Quality",
+          "negative_label": "Dry Separate Grains in Watery/Oily Sambar \u2014 Assembly Style",
+          "answer_given": "Dry Separate Grains in Watery/Oily Sambar \u2014 Assembly Style",
+          "reasoning": "Separate, firm grains in thin Sambar is a hotel shortcut \u2014 yesterday's rice reheated with today's Sambar poured over. The grains are retrograded, the Sambar has lost its Deepana volatile oils overnight, and the combination creates Guru-Ama load. A very oily surface indicates cheap fats (Dalda/refined oil) used in the Sambar tadka instead of ghee.",
+          "ideal_seasons": [
+            "Hemanta (Early Winter: Nov\u2013Dec) \u2014 warming spices offset cold",
+            "Shishira (Winter: Jan\u2013Feb) \u2014 Brimhana quality suits the season's need for nourishment",
+            "Varsha (Monsoon: Jul\u2013Aug) \u2014 Deepana spices support weakened Agni"
+          ],
+          "avoid_seasons": [
+            "Grishma (Summer: May\u2013Jun) \u2014 reduce portion, add more tamarind/water to lighten",
+            "Sharad (Autumn: Sep\u2013Oct) \u2014 Pitta season; reduce pepper and mustard quantity"
+          ],
+          "ritucharya_reason": "Sambar Satham is a one-pot meal with inherent thermal balance \u2014 the warming Sambar spices prevent the rice's Sheeta virya from suppressing Agni. In summer, it is best eaten lightly portioned and with extra Sambar liquid to maintain hydration and lightness.",
+          "prakriti_advice_vata": "Excellent \u2014 warm, soft, moist, one-pot meal is ideal for Vata. Add a generous teaspoon of ghee on top before eating. Eat freshly cooked, never refrigerated leftovers.",
+          "prakriti_advice_pitta": "Very good \u2014 reduce pepper in Sambar component slightly. The dal protein and cooling vegetables pacify Pitta. Avoid adding extra pickle or sour sides.",
+          "prakriti_advice_kapha": "Acceptable once weekly \u2014 the grain-dal combination is too Guru for daily Kapha use. Reduce rice ratio, increase vegetable content, avoid ghee topping.",
+          "pairings_ideal": [
+            "Appalam/Papad \u2014 Laghu, crunchy, aids digestion alongside the Guru rice",
+            "A small side of fresh Thengai Chutney (28) \u2014 Sheeta cooling contrast",
+            "Pickle (small quantity) \u2014 Deepana sour stimulates Agni for the heavier meal"
+          ],
+          "pairings_avoid": [
+            "Paal (Milk) or any milk-based item \u2014 Sour Sambar + Milk is classical Viruddha Ahara",
+            "Cold beverages alongside \u2014 suppresses Agni mid-meal",
+            "Another grain-based item in the same meal \u2014 doubles the Guru burden"
+          ],
+          "condition_warnings": [
+            {
+              "condition": "Diabetes / Insulin resistance",
+              "advice": "The mushy texture increases glycemic response compared to firm rice. Reduce rice ratio, increase vegetable content in Sambar. Eat with a small fat source (ghee or coconut) to slow glucose absorption."
+            },
+            {
+              "condition": "Gout / High Uric Acid",
+              "advice": "Toor Dal (pigeon pea) in Sambar has moderate purines. Limit portion. The vegetables and tamarind are beneficial."
+            },
+            {
+              "condition": "Post-illness recovery / Low Agni",
+              "advice": "Excellent therapeutic food \u2014 soft texture, spiced, warm, complete nutrition. Classical Ayurvedic Pathya (medicinal diet) for convalescence."
+            }
+          ],
+          "red_flags": [
+            "Very oily layer floating on top (Dalda or excess refined oil)",
+            "Uniform 'packet masala' Sambar taste \u2014 no aromatic depth",
+            "Firm, separate grains (leftover rice, not cooked together)",
+            "Very sour or very sweet Sambar (imbalanced)",
+            "No visible vegetables in the Sambar component"
+          ]
+        }
+      ],
+      "viruddhaWarnings": [],
+      "loggedAt": {
+        "$date": "2026-04-24T13:11:31.486Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69eb6cc9820fe18e4175cfe4"
+      },
+      "logId": "f1778d74-dd91-47db-bcba-3d139277aeda",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "mealSource": "home",
+      "totalOjasDelta": 0,
+      "foodResults": [
+        {
+          "class_id": "6",
+          "name": "Dosa",
+          "classification": "Fermented Rice-Lentil Crepe",
+          "base_ojas_delta": 4,
+          "audit_ojas_adjustment": -4,
+          "total_ojas_delta": 0,
+          "dosha_summary": "Pitta increasing when sour; Vata-Kapha beneficial when fresh",
+          "vata_effect": "pacifies",
+          "pitta_effect": "aggravates",
+          "kapha_effect": "pacifies",
+          "virya": "Ushna (Heating \u2014 from cooking on tawa)",
+          "vipaka": "Amla (Sour)",
+          "guna": [
+            "Laghu (Light \u2014 thin crepe)",
+            "Ruksha (Dry \u2014 crispy type)",
+            "Ushna (Hot)"
+          ],
+          "agni_impact": "Deepana when batter is fresh (active fermentation metabolites). Ama-forming when batter is old (excess acid, degraded proteins).",
+          "ama_risk": "low to moderate (batter age-dependent)",
+          "digestibility": "easy when fresh; moderate when sour",
+          "best_meal_time": "Breakfast \u2014 ideally before 8 AM when Agni is building",
+          "question_asked": "Is the batter freshly fermented (1\u20132 days maximum) and cooked on a well-seasoned iron or cast-iron tawa \u2014 not a non-stick coated pan?",
+          "positive_label": "Fresh Batter (1\u20132 days) + Iron Tawa",
+          "negative_label": "Old/Over-Sour Batter or Non-stick Pan",
+          "answer_given": "Old/Over-Sour Batter or Non-stick Pan",
+          "reasoning": "Old batter (3+ days) develops excess lactic and acetic acid, degraded protein, and begins producing ethanol. This extreme Amla quality directly aggravates Pitta \u2014 Charaka lists excessive sour taste as a direct cause of Rakta dushana (blood vitiation), skin eruptions, and inflammation. Non-stick (Teflon) pans at high heat release PTFE fumes and have no iron transfer benefit.",
+          "ideal_seasons": [
+            "Shishira (Winter)",
+            "Hemanta \u2014 the Ushna quality is welcome in cold seasons"
+          ],
+          "avoid_seasons": [
+            "Sharad (Autumn) \u2014 Pitta is already at peak; sour fermented food escalates it"
+          ],
+          "ritucharya_reason": "Dosa's Amla vipaka naturally increases Pitta. In Pitta-dominant seasons (Grishma, Sharad), daily dosa creates cumulative Pitta aggravation. Once or twice per week is reasonable year-round; daily consumption in summer is inadvisable for Pitta types.",
+          "prakriti_advice_vata": "Good \u2014 the warm, thin, slightly sour crepe with oil is grounding. Prefer Set Dosa (thicker, softer) over Paper Roast.",
+          "prakriti_advice_pitta": "Moderate \u2014 fresh batter, no over-fermentation. Pair with cooling Thengai Chutney. Avoid red chutneys. Limit to once daily.",
+          "prakriti_advice_kapha": "Excellent \u2014 Laghu, Ruksha (dry) nature of crispy dosa is good for Kapha. Can eat Paper Roast version.",
+          "pairings_ideal": [
+            "Thengai Chutney (28) \u2014 cooling Sheeta offsets Dosa's Ushna",
+            "Sambar (25) \u2014 the perfect Deepana complement",
+            "Puthina Chutney (24) \u2014 Pitta-pacifying cooling option"
+          ],
+          "pairings_avoid": [
+            "Paal Kolukattai (17) \u2014 sour fermented + milk = Viruddha (Ama formation)",
+            "Chicken 65 (4) \u2014 Pitta + Pitta double aggravation",
+            "Cold milk or cold drinks immediately after \u2014 shock to Agni"
+          ],
+          "condition_warnings": [
+            {
+              "condition": "Gastritis / Amlapitta",
+              "advice": "Fresh batter only, soft dosa, with cooling chutneys. Over-sour batter is an immediate trigger."
+            },
+            {
+              "condition": "Pitta skin disorders",
+              "advice": "Limit to once per week. The Amla vipaka accumulates Pitta in Rakta dhatu."
+            },
+            {
+              "condition": "Hypothyroidism",
+              "advice": "Rice-lentil batter is goitrogen-free. This is fine. However, avoid pairing with raw cruciferous vegetables."
+            }
+          ],
+          "red_flags": []
+        },
+        {
+          "class_id": "8",
+          "name": "Kaara Chutney",
+          "classification": "Spiced Red Chili Chutney \u2014 Pitta Aggravating",
+          "base_ojas_delta": -2,
+          "audit_ojas_adjustment": 2,
+          "total_ojas_delta": 0,
+          "dosha_summary": "Pitta strongly aggravating; Kapha pacifying (clears mucus); Vata aggravating in excess",
+          "vata_effect": "aggravates",
+          "pitta_effect": "aggravates",
+          "kapha_effect": "pacifies",
+          "virya": "Teekshna (Sharp/Penetrating) + Ushna (Hot)",
+          "vipaka": "Katu (Pungent)",
+          "guna": [
+            "Laghu (Light)",
+            "Ruksha (Dry)",
+            "Teekshna (Sharp)",
+            "Ushna (Hot)"
+          ],
+          "agni_impact": "Initially strongly Deepana \u2014 stimulates Agni rapidly. However excess or daily use leads to Tivra Agni (hyperactive Agni) which damages the gut lining \u2014 Pitta disorder.",
+          "ama_risk": "low (itself Ama-clearing) but creates Pitta disorders with excess use",
+          "digestibility": "easy (it is itself digestive)",
+          "best_meal_time": "Small quantity at breakfast or lunch only",
+          "question_asked": "Did you temper it with Gingelly (sesame) oil and add a small amount of tamarind to balance the heat with a light sour note?",
+          "positive_label": "Yes \u2014 Gingelly Oil Tadka + Tamarind Balance",
+          "negative_label": "No \u2014 Dry, No Balancing Ingredient",
+          "answer_given": "Yes \u2014 Gingelly Oil Tadka + Tamarind Balance",
+          "reasoning": "Gingelly (sesame) oil is Sheeta in long-term effect despite being Ushna in immediate action \u2014 it specifically counters the long-term Pitta aggravation of red chili. Charaka recommends sesame oil as the best oil for Pitta-Vata pacification. The tiny tamarind adds Amla rasa which acts as Anupana (vehicle) that distributes and moderates the chili's Teekshna quality across the gut without concentrating it.",
+          "ideal_seasons": [
+            "Shishira (Winter)",
+            "Hemanta",
+            "Varsha (Monsoon \u2014 when Agni is weak and needs stimulation)"
+          ],
+          "avoid_seasons": [
+            "Grishma (Summer)",
+            "Sharad (Autumn) \u2014 Pitta seasons; this is adding fuel to fire literally"
+          ],
+          "ritucharya_reason": "Kaara Chutney's job is to kindle Agni \u2014 in winter and monsoon this is valuable. In summer and autumn, Pitta is already elevated and needs cooling food, not Teekshna stimulation.",
+          "prakriti_advice_vata": "Use sparingly \u2014 very small amount with ghee-rich food. The Teekshna-Ushna quality dries Vata further. One tablespoon maximum.",
+          "prakriti_advice_pitta": "Strongly minimize. If Pitta is already imbalanced (heartburn, skin issues, anger), eliminate entirely. If Pitta is in balance, a tiny amount 2\u20133 times per week is acceptable.",
+          "prakriti_advice_kapha": "Beneficial in appropriate amounts \u2014 clears Kapha from channels, stimulates Agni, reduces mucus. Kapha can tolerate this best of all three types.",
+          "pairings_ideal": [
+            "Idly (7) \u2014 1 tablespoon max; the mild Idly absorbs and moderates the chutney's intensity",
+            "Medu Vadai (12) \u2014 small amount to counter Kapha from fried food"
+          ],
+          "pairings_avoid": [
+            "Any milk or dairy in same meal \u2014 Teekshna + Sheeta-Guru = direct Viruddha",
+            "Already spicy dishes \u2014 Pitta stacking",
+            "Appam (0) \u2014 defeats the Pitta-pacifying benefit of Appam entirely"
+          ],
+          "condition_warnings": [
+            {
+              "condition": "Gastritis / Amlapitta / GERD",
+              "advice": "Absolute contraindication \u2014 even a small amount will trigger immediate aggravation."
+            },
+            {
+              "condition": "Pitta skin disorders (Eczema, Psoriasis)",
+              "advice": "Avoid entirely. Teekshna quality directly aggravates Rakta-Pitta through skin channels."
+            },
+            {
+              "condition": "Mouth ulcers (Mukhapaka)",
+              "advice": "Contraindicated \u2014 this is Teekshna attacking already inflamed tissue."
+            }
+          ],
+          "red_flags": []
+        }
+      ],
+      "viruddhaWarnings": [],
+      "loggedAt": {
+        "$date": "2026-04-24T13:14:49.061Z"
+      }
+    },
+    {
+      "_id": {
+        "$oid": "69ecf773c544e97538379232"
+      },
+      "logId": "23c1f618-3d30-483d-8bd1-2d9f2ad817d0",
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "mealSource": "home",
+      "totalOjasDelta": 2,
+      "foodResults": [
+        {
+          "class_id": "14",
+          "name": "Mutton Biryani",
+          "classification": "Rice with Mutton \u2014 Heavy Rajasic Feast Food",
+          "base_ojas_delta": -3,
+          "audit_ojas_adjustment": 5,
+          "total_ojas_delta": 2,
+          "dosha_summary": "Kapha-Pitta aggravating; beneficial for Vata when prepared correctly with digestive spices",
+          "vata_effect": "pacifies",
+          "pitta_effect": "aggravates",
+          "kapha_effect": "aggravates",
+          "virya": "Ushna (Very Hot)",
+          "vipaka": "Guru (Heavy \u2014 Madhura with heavy post-digestion load)",
+          "guna": [
+            "Guru (Heaviest of all biryanis)",
+            "Snigdha (High fat from mutton)",
+            "Ushna (Hot)"
+          ],
+          "agni_impact": "Requires maximum Agni (Tikshna Agni) to digest without Ama. The whole spices are Deepana but the heavy fat and protein dominate post-digestively.",
+          "ama_risk": "high (especially in restaurant versions)",
+          "digestibility": "heavy",
+          "best_meal_time": "Lunch only \u2014 earliest possible (11:30 AM\u20131 PM). Never at dinner. Never on empty stomach.",
+          "question_asked": "Is the mutton from a good source (ideally grass-fed/free-range), tender-cooked with digestive spices (ginger, pepper, fennel, mint), and made with ghee?",
+          "positive_label": "Good Quality Mutton + Full Digestive Spice Base + Ghee",
+          "negative_label": "Factory-Farmed Tough Mutton + Masala Powder Only + Cheap Oil",
+          "answer_given": "Good Quality Mutton + Full Digestive Spice Base + Ghee",
+          "reasoning": "Grass-fed/free-range mutton has 3-4x higher omega-3 fatty acids and lower inflammatory arachidonic acid vs factory-farmed. Ginger + pepper = Mamsala combination specifically recommended by Charaka for heavy meat preparations (increases protease enzyme activity for protein digestion). Fennel + mint = Vata-pacifying aromatic spices that moderate the Ushna virya of meat. Ghee specifically reduces meat's Ushna nature (per Charaka Samhita: Go-Ghrita + Mamsa = Pitta moderation) while building Ojas.",
+          "ideal_seasons": [
+            "Shishira (Jan\u2013Feb)",
+            "Hemanta (Nov\u2013Dec) \u2014 Agni is at maximum strength"
+          ],
+          "avoid_seasons": [
+            "Grishma (May\u2013Jun)",
+            "Sharad (Sep\u2013Oct) \u2014 Pitta is elevated; adding Ushna-Guru mutton creates inflammatory cascade"
+          ],
+          "ritucharya_reason": "Mutton is the heaviest meat in Ayurvedic classification. Only the body's winter-maximum Agni can process it without accumulating Ama in the Mamsa and Meda dhatus.",
+          "prakriti_advice_vata": "Best meat for Vata \u2014 heavy, warm, nourishing, and specifically Brimhana for Vata's depleted Dhatus. With proper digestive spices, this is Vata's feast food.",
+          "prakriti_advice_pitta": "Limit to once a month maximum. Ushna virya of mutton directly aggravates Pitta. Never eat with hot chutneys.",
+          "prakriti_advice_kapha": "Minimize or avoid \u2014 the heaviest food for the heaviest dosha. If eating, small portion with maximum pepper and no dessert after.",
+          "pairings_ideal": [
+            "Puthina Chutney (24) \u2014 cooling digestive",
+            "Plain Raita \u2014 probiotics for heavy protein",
+            "Fresh lime with salt \u2014 digestive Agni support"
+          ],
+          "pairings_avoid": [
+            "Paal Kolukattai (17) \u2014 Meat + Milk: critical Viruddha Ahara (skin disorders, allergic cascade)",
+            "Any cold drinks \u2014 suppresses Agni needed to process meat",
+            "Medu Vadai (12) or any other fried food in same meal"
+          ],
+          "condition_warnings": [
+            {
+              "condition": "Gout (Vatarakta)",
+              "advice": "High purine content. Contraindicated during flare-ups. Strict limitation even in remission."
+            },
+            {
+              "condition": "Cardiovascular disease",
+              "advice": "Avoid restaurant versions. Home version with good quality meat and ghee, once a month, may be acceptable under Vaidya guidance."
+            },
+            {
+              "condition": "Any active Pitta disorder",
+              "advice": "Contraindicated \u2014 Ushna virya of mutton + Pitta disorders = inflammatory aggravation."
+            }
+          ],
+          "red_flags": []
+        }
+      ],
+      "viruddhaWarnings": [],
+      "loggedAt": {
+        "$date": "2026-04-25T17:18:43.429Z"
+      }
+    }
+  ],
+  "tongue_captures": [
+    {
+      "_id": {
+        "$oid": "69ed344fc60805632e53f943"
+      },
+      "userId": "5cf7d3fa-d479-43c3-850e-75e6485bb870",
+      "date_key": "2026-04-25",
+      "ama_level": "moderate",
+      "coating_score": 54,
+      "color_classification": "pink_healthy",
+      "dosha_signal": "Balanced \u2014 maintain current routine. Heavy Ama present \u2014 consider 1-day light diet.",
+      "timestamp": {
+        "$date": "2026-04-25T21:49:03.349Z"
+      },
+      "tongue_health_score": 63
+    }
+  ]
+}
