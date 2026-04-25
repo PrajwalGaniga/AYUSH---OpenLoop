@@ -1,214 +1,441 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../core/constants/app_colors.dart';
-import '../../../../core/constants/app_spacing.dart';
-import '../../../../core/constants/app_text_styles.dart';
+import '../../data/ingredient_data.dart';
 import '../../providers/recipe_provider.dart';
 
 class IngredientSelectionScreen extends ConsumerStatefulWidget {
   const IngredientSelectionScreen({super.key});
 
   @override
-  ConsumerState<IngredientSelectionScreen> createState() => _IngredientSelectionScreenState();
+  ConsumerState<IngredientSelectionScreen> createState() =>
+      _IngredientSelectionScreenState();
 }
 
-class _IngredientSelectionScreenState extends ConsumerState<IngredientSelectionScreen> {
-  List<dynamic> _categories = [];
+class _IngredientSelectionScreenState
+    extends ConsumerState<IngredientSelectionScreen>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+  final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
-  bool _isLoading = true;
 
   @override
   void initState() {
     super.initState();
-    _loadIngredients();
+    _tabController = TabController(
+      length: kIngredientCategories.length,
+      vsync: this,
+    );
+    _searchController.addListener(() {
+      setState(() => _searchQuery = _searchController.text.toLowerCase().trim());
+    });
   }
 
-  Future<void> _loadIngredients() async {
-    try {
-      final jsonStr = await rootBundle.loadString('assets/data/ingredients.json');
-      setState(() {
-        _categories = json.decode(jsonStr);
-        _isLoading = false;
-      });
-    } catch (e) {
-      setState(() => _isLoading = false);
-    }
+  @override
+  void dispose() {
+    _tabController.dispose();
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  List<Ingredient> _filteredIngredients(IngredientCategory cat) {
+    if (_searchQuery.isEmpty) return cat.ingredients;
+    return cat.ingredients
+        .where((i) => i.name.toLowerCase().contains(_searchQuery))
+        .toList();
+  }
+
+  bool _isSearching() => _searchQuery.isNotEmpty;
+
+  List<Ingredient> _allFiltered() {
+    return kIngredientCategories
+        .expand((c) => c.ingredients)
+        .where((i) => i.name.toLowerCase().contains(_searchQuery))
+        .toList();
   }
 
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(recipeProvider);
+    final selected = {
+      ...state.primaryIngredients,
+      ...state.spices,
+    };
+    final totalSelected = selected.length;
 
     return Scaffold(
-      backgroundColor: AyushColors.background,
+      backgroundColor: const Color(0xFFF7F4EF),
       appBar: AppBar(
-        title: Text("Create Recipe", style: AyushTextStyles.h2),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
-        centerTitle: true,
-        iconTheme: const IconThemeData(color: AyushColors.textPrimary),
+        titleSpacing: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black87),
+          onPressed: () => context.pop(),
+        ),
+        title: const Text(
+          'Select Ingredients',
+          style: TextStyle(
+            color: Colors.black87,
+            fontWeight: FontWeight.w700,
+            fontSize: 18,
+          ),
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.history),
+            icon: const Icon(Icons.history_outlined, color: Colors.black54),
             onPressed: () => context.push('/recipe/history'),
           ),
         ],
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(height: 1, color: Colors.grey.shade100),
+        ),
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            // Search
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AyushSpacing.pagePadding),
-              child: TextField(
-                onChanged: (val) => setState(() => _searchQuery = val.toLowerCase()),
-                decoration: InputDecoration(
-                  hintText: "Search ingredients...",
-                  prefixIcon: const Icon(Icons.search),
-                  filled: true,
-                  fillColor: AyushColors.card,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(AyushSpacing.radiusLg),
-                    borderSide: BorderSide.none,
-                  ),
+      body: Column(
+        children: [
+          // ── Search Bar ──────────────────────────────────────────────────
+          Container(
+            color: Colors.white,
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 12),
+            child: TextField(
+              controller: _searchController,
+              style: const TextStyle(fontSize: 14),
+              decoration: InputDecoration(
+                hintText: 'Search ingredients...',
+                hintStyle: TextStyle(color: Colors.grey.shade400, fontSize: 14),
+                prefixIcon: Icon(Icons.search, color: Colors.grey.shade400, size: 20),
+                suffixIcon: _searchQuery.isNotEmpty
+                    ? IconButton(
+                        icon: const Icon(Icons.clear, size: 18),
+                        onPressed: () => _searchController.clear(),
+                      )
+                    : null,
+                filled: true,
+                fillColor: const Color(0xFFF5F5F5),
+                contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
                 ),
               ),
             ),
-            
-            // Selected Chips Area
-            if (state.primaryIngredients.isNotEmpty || state.spices.isNotEmpty)
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(AyushSpacing.pagePadding),
-                color: AyushColors.background,
-                child: Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: [
-                    ...state.primaryIngredients.map((item) => InputChip(
-                      label: Text(item, style: const TextStyle(fontSize: 12)),
-                      onDeleted: () => ref.read(recipeProvider.notifier).togglePrimary(item),
-                      backgroundColor: AyushColors.primary.withValues(alpha: 0.1),
-                      deleteIconColor: AyushColors.primary,
-                    )),
-                    ...state.spices.map((item) => InputChip(
-                      label: Text(item, style: const TextStyle(fontSize: 12)),
-                      onDeleted: () => ref.read(recipeProvider.notifier).toggleSpice(item),
-                      backgroundColor: AyushColors.herbalGreen.withValues(alpha: 0.1),
-                      deleteIconColor: AyushColors.herbalGreen,
-                    )),
-                  ],
-                ),
-              ),
+          ),
 
-            // Selection Limits
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: AyushSpacing.pagePadding, vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Primary: ${state.primaryIngredients.length}/10", style: AyushTextStyles.bodySmall),
-                  Text("Spices: ${state.spices.length}/5", style: AyushTextStyles.bodySmall),
-                ],
-              ),
-            ),
-            
-            // List
-            Expanded(
-              child: _isLoading 
-                ? const Center(child: CircularProgressIndicator())
-                : ListView.builder(
-                    padding: const EdgeInsets.all(AyushSpacing.pagePadding),
-                    itemCount: _categories.length,
-                    itemBuilder: (context, index) {
-                      final category = _categories[index];
-                      final catName = category['category'];
-                      final isSpice = catName == 'Spices & Herbs';
-                      
-                      final items = (category['items'] as List)
-                          .map((e) => e.toString())
-                          .where((e) => e.toLowerCase().contains(_searchQuery))
-                          .toList();
-
-                      if (items.isEmpty) return const SizedBox.shrink();
-
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8),
-                            child: Text(catName, style: AyushTextStyles.h3),
+          // ── Category Tabs (hidden during search) ────────────────────────
+          if (!_isSearching())
+            Container(
+              color: Colors.white,
+              height: 48,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                itemCount: kIngredientCategories.length,
+                itemBuilder: (_, i) {
+                  final cat = kIngredientCategories[i];
+                  return AnimatedBuilder(
+                    animation: _tabController,
+                    builder: (_, __) {
+                      final isActive = _tabController.index == i;
+                      return GestureDetector(
+                        onTap: () => setState(() => _tabController.index = i),
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          margin: const EdgeInsets.only(right: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: isActive ? cat.color : Colors.transparent,
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(
+                              color: isActive ? cat.color : Colors.grey.shade300,
+                              width: 1.5,
+                            ),
                           ),
-                          Wrap(
-                            spacing: 8,
-                            runSpacing: 8,
-                            children: items.map((item) {
-                              final isSelected = isSpice 
-                                  ? state.spices.contains(item)
-                                  : state.primaryIngredients.contains(item);
-                              return FilterChip(
-                                label: Text(item, style: TextStyle(color: isSelected ? Colors.white : AyushColors.textPrimary)),
-                                selected: isSelected,
-                                selectedColor: isSpice ? AyushColors.herbalGreen : AyushColors.primary,
-                                backgroundColor: AyushColors.card,
-                                checkmarkColor: Colors.white,
-                                onSelected: (val) {
-                                  try {
-                                    if (isSpice) {
-                                      ref.read(recipeProvider.notifier).toggleSpice(item);
-                                    } else {
-                                      ref.read(recipeProvider.notifier).togglePrimary(item);
-                                    }
-                                  } catch (e) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(content: Text(e.toString()), backgroundColor: AyushColors.error)
-                                    );
-                                  }
-                                },
-                              );
-                            }).toList(),
+                          child: Text(
+                            '${cat.emoji} ${cat.name}',
+                            style: TextStyle(
+                              fontSize: 13,
+                              fontWeight: isActive ? FontWeight.w700 : FontWeight.w500,
+                              color: isActive ? Colors.white : Colors.black87,
+                            ),
                           ),
-                          const SizedBox(height: AyushSpacing.lg),
-                        ],
+                        ),
                       );
                     },
-                  ),
+                  );
+                },
+              ),
             ),
 
-            // Generate Button
-            Padding(
-              padding: const EdgeInsets.all(AyushSpacing.pagePadding),
-              child: SizedBox(
-                width: double.infinity,
-                height: AyushSpacing.buttonHeight,
-                child: ElevatedButton(
-                  onPressed: state.primaryIngredients.isEmpty || state.isLoading
-                      ? null
-                      : () async {
-                          await ref.read(recipeProvider.notifier).generateRecipe();
-                          if (mounted && ref.read(recipeProvider).error == null) {
-                            context.push('/recipe/display');
-                          } else if (mounted) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text(ref.read(recipeProvider).error ?? "Error"), backgroundColor: AyushColors.error)
-                            );
-                          }
-                        },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AyushColors.primary,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AyushSpacing.radiusLg)),
+          // ── Divider ────────────────────────────────────────────────────
+          Container(height: 1, color: Colors.grey.shade100),
+
+          // ── Chip Grid ──────────────────────────────────────────────────
+          Expanded(
+            child: _isSearching()
+                ? _buildChipWrap(
+                    _allFiltered(),
+                    const Color(0xFF5C6BC0),
+                    selected,
+                  )
+                : TabBarView(
+                    controller: _tabController,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: kIngredientCategories.map((cat) {
+                      return _buildChipWrap(
+                        _filteredIngredients(cat),
+                        cat.color,
+                        selected,
+                      );
+                    }).toList(),
                   ),
-                  child: state.isLoading
-                      ? const CircularProgressIndicator(color: Colors.white)
-                      : const Text("Generate Recipe", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold)),
+          ),
+
+          // ── Bottom Bar ─────────────────────────────────────────────────
+          _BottomBar(
+            count: totalSelected,
+            isLoading: state.isLoading,
+            canGenerate: state.primaryIngredients.isNotEmpty,
+            onGenerate: () async {
+              final messenger = ScaffoldMessenger.of(context);
+              final router = GoRouter.of(context);
+              await ref.read(recipeProvider.notifier).generateRecipe();
+              if (!mounted) return;
+              if (ref.read(recipeProvider).error == null) {
+                router.push('/recipe/display');
+              } else {
+                messenger.showSnackBar(
+                  SnackBar(
+                    content: Text(ref.read(recipeProvider).error ?? 'Error'),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildChipWrap(
+    List<Ingredient> items,
+    Color accentColor,
+    Set<String> selected,
+  ) {
+    if (items.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.search_off, size: 48, color: Colors.grey.shade300),
+            const SizedBox(height: 8),
+            Text('No ingredients found',
+                style: TextStyle(color: Colors.grey.shade400)),
+          ],
+        ),
+      );
+    }
+
+    return SingleChildScrollView(
+      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+      child: Wrap(
+        spacing: 8,
+        runSpacing: 10,
+        children: items.map((ingredient) {
+          final isSelected = selected.contains(ingredient.name);
+          final label = ingredient.emoji.isNotEmpty
+              ? '${ingredient.emoji} ${ingredient.name}'
+              : ingredient.name;
+
+          // find category color if searching
+          Color chipColor = accentColor;
+          if (_isSearching()) {
+            try {
+              chipColor = kIngredientCategories
+                  .firstWhere((c) => c.name == ingredient.category)
+                  .color;
+            } catch (_) {}
+          }
+
+          return _IngredientChip(
+            label: label,
+            isSelected: isSelected,
+            accentColor: chipColor,
+            onTap: () {
+              final notifier = ref.read(recipeProvider.notifier);
+              try {
+                // Spice categories go to spices list
+                final isSpiceCat = ingredient.category == 'Whole Spices' ||
+                    ingredient.category == 'Spice Powders';
+                if (isSpiceCat) {
+                  notifier.toggleSpice(ingredient.name);
+                } else {
+                  notifier.togglePrimary(ingredient.name);
+                }
+              } catch (e) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(e.toString())),
+                );
+              }
+            },
+          );
+        }).toList(),
+      ),
+    );
+  }
+}
+
+// ── Chip Widget ───────────────────────────────────────────────────────────────
+
+class _IngredientChip extends StatelessWidget {
+  final String label;
+  final bool isSelected;
+  final Color accentColor;
+  final VoidCallback onTap;
+
+  const _IngredientChip({
+    required this.label,
+    required this.isSelected,
+    required this.accentColor,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        curve: Curves.easeOut,
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+        decoration: BoxDecoration(
+          color: isSelected ? accentColor : Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(
+            color: isSelected ? accentColor : Colors.grey.shade300,
+            width: 1.5,
+          ),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: accentColor.withValues(alpha: 0.25),
+                    blurRadius: 6,
+                    offset: const Offset(0, 2),
+                  )
+                ]
+              : [],
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            fontSize: 13,
+            fontWeight: isSelected ? FontWeight.w600 : FontWeight.w400,
+            color: isSelected ? Colors.white : Colors.black87,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// ── Bottom Bar ────────────────────────────────────────────────────────────────
+
+class _BottomBar extends StatelessWidget {
+  final int count;
+  final bool isLoading;
+  final bool canGenerate;
+  final VoidCallback onGenerate;
+
+  const _BottomBar({
+    required this.count,
+    required this.isLoading,
+    required this.canGenerate,
+    required this.onGenerate,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.06),
+            blurRadius: 12,
+            offset: const Offset(0, -4),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          // Count badge
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: count > 0
+                  ? const Color(0xFF4CAF50).withValues(alpha: 0.1)
+                  : Colors.grey.shade100,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Text(
+              count > 0 ? '$count selected' : 'None selected',
+              style: TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+                color: count > 0
+                    ? const Color(0xFF388E3C)
+                    : Colors.grey.shade500,
+              ),
+            ),
+          ),
+          const SizedBox(width: 12),
+          // Generate button
+          Expanded(
+            child: AnimatedOpacity(
+              opacity: canGenerate ? 1.0 : 0.5,
+              duration: const Duration(milliseconds: 200),
+              child: SizedBox(
+                height: 48,
+                child: ElevatedButton(
+                  onPressed: canGenerate && !isLoading ? onGenerate : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF388E3C),
+                    foregroundColor: Colors.white,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(14),
+                    ),
+                  ),
+                  child: isLoading
+                      ? const SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            color: Colors.white,
+                            strokeWidth: 2.5,
+                          ),
+                        )
+                      : const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.auto_awesome, size: 18),
+                            SizedBox(width: 8),
+                            Text(
+                              'Generate Recipe',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
+                        ),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

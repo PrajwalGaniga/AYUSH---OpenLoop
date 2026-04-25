@@ -57,6 +57,11 @@ dependencies:
   google_maps_flutter: ^2.5.0
   cached_network_image: ^3.3.0
 
+  # Fall Detection / SOS
+  flutter_background_service: ^5.0.10
+  sensors_plus: ^6.1.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

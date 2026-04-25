@@ -16,6 +16,9 @@ class Settings(BaseSettings):
     plant_gemini_api_key: str = ""
     plant_gemini_model: str = "gemini-2.5-flash"
     ngrok_url: str = "http://localhost:8000"  # Used for community photo URLs on device
+    twilio_account_sid: str = ""
+    twilio_auth_token: str = ""
+    twilio_from_number: str = "+18146373200"
 
     class Config:
         env_file = ".env"

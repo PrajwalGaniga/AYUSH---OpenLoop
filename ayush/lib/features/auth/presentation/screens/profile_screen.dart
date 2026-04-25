@@ -8,6 +8,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../providers/auth_provider.dart';
+import '../../../sos/sos_settings_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -43,6 +44,14 @@ class ProfileScreen extends ConsumerWidget {
         elevation: 0,
         title: Text('My Prakriti Profile', style: AyushTextStyles.h2),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.settings_outlined, color: AyushColors.textSecondary),
+            tooltip: 'Settings',
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const SosSettingsScreen()),
+            ),
+          ),
           IconButton(
             icon: const Icon(Icons.edit_outlined, color: AyushColors.primary),
             onPressed: () => context.push('/profile/edit'),

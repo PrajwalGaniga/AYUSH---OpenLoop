@@ -12,6 +12,7 @@ from modules.recipe.router import router as recipe_router
 from modules.yoga.router import router as yoga_router
 from modules.plant.router import router as plant_router
 from modules.community.router import router as community_router
+from modules.sos.router import router as sos_router
 from config.settings import settings
 from pathlib import Path
 from fastapi.staticfiles import StaticFiles
@@ -71,6 +72,9 @@ app.include_router(plant_router)
 
 # Community module routes
 app.include_router(community_router)
+
+# SOS / Fall Detection routes
+app.include_router(sos_router)
 
 # Mount static files for uploads
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
