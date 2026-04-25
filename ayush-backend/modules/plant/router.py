@@ -1,20 +1,28 @@
+import logging
 import google.generativeai as genai
 from fastapi import APIRouter, HTTPException, UploadFile, File
 from modules.plant.schemas import PlantQuestionRequest, PlantQuestionResponse
 from modules.plant.predictor import PlantPredictor
+from config.settings import settings
 import os
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/api/v1/plant", tags=["plant"])
 
-# Initialize Gemini specifically for the Plant module
-GEMINI_API_KEY = os.getenv("PLANT_GEMINI_API_KEY")
-GEMINI_MODEL_NAME = os.getenv("PLANT_GEMINI_MODEL", "gemini-2.5-flash")
+# Initialize Gemini using settings (loads .env via pydantic-settings)
+GEMINI_API_KEY = settings.plant_gemini_api_key
+GEMINI_MODEL_NAME = settings.plant_gemini_model
+
+logger.info(f"[Plant] PLANT_GEMINI_API_KEY present: {bool(GEMINI_API_KEY)} | prefix: {GEMINI_API_KEY[:8] if GEMINI_API_KEY else 'MISSING'}")
 
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
     gemini_model = genai.GenerativeModel(GEMINI_MODEL_NAME)
+    logger.info(f"[Plant] Gemini model '{GEMINI_MODEL_NAME}' initialized successfully.")
 else:
     gemini_model = None
+    logger.error("[Plant] PLANT_GEMINI_API_KEY is empty — /ask endpoint will fail!")
 
 DISCLAIMER = (
     "This information is AI-generated for educational purposes only. "
@@ -39,7 +47,10 @@ async def identify_plant(image: UploadFile = File(...)):
 
 @router.post("/ask", response_model=PlantQuestionResponse)
 async def ask_plant_question(request: PlantQuestionRequest):
+    logger.info(f"[Plant/Ask] Received question for: {request.plant_name} | Q: {request.user_question}")
+    
     if not gemini_model:
+        logger.error("[Plant/Ask] Gemini model is None — PLANT_GEMINI_API_KEY not set!")
         raise HTTPException(status_code=500, detail="Plant Gemini API key not configured")
         
     if not request.user_question or len(request.user_question.strip()) < 5:
@@ -74,8 +85,11 @@ Answer:
 """
 
     try:
+        logger.info(f"[Plant/Ask] Calling Gemini model: {GEMINI_MODEL_NAME}")
+        logger.info(f"[Plant/Ask] API Key present: {bool(GEMINI_API_KEY)} | Key prefix: {GEMINI_API_KEY[:8] if GEMINI_API_KEY else 'None'}")
         response = gemini_model.generate_content(prompt)
         answer_text = response.text.strip()
+        logger.info(f"[Plant/Ask] Gemini response received, length={len(answer_text)}")
 
         # Extract any classical text references
         sources = []
@@ -94,4 +108,7 @@ Answer:
         )
 
     except Exception as e:
+        import traceback
+        traceback.print_exc()
+        logger.error(f"[Plant/Ask] Gemini error: {type(e).__name__}: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Gemini error: {str(e)}")

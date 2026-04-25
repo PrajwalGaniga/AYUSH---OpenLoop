@@ -16,3 +16,12 @@ build/
 .mypy_cache/
 uploads/
 *.log
+
+# Large model & binary files — do not commit to git
+plant-model/*.pth
+plant-model/*.tflite
+plant-model/*.zip
+*.pth
+*.pth.zip
+ngrok.exe
+ngrok

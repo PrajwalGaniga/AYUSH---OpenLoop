@@ -1,0 +1,25 @@
+# Root gitignore — covers both subprojects
+
+# Large model files
+*.pth
+*.pth.zip
+*.tflite
+efficientnet_v2_best_final.pth.zip
+
+# Backend-specific
+ayush-backend/venv/
+ayush-backend/ngrok.exe
+ayush-backend/ngrok
+ayush-backend/.env
+ayush-backend/uploads/
+ayush-backend/__pycache__/
+ayush-backend/plant-model/*.pth
+ayush-backend/plant-model/*.tflite
+ayush-backend/plant-model/*.zip
+
+# Flutter build artifacts
+ayush/build/
+ayush/.dart_tool/
+ayush/.flutter-plugins
+ayush/.flutter-plugins-dependencies
+ayush/android/.gradle/
