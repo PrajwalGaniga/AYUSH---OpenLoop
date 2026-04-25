@@ -10,6 +10,7 @@ from modules.onboarding.router import router as onboarding_router
 from modules.food.router import router as food_router
 from modules.recipe.router import router as recipe_router
 from modules.yoga.router import router as yoga_router
+from modules.plant.router import router as plant_router
 from config.settings import settings
 
 
@@ -46,6 +47,9 @@ app.include_router(recipe_router, prefix="/api/v1")
 
 # Yoga Posture Analyzer routes
 app.include_router(yoga_router)
+
+# Plant Identifier routes
+app.include_router(plant_router)
 
 
 @app.get("/health", tags=["System"])

@@ -28,6 +28,13 @@ import 'features/yoga/models/asana.dart';
 import 'features/auth/presentation/screens/profile_screen.dart';
 import 'features/auth/presentation/screens/edit_profile_screen.dart';
 import 'core/theme/app_theme.dart';
+import 'features/plant/screens/plant_camera_screen.dart';
+import 'features/plant/screens/plant_confirmation_screen.dart';
+import 'features/plant/screens/plant_result_screen.dart';
+import 'features/plant/screens/plant_ask_screen.dart';
+import 'features/plant/models/plant_prediction.dart';
+import 'features/plant/models/plant.dart';
+import 'dart:io';
 
 final _router = GoRouter(
   initialLocation: '/splash',
@@ -74,6 +81,34 @@ final _router = GoRouter(
     // Profile Module
     GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen()),
     GoRoute(path: '/profile/edit', builder: (_, __) => const EditProfileScreen()),
+
+    // Plant Identifier Module
+    GoRoute(path: '/plant/camera', builder: (_, __) => const PlantCameraScreen()),
+    GoRoute(
+      path: '/plant/confirm',
+      builder: (_, state) {
+        final extras = state.extra as Map<String, dynamic>;
+        return PlantConfirmationScreen(
+          predictions: extras['predictions'] as List<PlantPrediction>,
+          imageFile: extras['imageFile'] as File,
+        );
+      },
+    ),
+    GoRoute(
+      path: '/plant/result',
+      builder: (_, state) {
+        final extras = state.extra as Map<String, dynamic>;
+        return PlantResultScreen(
+          plantKey: extras['plantKey'] as String,
+          confidence: extras['confidence'] as double,
+          capturedImage: extras['imageFile'] as File,
+        );
+      },
+    ),
+    GoRoute(
+      path: '/plant/ask',
+      builder: (_, state) => PlantAskScreen(plant: state.extra as Plant),
+    ),
   ],
 );
 class AyushApp extends StatelessWidget {

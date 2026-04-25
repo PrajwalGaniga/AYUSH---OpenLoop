@@ -1,0 +1,2607 @@
+{
+  "metadata": {
+    "project": "AYUSH",
+    "module": "6 — Medicinal Plant Identifier",
+    "version": "1.0",
+    "total_plants": 30,
+    "tflite_model": "plant_classifier_int8.tflite",
+    "tflite_class_order": [
+      "aloevera",
+      "amla",
+      "amruthaballi",
+      "betel",
+      "bhrami",
+      "bringaraja",
+      "castor",
+      "curry",
+      "doddpathre",
+      "drumstick",
+      "ginger",
+      "hibiscus",
+      "jasmine",
+      "lemongrass",
+      "marigold",
+      "mint",
+      "neem",
+      "tulsi",
+      "turmeric",
+      "catharanthus",
+      "nelavembu",
+      "eucalyptus",
+      "honge",
+      "coriander",
+      "tamarind",
+      "guava",
+      "ekka",
+      "asthma_weed",
+      "bamboo",
+      "arali"
+    ],
+    "confidence_thresholds": {
+      "high": 0.7,
+      "medium": 0.5
+    },
+    "disclaimer": "This information is for educational purposes only and is not a substitute for professional medical advice. Always consult a qualified Ayurvedic practitioner or physician before using any medicinal plant, especially if you are pregnant, nursing, or on medication."
+  },
+  "plants": {
+    "aloevera": {
+      "id": 0,
+      "tflite_class_index": 0,
+      "names": {
+        "common": "Aloe Vera",
+        "scientific": "Aloe barbadensis miller",
+        "sanskrit": "Kumari",
+        "kannada": "Lolisara",
+        "hindi": "Ghritkumari",
+        "tamil": "Sotru Kathalai"
+      },
+      "quick_facts": {
+        "plant_type": "Succulent",
+        "parts_used": [
+          "Gel (leaf interior)",
+          "Latex (leaf skin)"
+        ],
+        "primary_use": "Skin healing and digestion",
+        "taste_rasa": "Bitter, Astringent",
+        "virya": "Sheeta (Cooling)",
+        "vipaka": "Katu (Pungent)",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "pacifies",
+        "pitta": "pacifies",
+        "kapha": "neutral",
+        "summary": "Tridoshic — primarily Pitta and Vata pacifying"
+      },
+      "prakriti_advice": {
+        "vata": "Use gel externally freely. Internal juice: limit to 30ml/day, take warm.",
+        "pitta": "Most beneficial for Pitta — cooling gel and juice both ideal.",
+        "kapha": "Use sparingly internally — the heavy, cold nature can aggravate Kapha."
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Guru (Heavy)",
+          "Snigdha (Unctuous)",
+          "Sheet (Cold)"
+        ],
+        "agni_impact": "Manda — mildly suppresses digestive fire in excess",
+        "classical_reference": "Charaka Samhita — classified as Bhedaniya (purgative) and Shothahara (anti-inflammatory)"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Sunburn and minor burns",
+          "method": "Apply fresh gel directly to affected area",
+          "frequency": "3-4 times daily",
+          "duration": "Until healed"
+        },
+        {
+          "use": "Constipation",
+          "method": "30ml aloe juice mixed with water on empty stomach",
+          "frequency": "Once daily, morning",
+          "duration": "Not more than 7 consecutive days"
+        },
+        {
+          "use": "Acne and skin inflammation",
+          "method": "Apply gel as face mask, leave 20 minutes, rinse",
+          "frequency": "Daily",
+          "duration": "Ongoing"
+        },
+        {
+          "use": "Digestive irritation and acid reflux",
+          "method": "10ml aloe gel in 100ml water, 30 min before meals",
+          "frequency": "Twice daily",
+          "duration": "4 weeks maximum"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Fresh gel directly from leaf — most potent form",
+          "Mixed in face packs with turmeric or sandalwood",
+          "As scalp massage for dandruff and hair fall"
+        ],
+        "internal": [
+          "Fresh juice: 20-30ml diluted in water",
+          "Aloe vera churna (powder): 3-6g with warm water"
+        ],
+        "avoided_forms": [
+          "Raw latex (yellow layer under skin) — strongly purgative and potentially harmful",
+          "Avoid internal use during pregnancy — uterine stimulant"
+        ]
+      },
+      "contraindications": [
+        "Pregnancy — stimulates uterine contractions",
+        "Breastfeeding — passes into breast milk",
+        "Pre-surgery — increases bleeding risk (stop 2 weeks before)",
+        "Children under 12 — internal use not recommended",
+        "Diabetics on medication — may cause dangerous hypoglycemia when combined"
+      ],
+      "drug_interactions": [
+        {
+          "drug_class": "Diuretics (Furosemide)",
+          "interaction": "Aloe latex causes potassium loss — combined with diuretics can cause severe hypokalemia",
+          "severity": "High"
+        },
+        {
+          "drug_class": "Diabetes medications (Metformin, Insulin)",
+          "interaction": "Additive blood sugar lowering — risk of hypoglycemia",
+          "severity": "Moderate"
+        },
+        {
+          "drug_class": "Blood thinners (Warfarin)",
+          "interaction": "May increase bleeding time",
+          "severity": "Moderate"
+        }
+      ],
+      "condition_suitability": {
+        "safe_for": [
+          "Acne-prone skin",
+          "Acid reflux (mild)",
+          "Sunburn",
+          "Dry skin"
+        ],
+        "avoid_if": [
+          "Pregnant",
+          "Kidney disease",
+          "Intestinal obstruction",
+          "Hemorrhoids (internal use)"
+        ],
+        "use_with_caution": [
+          "Diabetes (monitor glucose)",
+          "Elderly (electrolyte monitoring)"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Grishma (Summer) — cooling properties most therapeutic in heat",
+        "avoid_season": "Shishira (Winter) — Sheeta virya aggravates cold-type Vata"
+      },
+      "fun_fact": "The ancient Egyptians called Aloe Vera the 'Plant of Immortality' — it was used in the burial rituals of pharaohs. Cleopatra reportedly used aloe gel as part of her daily skincare routine.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/aloevera.png"
+    },
+    "amla": {
+      "id": 1,
+      "tflite_class_index": 1,
+      "names": {
+        "common": "Amla",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/amla.png"
+    },
+    "amruthaballi": {
+      "id": 2,
+      "tflite_class_index": 2,
+      "names": {
+        "common": "Amruthaballi",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/amruthaballi.png"
+    },
+    "betel": {
+      "id": 3,
+      "tflite_class_index": 3,
+      "names": {
+        "common": "Betel",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/betel.png"
+    },
+    "bhrami": {
+      "id": 4,
+      "tflite_class_index": 4,
+      "names": {
+        "common": "Bhrami",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/bhrami.png"
+    },
+    "bringaraja": {
+      "id": 5,
+      "tflite_class_index": 5,
+      "names": {
+        "common": "Bringaraja",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/bringaraja.png"
+    },
+    "castor": {
+      "id": 6,
+      "tflite_class_index": 6,
+      "names": {
+        "common": "Castor",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/castor.png"
+    },
+    "curry": {
+      "id": 7,
+      "tflite_class_index": 7,
+      "names": {
+        "common": "Curry",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/curry.png"
+    },
+    "doddpathre": {
+      "id": 8,
+      "tflite_class_index": 8,
+      "names": {
+        "common": "Doddpathre",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/doddpathre.png"
+    },
+    "drumstick": {
+      "id": 9,
+      "tflite_class_index": 9,
+      "names": {
+        "common": "Drumstick",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/drumstick.png"
+    },
+    "ginger": {
+      "id": 10,
+      "tflite_class_index": 10,
+      "names": {
+        "common": "Ginger",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/ginger.png"
+    },
+    "hibiscus": {
+      "id": 11,
+      "tflite_class_index": 11,
+      "names": {
+        "common": "Hibiscus",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/hibiscus.png"
+    },
+    "jasmine": {
+      "id": 12,
+      "tflite_class_index": 12,
+      "names": {
+        "common": "Jasmine",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/jasmine.png"
+    },
+    "lemongrass": {
+      "id": 13,
+      "tflite_class_index": 13,
+      "names": {
+        "common": "Lemongrass",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/lemongrass.png"
+    },
+    "marigold": {
+      "id": 14,
+      "tflite_class_index": 14,
+      "names": {
+        "common": "Marigold",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/marigold.png"
+    },
+    "mint": {
+      "id": 15,
+      "tflite_class_index": 15,
+      "names": {
+        "common": "Mint",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/mint.png"
+    },
+    "neem": {
+      "id": 16,
+      "tflite_class_index": 16,
+      "names": {
+        "common": "Neem",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/neem.png"
+    },
+    "tulsi": {
+      "id": 17,
+      "tflite_class_index": 17,
+      "names": {
+        "common": "Tulsi",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/tulsi.png"
+    },
+    "turmeric": {
+      "id": 18,
+      "tflite_class_index": 18,
+      "names": {
+        "common": "Turmeric",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/turmeric.png"
+    },
+    "catharanthus": {
+      "id": 19,
+      "tflite_class_index": 19,
+      "names": {
+        "common": "Catharanthus",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/catharanthus.png"
+    },
+    "nelavembu": {
+      "id": 20,
+      "tflite_class_index": 20,
+      "names": {
+        "common": "Nelavembu",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/nelavembu.png"
+    },
+    "eucalyptus": {
+      "id": 21,
+      "tflite_class_index": 21,
+      "names": {
+        "common": "Eucalyptus",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/eucalyptus.png"
+    },
+    "honge": {
+      "id": 22,
+      "tflite_class_index": 22,
+      "names": {
+        "common": "Honge",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/honge.png"
+    },
+    "coriander": {
+      "id": 23,
+      "tflite_class_index": 23,
+      "names": {
+        "common": "Coriander",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/coriander.png"
+    },
+    "tamarind": {
+      "id": 24,
+      "tflite_class_index": 24,
+      "names": {
+        "common": "Tamarind",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/tamarind.png"
+    },
+    "guava": {
+      "id": 25,
+      "tflite_class_index": 25,
+      "names": {
+        "common": "Guava",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/guava.png"
+    },
+    "ekka": {
+      "id": 26,
+      "tflite_class_index": 26,
+      "names": {
+        "common": "Ekka",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "caution_external_only",
+      "toxicity_warning": "Latex is caustic — external use only, never near eyes. Internal use only under Ayurvedic expert supervision.",
+      "image_asset": "assets/plants/ekka.png"
+    },
+    "asthma_weed": {
+      "id": 27,
+      "tflite_class_index": 27,
+      "names": {
+        "common": "Asthma Weed",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/asthma_weed.png"
+    },
+    "bamboo": {
+      "id": 28,
+      "tflite_class_index": 28,
+      "names": {
+        "common": "Bamboo",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "safe_with_guidance",
+      "toxicity_warning": null,
+      "image_asset": "assets/plants/bamboo.png"
+    },
+    "arali": {
+      "id": 29,
+      "tflite_class_index": 29,
+      "names": {
+        "common": "Arali",
+        "scientific": "Scientific Name Placeholder",
+        "sanskrit": "Sanskrit Placeholder",
+        "kannada": "Kannada Placeholder",
+        "hindi": "Hindi Placeholder",
+        "tamil": "Tamil Placeholder"
+      },
+      "quick_facts": {
+        "plant_type": "Placeholder",
+        "parts_used": [
+          "Placeholder"
+        ],
+        "primary_use": "Placeholder",
+        "taste_rasa": "Placeholder",
+        "virya": "Placeholder",
+        "vipaka": "Placeholder",
+        "ama_risk": "low"
+      },
+      "dosha_effect": {
+        "vata": "neutral",
+        "pitta": "neutral",
+        "kapha": "neutral",
+        "summary": "Placeholder dosha summary"
+      },
+      "prakriti_advice": {
+        "vata": "Placeholder vata advice",
+        "pitta": "Placeholder pitta advice",
+        "kapha": "Placeholder kapha advice"
+      },
+      "ayurvedic_properties": {
+        "guna": [
+          "Placeholder Guna"
+        ],
+        "agni_impact": "Placeholder agni impact",
+        "classical_reference": "Placeholder classical reference"
+      },
+      "medicinal_uses": [
+        {
+          "use": "Placeholder Use",
+          "method": "Placeholder Method",
+          "frequency": "Placeholder Frequency",
+          "duration": "Placeholder Duration"
+        }
+      ],
+      "intake_methods": {
+        "external": [
+          "Placeholder external use"
+        ],
+        "internal": [
+          "Placeholder internal use"
+        ],
+        "avoided_forms": [
+          "Placeholder avoided form"
+        ]
+      },
+      "contraindications": [
+        "Placeholder contraindication"
+      ],
+      "drug_interactions": [],
+      "condition_suitability": {
+        "safe_for": [
+          "Placeholder condition"
+        ],
+        "avoid_if": [
+          "Placeholder condition"
+        ],
+        "use_with_caution": [
+          "Placeholder condition"
+        ]
+      },
+      "seasonal_advice": {
+        "best_season": "Placeholder best season",
+        "avoid_season": "Placeholder avoid season"
+      },
+      "fun_fact": "Placeholder fun fact. Team to fill in later.",
+      "safety_level": "toxic_expert_only",
+      "toxicity_warning": "TOXIC — Nerium oleander contains cardiac glycosides. Internal use can cause fatal arrhythmia. Never self-administer. Display red banner in Flutter.",
+      "image_asset": "assets/plants/arali.png"
+    }
+  },
+  "safety_level_config": {
+    "safe_with_guidance": {
+      "banner_color": "#2d6a4f",
+      "banner_text": "Generally safe — follow recommended doses",
+      "icon": "✓"
+    },
+    "caution_external_only": {
+      "banner_color": "#f4a261",
+      "banner_text": "External use only — do not ingest without expert guidance",
+      "icon": "⚠️"
+    },
+    "toxic_expert_only": {
+      "banner_color": "#e63946",
+      "banner_text": "TOXIC — For educational reference only. Never self-administer.",
+      "icon": "☠️"
+    }
+  }
+}

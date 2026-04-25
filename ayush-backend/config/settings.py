@@ -13,6 +13,8 @@ class Settings(BaseSettings):
     cors_origins: str = '["*"]'
     module_3_api_key: str
     youtube_api_key: str
+    plant_gemini_api_key: str = ""
+    plant_gemini_model: str = "gemini-2.5-flash"
 
     class Config:
         env_file = ".env"

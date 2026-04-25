@@ -3,7 +3,11 @@ import base64
 import math
 import numpy as np
 import cv2
+from mediapipe.tasks import python as mp_python
+from mediapipe.tasks.python import vision as mp_vision
+from mediapipe.tasks.python.components.containers import landmark as mp_landmark
 import mediapipe as mp
+import urllib.request
 from pathlib import Path
 from modules.yoga.schemas import PoseCheckRequest, PoseCheckResponse, JointFeedback
 
@@ -13,14 +17,26 @@ reference_data = json.loads(REFERENCE_POSES_PATH.read_text(encoding="utf-8"))
 ASANA_DB = reference_data["asanas"]
 TOLERANCE = reference_data["metadata"]["angle_tolerance_degrees"]
 
-# Initialize MediaPipe once at startup
-mp_pose = mp.solutions.pose
-pose_detector = mp_pose.Pose(
-    static_image_mode=True,
-    model_complexity=1,
-    min_detection_confidence=0.5,
+# Download the pose landmarker model if not present
+MODEL_PATH = Path("yolo-model/pose_landmarker_full.task")
+if not MODEL_PATH.exists():
+    print("Downloading MediaPipe pose landmarker model...")
+    urllib.request.urlretrieve(
+        "https://storage.googleapis.com/mediapipe-models/pose_landmarker/pose_landmarker_full/float16/latest/pose_landmarker_full.task",
+        MODEL_PATH
+    )
+    print("Model downloaded.")
+
+base_options = mp_python.BaseOptions(model_asset_path=str(MODEL_PATH))
+options = mp_vision.PoseLandmarkerOptions(
+    base_options=base_options,
+    running_mode=mp_vision.RunningMode.IMAGE,
+    num_poses=1,
+    min_pose_detection_confidence=0.5,
+    min_pose_presence_confidence=0.5,
     min_tracking_confidence=0.5
 )
+pose_detector = mp_vision.PoseLandmarker.create_from_options(options)
 
 def calculate_angle(a, b, c) -> float:
     """
@@ -90,9 +106,13 @@ def check_pose(request: PoseCheckRequest) -> PoseCheckResponse:
     h, w = frame.shape[:2]
     
     # Run MediaPipe
-    results = pose_detector.process(frame_rgb)
+    mp_image = mp.Image(
+        image_format=mp.ImageFormat.SRGB,
+        data=frame_rgb
+    )
+    results = pose_detector.detect(mp_image)
     
-    if not results.pose_landmarks:
+    if not results.pose_landmarks or len(results.pose_landmarks) == 0:
         return PoseCheckResponse(
             asana_id=asana_id,
             overall_correct=False,
@@ -104,16 +124,16 @@ def check_pose(request: PoseCheckRequest) -> PoseCheckResponse:
             landmarks=[]
         )
     
-    lm = results.pose_landmarks.landmark
+    lm = results.pose_landmarks[0]
     
     landmark_list = [
-        {"x": round(lm[i].x, 4), "y": round(lm[i].y, 4), "visibility": round(lm[i].visibility, 3)}
+        {"x": round(lm[i].x, 4), "y": round(lm[i].y, 4), "visibility": round(lm[i].visibility or 0.0, 3)}
         for i in range(33)
     ]
     
     # Check visibility of key landmarks
     key_indices = [11, 12, 23, 24, 25, 26, 27, 28]
-    visibility_scores = [lm[i].visibility for i in key_indices]
+    visibility_scores = [(lm[i].visibility or 0.0) for i in key_indices]
     if min(visibility_scores) < 0.3:
         return PoseCheckResponse(
             asana_id=asana_id,

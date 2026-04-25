@@ -1,0 +1,194 @@
+{
+    "metadata": {
+        "project": "AYUSH",
+        "module": "6 — Medicinal Plant Identifier",
+        "version": "1.0",
+        "total_plants": 30,
+        "tflite_class_order": [
+            "aloevera",
+            "amla",
+            "amruthaballi",
+            "betel",
+            "bhrami",
+            "bringaraja",
+            "castor",
+            "curry",
+            "doddpathre",
+            "drumstick",
+            "ginger",
+            "hibiscus",
+            "jasmine",
+            "lemongrass",
+            "marigold",
+            "mint",
+            "neem",
+            "tulsi",
+            "turmeric",
+            "catharanthus",
+            "nelavembu",
+            "eucalyptus",
+            "honge",
+            "coriander",
+            "tamarind",
+            "guava",
+            "ekka",
+            "asthma_weed",
+            "bamboo",
+            "arali"
+        ],
+        "disclaimer": "This information is for educational purposes only and is not a substitute for professional medical advice. Always consult a qualified Ayurvedic practitioner or physician before using any medicinal plant, especially if you are pregnant, nursing, or on medication."
+    },
+    "plants": {
+        "aloevera": {
+            "id": 0,
+            "tflite_class_index": 0,
+            "names": {
+                "common": "Aloe Vera",
+                "scientific": "Aloe barbadensis miller",
+                "sanskrit": "Kumari",
+                "kannada": "Lolisara",
+                "hindi": "Ghritkumari",
+                "tamil": "Sotru Kathalai"
+            },
+            "quick_facts": {
+                "plant_type": "Succulent",
+                "parts_used": [
+                    "Gel (leaf interior)",
+                    "Latex (leaf skin)"
+                ],
+                "primary_use": "Skin healing and digestion",
+                "taste_rasa": "Bitter, Astringent",
+                "virya": "Sheeta (Cooling)",
+                "vipaka": "Katu (Pungent)",
+                "ama_risk": "low"
+            },
+            "dosha_effect": {
+                "vata": "pacifies",
+                "pitta": "pacifies",
+                "kapha": "neutral",
+                "summary": "Tridoshic — primarily Pitta and Vata pacifying"
+            },
+            "prakriti_advice": {
+                "vata": "Use gel externally freely. Internal juice: limit to 30ml/day, take warm.",
+                "pitta": "Most beneficial for Pitta — cooling gel and juice both ideal.",
+                "kapha": "Use sparingly internally — the heavy, cold nature can aggravate Kapha."
+            },
+            "ayurvedic_properties": {
+                "guna": [
+                    "Guru (Heavy)",
+                    "Snigdha (Unctuous)",
+                    "Sheet (Cold)"
+                ],
+                "agni_impact": "Manda — mildly suppresses digestive fire in excess",
+                "classical_reference": "Charaka Samhita — classified as Bhedaniya (purgative) and Shothahara (anti-inflammatory)"
+            },
+            "medicinal_uses": [
+                {
+                    "use": "Sunburn and minor burns",
+                    "method": "Apply fresh gel directly to affected area",
+                    "frequency": "3-4 times daily",
+                    "duration": "Until healed"
+                },
+                {
+                    "use": "Constipation",
+                    "method": "30ml aloe juice mixed with water on empty stomach",
+                    "frequency": "Once daily, morning",
+                    "duration": "Not more than 7 consecutive days"
+                },
+                {
+                    "use": "Acne and skin inflammation",
+                    "method": "Apply gel as face mask, leave 20 minutes, rinse",
+                    "frequency": "Daily",
+                    "duration": "Ongoing"
+                },
+                {
+                    "use": "Digestive irritation and acid reflux",
+                    "method": "10ml aloe gel in 100ml water, 30 min before meals",
+                    "frequency": "Twice daily",
+                    "duration": "4 weeks maximum"
+                }
+            ],
+            "intake_methods": {
+                "external": [
+                    "Fresh gel directly from leaf — most potent form",
+                    "Mixed in face packs with turmeric or sandalwood",
+                    "As scalp massage for dandruff and hair fall"
+                ],
+                "internal": [
+                    "Fresh juice: 20-30ml diluted in water",
+                    "Aloe vera churna (powder): 3-6g with warm water"
+                ],
+                "avoided_forms": [
+                    "Raw latex (yellow layer under skin) — strongly purgative and potentially harmful",
+                    "Avoid internal use during pregnancy — uterine stimulant"
+                ]
+            },
+            "contraindications": [
+                "Pregnancy — stimulates uterine contractions",
+                "Breastfeeding — passes into breast milk",
+                "Pre-surgery — increases bleeding risk (stop 2 weeks before)",
+                "Children under 12 — internal use not recommended",
+                "Diabetics on medication — may cause dangerous hypoglycemia when combined"
+            ],
+            "drug_interactions": [
+                {
+                    "drug_class": "Diuretics (Furosemide)",
+                    "interaction": "Aloe latex causes potassium loss — combined with diuretics can cause severe hypokalemia",
+                    "severity": "High"
+                },
+                {
+                    "drug_class": "Diabetes medications (Metformin, Insulin)",
+                    "interaction": "Additive blood sugar lowering — risk of hypoglycemia",
+                    "severity": "Moderate"
+                },
+                {
+                    "drug_class": "Blood thinners (Warfarin)",
+                    "interaction": "May increase bleeding time",
+                    "severity": "Moderate"
+                }
+            ],
+            "condition_suitability": {
+                "safe_for": [
+                    "Acne-prone skin",
+                    "Acid reflux (mild)",
+                    "Sunburn",
+                    "Dry skin"
+                ],
+                "avoid_if": [
+                    "Pregnant",
+                    "Kidney disease",
+                    "Intestinal obstruction",
+                    "Hemorrhoids (internal use)"
+                ],
+                "use_with_caution": [
+                    "Diabetes (monitor glucose)",
+                    "Elderly (electrolyte monitoring)"
+                ]
+            },
+            "seasonal_advice": {
+                "best_season": "Grishma (Summer) — cooling properties most therapeutic in heat",
+                "avoid_season": "Shishira (Winter) — Sheeta virya aggravates cold-type Vata"
+            },
+            "fun_fact": "The ancient Egyptians called Aloe Vera the 'Plant of Immortality' — it was used in the burial rituals of pharaohs. Cleopatra reportedly used aloe gel as part of her daily skincare routine.",
+            "safety_level": "safe_with_guidance",
+            "toxicity_warning": null,
+            "image_asset": "assets/plants/aloevera.png"
+        }
+    },
+    "viruddha_combinations": [
+        {
+            "plant_ids": [
+                "arali"
+            ],
+            "warning": "Arali (Oleander) is TOXIC — never self-administer internally",
+            "severity": "critical"
+        },
+        {
+            "plant_ids": [
+                "ekka"
+            ],
+            "warning": "Ekka latex is caustic — external use only, away from eyes",
+            "severity": "high"
+        }
+    ]
+}
