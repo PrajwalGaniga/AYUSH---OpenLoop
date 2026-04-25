@@ -15,6 +15,8 @@ from modules.community.router import router as community_router
 from modules.sos.router import router as sos_router
 from modules.packaged_food.router import router as packaged_food_router
 from modules.biometrics.router import router as biometrics_router
+from modules.predict.router import router as predict_router
+from modules.predict.ojas_predictor import init_predictor
 from config.settings import settings
 from pathlib import Path
 from fastapi.staticfiles import StaticFiles
@@ -27,7 +29,18 @@ async def lifespan(app: FastAPI):
     print("[Startup] Connecting to database...")
     await connect_db()
     print("[Startup] Database connected.")
-    
+
+    # Load OJAS LSTM model singleton
+    print("[Startup] Loading OJAS LSTM predictor...")
+    try:
+        init_predictor(
+            model_path="models/ojas_lstm_final.pt",
+            normalizer_path="models/normalizer_v2.json"
+        )
+        print("[Startup] ✔ OJAS LSTM predictor loaded and ready")
+    except Exception as e:
+        print(f"[Startup] ⚠ OJAS predictor failed to load: {e}")
+
     # Community module startup
     print("[Startup] Setting up community module...")
     Path("uploads/community").mkdir(parents=True, exist_ok=True)
@@ -93,6 +106,9 @@ app.include_router(packaged_food_router)
 
 # Biometrics / Tongue Analysis routes
 app.include_router(biometrics_router, prefix="/api/v1/biometrics", tags=["Biometrics"])
+
+# OJAS LSTM Prediction routes
+app.include_router(predict_router)
 
 # Mount static files for uploads
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")

@@ -1,0 +1,97 @@
+════════════════════════════════════════════════════════════════
+  AYUSH LSTM DATASET — QUALITY AUDIT REPORT
+════════════════════════════════════════════════════════════════
+
+  SHAPES
+  raw rows                     9,000
+  X sequences                  (4200, 7, 13)
+  y labels                     (4200,)
+
+  ARCHETYPE DISTRIBUTION
+  pitta_worker          2250 rows
+  vata_irregular        2250 rows
+  kapha_sedentary       2250 rows
+  balanced_healthy      2250 rows
+
+  TARGET (ojas_score) DISTRIBUTION
+  min                  15.00
+  max                  70.00
+  mean                 41.99
+  std                  12.94
+  p10/p25/p50/p75/p90  24.7 / 32.7 / 42.2 / 50.3 / 59.8
+
+  FEATURE STATISTICS (pre-normalisation)
+  Feature                            Mean      Std      Min      Max
+  ──────────────────────────────────────────────────────────────────
+  food_quality_score                 0.41     0.18     0.00     1.00
+  viruddha_violations                0.20     0.23     0.00     1.00
+  yoga_done                          0.32     0.47     0.00     1.00
+  yoga_accuracy_percent              0.25     0.37     0.00     1.00
+  ojas_score                         0.50     0.18     0.00     1.00
+  tongue_coating                     0.54     0.24     0.00     1.00
+  tongue_color                       0.43     0.24     0.00     1.00
+  eye_redness                        0.44     0.15     0.00     1.00
+  heart_rate_bpm                     0.52     0.17     0.00     1.00
+  sleep_quality                      0.60     0.24     0.00     1.00
+  stress_level                       0.41     0.20     0.00     1.00
+  energy_level                       0.43     0.20     0.00     1.00
+  days_since_last_violation          0.05     0.11     0.00     1.00
+
+  FEATURE-TARGET CORRELATION (|r| with ojas_score label)
+  Higher = feature is more predictive of ojas
+  ──────────────────────────────────────────────────
+  ojas_score                     +0.923  ██████████████████
+  energy_level                   +0.882  █████████████████
+  tongue_coating                 -0.444  ████████
+  food_quality_score             +0.332  ██████
+  days_since_last_violation      +0.268  █████
+  yoga_done                      +0.237  ████
+  yoga_accuracy_percent          +0.234  ████
+  viruddha_violations            -0.166  ███
+  stress_level                   -0.156  ███
+  heart_rate_bpm                 +0.129  ██
+  eye_redness                    -0.123  ██
+  tongue_color                   +0.116  ██
+  sleep_quality                  -0.019  
+
+  NORMALISATION PARAMS (fit on train set)
+  Feature                             Min      Max
+  ──────────────────────────────────────────────────
+  food_quality_score                15.00    97.30
+  viruddha_violations                0.00     5.00
+  yoga_done                          0.00     1.00
+  yoga_accuracy_percent              0.00   100.00
+  ojas_score                        15.00    84.60
+  tongue_coating                     0.40     5.00
+  tongue_color                       0.00     2.30
+  eye_redness                        0.02     2.77
+  heart_rate_bpm                    43.60    93.60
+  sleep_quality                      1.80    10.00
+  stress_level                       1.00     8.40
+  energy_level                       1.00     8.42
+  days_since_last_violation          0.00    25.00
+
+  DATA QUALITY CHECKS
+  NaN values                     0  ✔ PASS
+  Inf values                     0  ✔ PASS
+  Out-of-range (post-norm)       0  ✔ PASS
+
+  FILES WRITTEN
+  C:\Users\ASUS\Desktop\OpenLoop\lstm/synthetic_raw.csv        — 9,000 row flat dataset
+  C:\Users\ASUS\Desktop\OpenLoop\lstm/X_train.npy              — (N_train, 7, 13) normalised
+  C:\Users\ASUS\Desktop\OpenLoop\lstm/y_train.npy              — (N_train,) labels
+  C:\Users\ASUS\Desktop\OpenLoop\lstm/X_val.npy                — (N_val, 7, 13) normalised
+  C:\Users\ASUS\Desktop\OpenLoop\lstm/y_val.npy                — (N_val,) labels
+  C:\Users\ASUS\Desktop\OpenLoop\lstm/X_test.npy               — (N_test, 7, 13) normalised
+  C:\Users\ASUS\Desktop\OpenLoop\lstm/y_test.npy               — (N_test,) labels
+  C:\Users\ASUS\Desktop\OpenLoop\lstm/normalizer_params.json   — min/max per feature
+  C:\Users\ASUS\Desktop\OpenLoop\lstm/dataset_report.txt       — this report
+
+  LSTM INPUT SPEC
+  input shape                  (batch, 7, 13)
+  output shape                 (batch, 1)  — ojas_score in [0,100]
+  sequence length              7 days
+  forecast horizon             +3 days
+  features                     13 (all normalised to [0,1])
+
+════════════════════════════════════════════════════════════════
