@@ -34,6 +34,7 @@ import 'features/plant/screens/plant_result_screen.dart';
 import 'features/plant/screens/plant_ask_screen.dart';
 import 'features/plant/models/plant_prediction.dart';
 import 'features/plant/models/plant.dart';
+import 'features/community/screens/community_home_screen.dart';
 import 'dart:io';
 
 final _router = GoRouter(
@@ -109,6 +110,9 @@ final _router = GoRouter(
       path: '/plant/ask',
       builder: (_, state) => PlantAskScreen(plant: state.extra as Plant),
     ),
+
+    // Plant Community Module (Module 7)
+    GoRoute(path: '/community', builder: (_, __) => const CommunityHomeScreen()),
   ],
 );
 class AyushApp extends StatelessWidget {

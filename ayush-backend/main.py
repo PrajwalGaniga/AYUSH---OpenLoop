@@ -11,12 +11,30 @@ from modules.food.router import router as food_router
 from modules.recipe.router import router as recipe_router
 from modules.yoga.router import router as yoga_router
 from modules.plant.router import router as plant_router
+from modules.community.router import router as community_router
 from config.settings import settings
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+from database.mongodb import get_db
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await connect_db()
+    
+    # Community module startup
+    Path("uploads/community").mkdir(parents=True, exist_ok=True)
+    db = get_db()
+    plant_posts_collection = db["plant_posts"]
+    contact_requests_collection = db["contact_requests"]
+    
+    await plant_posts_collection.create_index([("status", 1), ("created_at", -1)])
+    await plant_posts_collection.create_index([("user_id", 1)])
+    await plant_posts_collection.create_index([("plant_name", "text")])
+    await plant_posts_collection.create_index([("location.geohash", 1)])
+    await contact_requests_collection.create_index([("to_user_id", 1), ("status", 1)])
+    await contact_requests_collection.create_index([("from_user_id", 1)])
+    
     yield
     await close_db()
 
@@ -50,6 +68,12 @@ app.include_router(yoga_router)
 
 # Plant Identifier routes
 app.include_router(plant_router)
+
+# Community module routes
+app.include_router(community_router)
+
+# Mount static files for uploads
+app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
 
 @app.get("/health", tags=["System"])
