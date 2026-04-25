@@ -58,7 +58,7 @@ class _PlantAskScreenState extends ConsumerState<PlantAskScreen> {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Ask About \${widget.plant.names.common}'),
+            Text('Ask About ${widget.plant.names.common}'),
             Text('Powered by Gemini AI', style: AyushTextStyles.caption.copyWith(color: AyushColors.primaryLight)),
           ],
         ),
@@ -158,7 +158,7 @@ class _PlantAskScreenState extends ConsumerState<PlantAskScreen> {
                   if (state.error != null && !state.isAsking)
                     Padding(
                       padding: const EdgeInsets.only(top: 16),
-                      child: Text('Error: \${state.error}', style: const TextStyle(color: Colors.red)),
+                      child: Text('Error: ${state.error}', style: const TextStyle(color: Colors.red)),
                     ),
 
                   // Answer Card

@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../models/plant_post.dart';
 import '../providers/community_provider.dart';
 import 'post_detail_screen.dart';
+import '../../auth/providers/auth_provider.dart';
 
 class CommunityFeedScreen extends ConsumerStatefulWidget {
   final double userLat;
@@ -133,6 +134,15 @@ class _PostCardState extends ConsumerState<_PostCard> {
   @override
   Widget build(BuildContext context) {
     final post = widget.post;
+    final authUser = ref.watch(authProvider).value;
+    final currentUserId = authUser?.userId ?? 'current_user';
+    final isOwner = post.userId == currentUserId;
+    
+    final displayName = isOwner ? 'My Post' : post.userDisplayName;
+    final avatarLetter = isOwner 
+        ? (authUser?.profile?['name']?.isNotEmpty == true ? authUser!.profile!['name'][0].toUpperCase() : 'M')
+        : (post.userDisplayName.isNotEmpty ? post.userDisplayName[0].toUpperCase() : '?');
+
     return Card(
       color: const Color(0xFF0D1F3C),
       elevation: 4,
@@ -147,11 +157,9 @@ class _PostCardState extends ConsumerState<_PostCard> {
               children: [
                 CircleAvatar(
                   radius: 18,
-                  backgroundColor: const Color(0xFF2d6a4f),
+                  backgroundColor: isOwner ? const Color(0xFF1E3A5F) : const Color(0xFF2d6a4f),
                   child: Text(
-                    post.userDisplayName.isNotEmpty
-                        ? post.userDisplayName[0].toUpperCase()
-                        : '?',
+                    avatarLetter,
                     style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -160,9 +168,11 @@ class _PostCardState extends ConsumerState<_PostCard> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(post.userDisplayName,
-                          style: const TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 13)),
+                      Text(displayName,
+                          style: TextStyle(
+                              color: isOwner ? const Color(0xFF4CAF50) : Colors.white, 
+                              fontWeight: FontWeight.bold, 
+                              fontSize: 13)),
                       Text(
                         '${post.location.neighborhood}${post.distanceLabel.isNotEmpty ? " · ${post.distanceLabel}" : ""}',
                         style: const TextStyle(color: Colors.white38, fontSize: 11),
@@ -261,7 +271,7 @@ class _PostCardState extends ConsumerState<_PostCard> {
                   padding: EdgeInsets.zero,
                   onPressed: () => ref
                       .read(nearbyPostsProvider.notifier)
-                      .toggleSave(post.postId, 'current_user'),
+                      .toggleSave(post.postId, currentUserId),
                 ),
                 const SizedBox(width: 8),
                 TextButton(

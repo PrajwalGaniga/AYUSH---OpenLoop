@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import '../data/community_repository.dart';
 import '../models/plant_post.dart';
+import '../../auth/providers/auth_provider.dart';
 
 // ── Repository provider ────────────────────────────────
 final communityRepositoryProvider = Provider((ref) => CommunityRepository());
@@ -78,8 +79,11 @@ class NearbyPostsNotifier extends AsyncNotifier<List<PlantPost>> {
     if (location == null) return [];
     final filter = ref.watch(communityFilterProvider);
     final repo = ref.read(communityRepositoryProvider);
+    final authUser = ref.watch(authProvider).value;
+    final userId = authUser?.userId ?? 'current_user';
+
     return repo.fetchNearbyPosts(
-      userId: 'current_user', // will be replaced with actual user id
+      userId: userId,
       lat: location.latitude,
       lng: location.longitude,
       radiusKm: filter.radiusKm,

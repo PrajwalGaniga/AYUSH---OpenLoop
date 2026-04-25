@@ -38,7 +38,7 @@ class _PlantResultScreenState extends ConsumerState<PlantResultScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(plantProvider);
     final plant = state.selectedPlant;
-    final prakriti = ref.watch(onboardingProvider).prakritiResult?.dominant?.toLowerCase() ?? 'vata'; // fallback
+    final prakriti = ref.watch(onboardingProvider).prakritiResult?.dominant?.toLowerCase() ?? 'vata';
 
     if (state.isLoading || plant == null) {
       return const Scaffold(
@@ -47,7 +47,15 @@ class _PlantResultScreenState extends ConsumerState<PlantResultScreen> {
       );
     }
 
-    final safetyConfig = PlantKnowledgeService.instance.getSafetyConfig(plant.safetyLevel);
+    final rawSafety = PlantKnowledgeService.instance.getSafetyConfig(plant.safetyLevel);
+    // Provide defaults if safety_level_config is missing from JSON
+    final safetyConfig = rawSafety.isNotEmpty ? rawSafety : {
+      'banner_color': '#2d6a4f',
+      'banner_text': 'Generally safe — follow recommended doses',
+      'icon': '✓',
+    };
+    final bannerColorHex = (safetyConfig['banner_color'] as String?)?.replaceAll('#', '0xFF') ?? '0xFF2d6a4f';
+    final bannerColor = Color(int.parse(bannerColorHex));
 
     return Scaffold(
       backgroundColor: AyushColors.background,
@@ -85,23 +93,30 @@ class _PlantResultScreenState extends ConsumerState<PlantResultScreen> {
             backgroundColor: AyushColors.herbalGreen,
             foregroundColor: Colors.white,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(plant.names.common, style: AyushTextStyles.h2.copyWith(color: Colors.white)),
-              background: Container(
-                decoration: const BoxDecoration(
-                  gradient: AyushColors.herbalGradient,
-                ),
-                child: SafeArea(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 40, bottom: 60),
-                      child: Image.asset(
-                        plant.imageAsset,
-                        fit: BoxFit.contain,
-                        errorBuilder: (_, __, ___) => const Icon(Icons.eco, size: 120, color: Colors.white54),
+              title: Text(plant.names.common, style: AyushTextStyles.h2.copyWith(color: Colors.white, shadows: [Shadow(color: Colors.black38, blurRadius: 4)])),
+              background: Stack(
+                fit: StackFit.expand,
+                children: [
+                  // Show the actual captured image as background
+                  Image.file(
+                    widget.capturedImage,
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, __, ___) => Container(
+                      decoration: const BoxDecoration(gradient: AyushColors.herbalGradient),
+                      child: const Center(child: Icon(Icons.eco, size: 120, color: Colors.white54)),
+                    ),
+                  ),
+                  // Dark overlay for text readability
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Colors.transparent, Colors.black.withOpacity(0.55)],
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
             ),
           ),
@@ -135,7 +150,7 @@ class _PlantResultScreenState extends ConsumerState<PlantResultScreen> {
                             borderRadius: BorderRadius.circular(AyushSpacing.radiusSm),
                           ),
                           child: Text(
-                            'Identified with \${(widget.confidence * 100).toStringAsFixed(1)}% confidence',
+                            'Identified with ${(widget.confidence * 100).toStringAsFixed(1)}% confidence',
                             style: AyushTextStyles.labelSmall.copyWith(
                               color: widget.confidence >= 0.70 ? AyushColors.herbalGreen : Colors.orange.shade900,
                             ),
@@ -174,21 +189,19 @@ class _PlantResultScreenState extends ConsumerState<PlantResultScreen> {
                   margin: const EdgeInsets.symmetric(horizontal: AyushSpacing.pagePadding),
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
-                    color: Color(int.parse((safetyConfig['banner_color'] as String).replaceAll('#', '0xFF'))).withOpacity(0.1),
+                    color: bannerColor.withOpacity(0.1),
                     borderRadius: BorderRadius.circular(AyushSpacing.radiusLg),
-                    border: Border.all(
-                      color: Color(int.parse((safetyConfig['banner_color'] as String).replaceAll('#', '0xFF'))),
-                    ),
+                    border: Border.all(color: bannerColor),
                   ),
                   child: Row(
                     children: [
-                      Text(safetyConfig['icon'] ?? '', style: const TextStyle(fontSize: 24)),
+                      Text(safetyConfig['icon']?.toString() ?? '✓', style: const TextStyle(fontSize: 24)),
                       const SizedBox(width: 12),
                       Expanded(
                         child: Text(
-                          safetyConfig['banner_text'] ?? '',
+                          safetyConfig['banner_text']?.toString() ?? 'Generally safe — follow recommended doses',
                           style: AyushTextStyles.bodyMedium.copyWith(
-                            color: Color(int.parse((safetyConfig['banner_color'] as String).replaceAll('#', '0xFF'))),
+                            color: bannerColor,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -244,7 +257,7 @@ class _PlantResultScreenState extends ConsumerState<PlantResultScreen> {
                           children: [
                             Icon(Icons.timer_outlined, size: 16, color: AyushColors.textSecondary),
                             const SizedBox(width: 4),
-                            Text('\${use.frequency} • \${use.duration}', style: AyushTextStyles.labelSmall),
+                            Text('${use.frequency} • ${use.duration}', style: AyushTextStyles.labelSmall),
                           ],
                         )
                       ],
@@ -349,19 +362,19 @@ class _PlantResultScreenState extends ConsumerState<PlantResultScreen> {
                         children: [
                           Icon(Icons.person, color: _getDoshaColor(prakriti)),
                           const SizedBox(width: 8),
-                          Text('Advice for \${prakriti[0].toUpperCase()}\${prakriti.substring(1)} Prakriti', style: AyushTextStyles.h3),
+                          Text('Advice for ${prakriti[0].toUpperCase()}${prakriti.substring(1)} Prakriti', style: AyushTextStyles.h3),
                         ],
                       ),
                       const SizedBox(height: 12),
                       Text(
-                        plant.prakritiAdvice[prakriti] ?? 'Consult a practitioner for specific advice.',
+                        plant.prakritiAdvice[prakriti] ?? 'Consult a qualified Ayurvedic practitioner for personalized advice.',
                         style: AyushTextStyles.bodyMedium,
                       ),
                       const Divider(height: 24),
                       Text('Seasonal Advice:', style: AyushTextStyles.labelMedium),
                       const SizedBox(height: 8),
-                      _buildBulletPoint('Best: \${plant.seasonalAdvice["best_season"]}'),
-                      _buildBulletPoint('Avoid: \${plant.seasonalAdvice["avoid_season"]}'),
+                      _buildBulletPoint('Best: ${plant.seasonalAdvice["best_season"] ?? "Consult a practitioner."}'),
+                      _buildBulletPoint('Avoid: ${plant.seasonalAdvice["avoid_season"] ?? "None documented."}'),
                     ],
                   ),
                 ),

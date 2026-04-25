@@ -1,6 +1,7 @@
 import google.generativeai as genai
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, UploadFile, File
 from modules.plant.schemas import PlantQuestionRequest, PlantQuestionResponse
+from modules.plant.predictor import PlantPredictor
 import os
 
 router = APIRouter(prefix="/api/v1/plant", tags=["plant"])
@@ -20,6 +21,21 @@ DISCLAIMER = (
     "It is not a substitute for professional medical advice. "
     "Always consult a qualified Ayurvedic practitioner before use."
 )
+
+@router.post("/identify")
+async def identify_plant(image: UploadFile = File(...)):
+    if not image.content_type.startswith("image/"):
+        raise HTTPException(status_code=400, detail="File must be an image")
+    
+    try:
+        predictor = PlantPredictor.get_instance()
+        image_bytes = await image.read()
+        predictions = predictor.predict(image_bytes)
+        return {"predictions": predictions}
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
 
 @router.post("/ask", response_model=PlantQuestionResponse)
 async def ask_plant_question(request: PlantQuestionRequest):

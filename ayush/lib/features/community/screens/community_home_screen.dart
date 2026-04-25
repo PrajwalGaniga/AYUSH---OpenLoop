@@ -18,6 +18,7 @@ class _CommunityHomeScreenState extends ConsumerState<CommunityHomeScreen> {
   int _currentIndex = 0;
   double _selectedRadius = 20.0;
   String? _selectedAvailability;
+  String? _selectedPlantName;
 
   @override
   Widget build(BuildContext context) {
@@ -162,6 +163,7 @@ class _CommunityHomeScreenState extends ConsumerState<CommunityHomeScreen> {
   void _showFilterSheet(BuildContext context) {
     double localRadius = _selectedRadius;
     String? localAvailability = _selectedAvailability;
+    final searchController = TextEditingController(text: _selectedPlantName);
 
     showModalBottomSheet(
       context: context,
@@ -191,6 +193,25 @@ class _CommunityHomeScreenState extends ConsumerState<CommunityHomeScreen> {
                 const SizedBox(height: 20),
                 const Text('Filter Posts',
                     style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 20),
+                const Text('Search Plant', style: TextStyle(color: Colors.white60, fontSize: 13)),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: searchController,
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    hintText: 'e.g. Aloe Vera, Tulsi...',
+                    hintStyle: const TextStyle(color: Colors.white38),
+                    prefixIcon: const Icon(Icons.search, color: Colors.white54),
+                    filled: true,
+                    fillColor: const Color(0xFF1E3A5F),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                    contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                  ),
+                ),
                 const SizedBox(height: 20),
                 const Text('Search radius', style: TextStyle(color: Colors.white60, fontSize: 13)),
                 const SizedBox(height: 10),
@@ -240,6 +261,7 @@ class _CommunityHomeScreenState extends ConsumerState<CommunityHomeScreen> {
                           setState(() {
                             _selectedRadius = 20.0;
                             _selectedAvailability = null;
+                            _selectedPlantName = null;
                           });
                           ref.read(communityFilterProvider.notifier).clear();
                           Navigator.pop(ctx);
@@ -260,9 +282,11 @@ class _CommunityHomeScreenState extends ConsumerState<CommunityHomeScreen> {
                           setState(() {
                             _selectedRadius = localRadius;
                             _selectedAvailability = localAvailability;
+                            _selectedPlantName = searchController.text.trim().isEmpty ? null : searchController.text.trim();
                           });
                           ref.read(communityFilterProvider.notifier).setRadius(localRadius);
                           ref.read(communityFilterProvider.notifier).setAvailability(localAvailability);
+                          ref.read(communityFilterProvider.notifier).setPlantName(_selectedPlantName);
                           ref.invalidate(nearbyPostsProvider);
                           Navigator.pop(ctx);
                         },

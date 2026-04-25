@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../data/community_repository.dart';
+import '../../../auth/providers/auth_provider.dart';
 
-class CreatePostLocationScreen extends StatefulWidget {
+class CreatePostLocationScreen extends ConsumerStatefulWidget {
   final List<File> photos;
   final String plantName;
   final String description;
@@ -24,11 +26,12 @@ class CreatePostLocationScreen extends StatefulWidget {
   });
 
   @override
-  State<CreatePostLocationScreen> createState() => _CreatePostLocationScreenState();
+  ConsumerState<CreatePostLocationScreen> createState() => _CreatePostLocationScreenState();
 }
 
-class _CreatePostLocationScreenState extends State<CreatePostLocationScreen> {
+class _CreatePostLocationScreenState extends ConsumerState<CreatePostLocationScreen> {
   Position? _position;
+  LatLng? _cameraPosition;
   String _neighborhood = 'Fetching location...';
   bool _isPosting = false;
   bool _locationError = false;
@@ -54,6 +57,7 @@ class _CreatePostLocationScreenState extends State<CreatePostLocationScreen> {
 
       setState(() {
         _position = pos;
+        _cameraPosition = LatLng(pos.latitude, pos.longitude);
         _neighborhood = neighborhood.isNotEmpty ? neighborhood : 'Unknown area';
         _locationError = false;
       });
@@ -62,6 +66,34 @@ class _CreatePostLocationScreenState extends State<CreatePostLocationScreen> {
         _locationError = true;
         _neighborhood = 'Location unavailable';
       });
+    }
+  }
+
+  Future<void> _updateNeighborhoodFromMap(LatLng pos) async {
+    try {
+      final placemarks = await placemarkFromCoordinates(pos.latitude, pos.longitude);
+      final place = placemarks.isNotEmpty ? placemarks.first : null;
+      final neighborhood = [
+        place?.subLocality,
+        place?.locality,
+      ].where((s) => s != null && s.isNotEmpty).join(', ');
+
+      setState(() {
+        _neighborhood = neighborhood.isNotEmpty ? neighborhood : 'Unknown area';
+        _position = Position(
+            longitude: pos.longitude,
+            latitude: pos.latitude,
+            timestamp: DateTime.now(),
+            accuracy: 0.0,
+            altitude: 0.0,
+            heading: 0.0,
+            speed: 0.0,
+            speedAccuracy: 0.0,
+            altitudeAccuracy: 0.0,
+            headingAccuracy: 0.0);
+      });
+    } catch (e) {
+      // Ignore errors when reverse geocoding fails during drag
     }
   }
 
@@ -75,9 +107,13 @@ class _CreatePostLocationScreenState extends State<CreatePostLocationScreen> {
 
     setState(() => _isPosting = true);
     try {
+      final authUser = ref.read(authProvider).value;
+      final userId = authUser?.userId ?? 'current_user';
+      final displayName = authUser?.profile?['name'] ?? 'Ayush User';
+
       await _repo.createPost(
-        userId: 'current_user', // replace with actual user id from auth
-        userDisplayName: 'Me',  // replace with actual display name
+        userId: userId,
+        userDisplayName: displayName,
         plantName: widget.plantName,
         plantKey: '',
         description: widget.description,
@@ -160,22 +196,33 @@ class _CreatePostLocationScreenState extends State<CreatePostLocationScreen> {
           SizedBox(
             height: 250,
             child: _position != null
-                ? GoogleMap(
-                    initialCameraPosition: CameraPosition(
-                      target: LatLng(_position!.latitude, _position!.longitude),
-                      zoom: 15,
-                    ),
-                    markers: {
-                      Marker(
-                        markerId: const MarkerId('user'),
-                        position: LatLng(_position!.latitude, _position!.longitude),
-                        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
+                ? Stack(
+                    children: [
+                      GoogleMap(
+                        initialCameraPosition: CameraPosition(
+                          target: LatLng(_position!.latitude, _position!.longitude),
+                          zoom: 15,
+                        ),
+                        onCameraMove: (position) {
+                          _cameraPosition = position.target;
+                        },
+                        onCameraIdle: () {
+                          if (_cameraPosition != null) {
+                            _updateNeighborhoodFromMap(_cameraPosition!);
+                          }
+                        },
+                        zoomControlsEnabled: false,
+                        myLocationButtonEnabled: true,
+                        scrollGesturesEnabled: true,
+                        zoomGesturesEnabled: true,
                       ),
-                    },
-                    zoomControlsEnabled: false,
-                    myLocationButtonEnabled: false,
-                    scrollGesturesEnabled: false,
-                    zoomGesturesEnabled: false,
+                      const Center(
+                        child: Padding(
+                          padding: EdgeInsets.only(bottom: 35),
+                          child: Icon(Icons.location_on, color: Color(0xFF4CAF50), size: 40),
+                        ),
+                      ),
+                    ],
                   )
                 : Container(
                     color: const Color(0xFF1E3A5F),

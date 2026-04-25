@@ -18,7 +18,14 @@ class PlantKnowledgeService {
     if (_loaded) return;
     final raw = await rootBundle.loadString('assets/data/plant_knowledge.json');
     _data = jsonDecode(raw);
+    _plantCache = {}; // clear cache on fresh load
     _loaded = true;
+  }
+
+  void reset() {
+    _loaded = false;
+    _plantCache = {};
+    _data = {};
   }
 
   Future<Plant?> getPlant(String plantKey) async {

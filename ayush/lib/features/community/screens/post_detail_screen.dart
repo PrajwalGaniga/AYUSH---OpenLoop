@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/plant_post.dart';
 import '../data/community_repository.dart';
+import '../../auth/providers/auth_provider.dart';
 
-class PostDetailScreen extends StatefulWidget {
+class PostDetailScreen extends ConsumerStatefulWidget {
   final PlantPost post;
   const PostDetailScreen({super.key, required this.post});
 
   @override
-  State<PostDetailScreen> createState() => _PostDetailScreenState();
+  ConsumerState<PostDetailScreen> createState() => _PostDetailScreenState();
 }
 
-class _PostDetailScreenState extends State<PostDetailScreen> {
+class _PostDetailScreenState extends ConsumerState<PostDetailScreen> {
   late PlantPost _post;
   int _photoIndex = 0;
-  // For MVP: using a placeholder current user id
-  final String _currentUserId = 'current_user';
   final _repo = CommunityRepository();
 
   @override
@@ -34,7 +34,10 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isOwner = _post.userId == _currentUserId;
+    final authUser = ref.watch(authProvider).value;
+    final currentUserId = authUser?.userId ?? 'current_user';
+    final currentUserName = authUser?.profile?['name'] ?? 'Ayush User';
+    final isOwner = _post.userId == currentUserId;
 
     return Scaffold(
       backgroundColor: const Color(0xFF0A1628),
@@ -67,7 +70,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                       _post.isSaved ? Icons.bookmark : Icons.bookmark_border,
                       color: _post.isSaved ? const Color(0xFF4CAF50) : Colors.white,
                     ),
-                    onPressed: _toggleSave,
+                    onPressed: () => _toggleSave(currentUserId),
                   ),
                 ],
                 flexibleSpace: FlexibleSpaceBar(
@@ -248,7 +251,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                   color: Color(0xFF0D1F3C),
                   border: Border(top: BorderSide(color: Color(0xFF1E3A5F))),
                 ),
-                child: _buildActionBar(isOwner, context),
+                child: _buildActionBar(isOwner, context, currentUserId, currentUserName),
               ),
             ),
           ),
@@ -257,7 +260,7 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
     );
   }
 
-  Widget _buildActionBar(bool isOwner, BuildContext context) {
+  Widget _buildActionBar(bool isOwner, BuildContext context, String currentUserId, String currentUserName) {
     if (isOwner) {
       return Row(
         children: [
@@ -287,8 +290,8 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
             padding: const EdgeInsets.symmetric(vertical: 16),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           ),
-          onPressed: () => _showContactSheet(context),
-          child: const Text('📨 Send Contact Request →', style: TextStyle(fontSize: 16)),
+          onPressed: () => _showContactSheet(context, currentUserId, currentUserName),
+          child: const Text('❓ Ask if available →', style: TextStyle(fontSize: 16)),
         ),
       );
     }
@@ -319,8 +322,8 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
     );
   }
 
-  void _showContactSheet(BuildContext context) {
-    final controller = TextEditingController();
+  void _showContactSheet(BuildContext context, String currentUserId, String currentUserName) {
+    final controller = TextEditingController(text: "Is this plant available now?");
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -392,8 +395,8 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
                   Navigator.pop(ctx);
                   try {
                     await _repo.sendContactRequest(
-                      fromUserId: _currentUserId,
-                      fromDisplayName: 'Me',
+                      fromUserId: currentUserId,
+                      fromDisplayName: currentUserName,
                       toUserId: _post.userId,
                       postId: _post.postId,
                       plantName: _post.plantName,
@@ -424,9 +427,9 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
     );
   }
 
-  void _toggleSave() async {
+  void _toggleSave(String currentUserId) async {
     try {
-      final newSaved = await _repo.toggleSave(_post.postId, _currentUserId);
+      final newSaved = await _repo.toggleSave(_post.postId, currentUserId);
       setState(() {
         _post = _post.copyWith(
           isSaved: newSaved,
@@ -453,7 +456,9 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
             onPressed: () async {
               Navigator.pop(context);
               try {
-                await _repo.deletePost(_post.postId, _currentUserId);
+                final authUser = ref.read(authProvider).value;
+                final currentUserId = authUser?.userId ?? 'current_user';
+                await _repo.deletePost(_post.postId, currentUserId);
                 if (mounted) {
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(
@@ -505,7 +510,9 @@ class _PostDetailScreenState extends State<PostDetailScreen> {
               onPressed: () async {
                 if (selected == null) return;
                 Navigator.pop(ctx);
-                await _repo.flagPost(_post.postId, _currentUserId, selected!);
+                final authUser = ref.read(authProvider).value;
+                final currentUserId = authUser?.userId ?? 'current_user';
+                await _repo.flagPost(_post.postId, currentUserId, selected!);
                 if (mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(content: Text('Post reported. We\'ll review it.')),
