@@ -13,6 +13,7 @@ from modules.yoga.router import router as yoga_router
 from modules.plant.router import router as plant_router
 from modules.community.router import router as community_router
 from modules.sos.router import router as sos_router
+from modules.packaged_food.router import router as packaged_food_router
 from config.settings import settings
 from pathlib import Path
 from fastapi.staticfiles import StaticFiles
@@ -75,6 +76,9 @@ app.include_router(community_router)
 
 # SOS / Fall Detection routes
 app.include_router(sos_router)
+
+# Packaged Food OCR Scanner routes
+app.include_router(packaged_food_router)
 
 # Mount static files for uploads
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")

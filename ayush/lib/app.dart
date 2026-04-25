@@ -35,6 +35,8 @@ import 'features/plant/screens/plant_ask_screen.dart';
 import 'features/plant/models/plant_prediction.dart';
 import 'features/plant/models/plant.dart';
 import 'features/community/screens/community_home_screen.dart';
+import 'features/packaged_food/screens/packaged_food_scan_screen.dart';
+import 'features/packaged_food/screens/packaged_food_result_screen.dart';
 import 'dart:io';
 
 final _router = GoRouter(
@@ -113,6 +115,10 @@ final _router = GoRouter(
 
     // Plant Community Module (Module 7)
     GoRoute(path: '/community', builder: (_, __) => const CommunityHomeScreen()),
+
+    // Packaged Food OCR Scanner
+    GoRoute(path: '/packaged-food/scan', builder: (_, __) => const PackagedFoodScanScreen()),
+    GoRoute(path: '/packaged-food/result', builder: (_, __) => const PackagedFoodResultScreen()),
   ],
 );
 class AyushApp extends StatelessWidget {

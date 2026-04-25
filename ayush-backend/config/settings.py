@@ -19,6 +19,8 @@ class Settings(BaseSettings):
     twilio_account_sid: str = ""
     twilio_auth_token: str = ""
     twilio_from_number: str = "+18146373200"
+    packaged_food_gemini_api_key: str = ""
+    packaged_food_gemini_model: str = "gemini-2.5-flash"
 
     class Config:
         env_file = ".env"

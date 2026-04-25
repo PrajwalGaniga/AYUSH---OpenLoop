@@ -217,6 +217,7 @@ class HomeScreen extends ConsumerWidget {
                         _buildActionCard(context, 'AI Recipe', Icons.restaurant_menu, AyushColors.kapha, AyushColors.kaphaLight, () => context.push('/recipe/select')),
                         _buildActionCard(context, 'Yoga Posture', Icons.self_improvement, AyushColors.pitta, AyushColors.pittaLight, () => context.push('/yoga/home')),
                         _buildActionCard(context, 'Plant Community', Icons.people_outline, const Color(0xFF2d6a4f), const Color(0xFFe8f5e9), () => context.push('/community')),
+                        _buildActionCard(context, 'Label Scan', Icons.qr_code_scanner, const Color(0xFF6A1B9A), const Color(0xFFF3E5F5), () => context.push('/packaged-food/scan')),
                       ],
                     ),
                   ],
