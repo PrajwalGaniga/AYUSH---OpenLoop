@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     twilio_from_number: str = "+18146373200"
     packaged_food_gemini_api_key: str = ""
     packaged_food_gemini_model: str = "gemini-2.5-flash"
+    radar_gemini_api_key: str = ""
 
     class Config:
         env_file = ".env"

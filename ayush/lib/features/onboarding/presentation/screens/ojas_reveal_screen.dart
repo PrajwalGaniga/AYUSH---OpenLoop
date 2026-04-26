@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' hide ChangeNotifierProvider;
 import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
@@ -9,6 +9,9 @@ import '../../../../core/constants/app_text_styles.dart';
 import '../../data/onboarding_models.dart';
 import '../../providers/onboarding_provider.dart';
 import '../../../../features/auth/presentation/widgets/ayush_button.dart';
+import '../../../../mixins/mentor_guidance_mixin.dart';
+import 'package:provider/provider.dart';
+import '../../../../providers/mentor_notifier.dart';
 
 class OjasRevealScreen extends ConsumerStatefulWidget {
   const OjasRevealScreen({super.key});
@@ -18,7 +21,7 @@ class OjasRevealScreen extends ConsumerStatefulWidget {
 }
 
 class _OjasRevealScreenState extends ConsumerState<OjasRevealScreen>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, MentorGuidanceMixin {
   late AnimationController _gaugeController;
   late AnimationController _countController;
   late AnimationController _dosha1Controller;
@@ -44,7 +47,7 @@ class _OjasRevealScreenState extends ConsumerState<OjasRevealScreen>
     _dosha2Controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 1200));
     _dosha3Controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 1200));
 
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
       _result = ref.read(onboardingProvider).ojasResult;
       _prakriti = ref.read(onboardingProvider).prakritiResult;
       setState(() {});
@@ -56,6 +59,14 @@ class _OjasRevealScreenState extends ConsumerState<OjasRevealScreen>
       Future.delayed(const Duration(milliseconds: 1200), () => _dosha1Controller.forward());
       Future.delayed(const Duration(milliseconds: 1400), () => _dosha2Controller.forward());
       Future.delayed(const Duration(milliseconds: 1600), () => _dosha3Controller.forward());
+
+      if (!mounted) return;
+      final mentor = context.read<MentorNotifier>().currentMentor;
+      await showMentorGuidanceIfFirstVisit(
+        screenKey: 'ojas_screen',
+        mentor: mentor,
+        context: 'ojas_explained',
+      );
     });
   }
 
@@ -136,9 +147,14 @@ class _OjasRevealScreenState extends ConsumerState<OjasRevealScreen>
                   const SizedBox(height: 40),
 
                   // ── OJAS Gauge ──────────────────────────────────────────────
-                  AnimatedBuilder(
-                    animation: _gaugeController,
-                    builder: (ctx, _) {
+                  GestureDetector(
+                    onLongPress: () => showMentorExplanation(
+                      context: context,
+                      contextKey: 'explain_ojas_card',
+                    ),
+                    child: AnimatedBuilder(
+                      animation: _gaugeController,
+                      builder: (ctx, _) {
                       final progress = CurvedAnimation(
                         parent: _gaugeController,
                         curve: Curves.easeOutCubic,
@@ -191,12 +207,18 @@ class _OjasRevealScreenState extends ConsumerState<OjasRevealScreen>
                       );
                     },
                   ).animate(delay: 400.ms).fadeIn(duration: 800.ms),
+                  ),
 
                   const SizedBox(height: 40),
 
                   // ── Prakriti type ───────────────────────────────────────────
-                  Container(
-                    padding: const EdgeInsets.all(AyushSpacing.cardPadding),
+                  GestureDetector(
+                    onLongPress: () => showMentorExplanation(
+                      context: context,
+                      contextKey: 'explain_dominant_prakriti',
+                    ),
+                    child: Container(
+                      padding: const EdgeInsets.all(AyushSpacing.cardPadding),
                     decoration: BoxDecoration(
                       color: AyushColors.card,
                       borderRadius: BorderRadius.circular(AyushSpacing.radiusXl),
@@ -237,6 +259,7 @@ class _OjasRevealScreenState extends ConsumerState<OjasRevealScreen>
                       ],
                     ),
                   ).animate(delay: 1000.ms).fadeIn(duration: 600.ms).slideY(begin: 0.2),
+                  ),
 
                   const SizedBox(height: 20),
 

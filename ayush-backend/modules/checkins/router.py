@@ -1,16 +1,17 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, BackgroundTasks
 from datetime import datetime, timezone
 import logging
 
 from database.mongodb import get_db
 from .schemas import CheckinRequest, CheckinResponse
+from modules.predict.radar_service import generate_radar_analysis
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/checkins", tags=["Daily Checkins"])
 
 @router.post("", response_model=CheckinResponse)
-async def log_daily_checkin(request: CheckinRequest):
+async def log_daily_checkin(request: CheckinRequest, background_tasks: BackgroundTasks):
     db = get_db()
     now = datetime.now(timezone.utc)
     date_key = now.strftime("%Y-%m-%d")
@@ -34,6 +35,9 @@ async def log_daily_checkin(request: CheckinRequest):
         )
 
         logger.info(f"Logged daily checkin for {request.user_id} on {date_key}")
+        
+        # Trigger Gemini LSTM Surrogate in background
+        background_tasks.add_task(generate_radar_analysis, request.user_id, date_key)
         
         return CheckinResponse(
             status="success",

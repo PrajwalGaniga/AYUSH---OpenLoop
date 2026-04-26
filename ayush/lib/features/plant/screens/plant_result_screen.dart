@@ -93,7 +93,7 @@ class _PlantResultScreenState extends ConsumerState<PlantResultScreen> {
             backgroundColor: AyushColors.herbalGreen,
             foregroundColor: Colors.white,
             flexibleSpace: FlexibleSpaceBar(
-              title: Text(plant.names.common, style: AyushTextStyles.h2.copyWith(color: Colors.white, shadows: [Shadow(color: Colors.black38, blurRadius: 4)])),
+              // Removed title from here to prevent duplicate name display
               background: Stack(
                 fit: StackFit.expand,
                 children: [
@@ -144,20 +144,27 @@ class _PlantResultScreenState extends ConsumerState<PlantResultScreen> {
                         
                         // Confidence
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                           decoration: BoxDecoration(
-                            color: widget.confidence >= 0.70 ? AyushColors.herbalGreenLight : Colors.amber.shade100,
-                            borderRadius: BorderRadius.circular(AyushSpacing.radiusSm),
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(AyushSpacing.radiusLg),
+                            border: Border.all(
+                              color: widget.confidence >= 0.70 ? AyushColors.herbalGreen : Colors.orange.shade900,
+                              width: 1.5,
+                            ),
                           ),
                           child: Text(
                             'Identified with ${(widget.confidence * 100).toStringAsFixed(1)}% confidence',
                             style: AyushTextStyles.labelSmall.copyWith(
                               color: widget.confidence >= 0.70 ? AyushColors.herbalGreen : Colors.orange.shade900,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
                         ),
                         
-                        const Divider(height: 32),
+                        const SizedBox(height: 16),
+                        const Divider(height: 1),
+                        const SizedBox(height: 16),
                         
                         // Dosha Chips
                         Row(
@@ -171,11 +178,11 @@ class _PlantResultScreenState extends ConsumerState<PlantResultScreen> {
                         const SizedBox(height: 16),
                         
                         // Quick Facts
-                        Wrap(
-                          spacing: 8,
-                          runSpacing: 8,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _buildFactChip(Icons.grass, plant.quickFacts['plant_type'] ?? ''),
+                            _buildFactChip(Icons.eco_outlined, plant.quickFacts['plant_type'] ?? ''),
+                            const SizedBox(height: 8),
                             _buildFactChip(Icons.spa, (plant.quickFacts['parts_used'] as List?)?.join(', ') ?? ''),
                           ],
                         ),
@@ -460,9 +467,9 @@ class _PlantResultScreenState extends ConsumerState<PlantResultScreen> {
 
   Widget _buildFactChip(IconData icon, String text) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: AyushColors.surfaceVariant,
+        color: const Color(0xFFF5F5F5),
         borderRadius: BorderRadius.circular(AyushSpacing.radiusFull),
       ),
       child: Row(

@@ -42,6 +42,7 @@ import 'features/biometrics/screens/tongue_capture_screen.dart';
 import 'features/biometrics/screens/tongue_result_screen.dart';
 import 'features/biometrics/screens/eye_capture_screen.dart';
 import 'features/biometrics/screens/eye_result_screen.dart';
+import 'features/health_radar/presentation/screens/health_radar_screen.dart';
 import 'dart:io';
 
 final _router = GoRouter(
@@ -135,6 +136,9 @@ final _router = GoRouter(
     // Biometrics / Eye Analysis
     GoRoute(path: '/eye-capture', builder: (_, __) => const EyeCaptureScreen()),
     GoRoute(path: '/eye-result', builder: (_, state) => EyeResultScreen(result: state.extra as Map<String, dynamic>)),
+    
+    // Health Radar AI Screen
+    GoRoute(path: '/health-radar', builder: (_, __) => const HealthRadarScreen()),
   ],
 );
 class AyushApp extends StatelessWidget {

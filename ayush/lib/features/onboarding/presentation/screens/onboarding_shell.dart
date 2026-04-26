@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_text_styles.dart';
+import '../../../auth/providers/auth_provider.dart';
 
 const _stepLabels = [
   'Basic Profile',
@@ -20,7 +21,7 @@ const _stepLabels = [
 /// - Step label
 /// - Back button (hidden on step 0)
 /// - Consistent teal-white header area
-class OnboardingShell extends StatelessWidget {
+class OnboardingShell extends ConsumerWidget {
   final Widget child;
   final int currentStep;
   final VoidCallback? onBack;
@@ -33,13 +34,13 @@ class OnboardingShell extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       backgroundColor: AyushColors.background,
       body: SafeArea(
         child: Column(
           children: [
-            _buildHeader(context),
+            _buildHeader(context, ref),
             Expanded(child: child),
           ],
         ),
@@ -47,7 +48,7 @@ class OnboardingShell extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
+  Widget _buildHeader(BuildContext context, WidgetRef ref) {
     return Container(
       padding: const EdgeInsets.fromLTRB(
         AyushSpacing.pagePadding,
@@ -138,6 +139,15 @@ class OnboardingShell extends StatelessWidget {
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+              ),
+              const SizedBox(width: 8),
+              IconButton(
+                icon: const Icon(Icons.exit_to_app_rounded, size: 20, color: AyushColors.textSecondary),
+                tooltip: 'Quit Onboarding',
+                onPressed: () async {
+                  await ref.read(authProvider.notifier).logout();
+                  if (context.mounted) context.go('/login');
+                },
               ),
             ],
           ),

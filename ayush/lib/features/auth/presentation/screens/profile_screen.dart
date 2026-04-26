@@ -1,20 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart' hide ChangeNotifierProvider;
 import 'package:go_router/go_router.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_spacing.dart';
 import '../../../../core/constants/app_text_styles.dart';
 import '../../providers/auth_provider.dart';
 import '../../../sos/sos_settings_screen.dart';
+import '../../../../mixins/mentor_guidance_mixin.dart';
+import '../../../../services/mentor_service.dart';
+import '../../../../models/mentor_type.dart';
+import 'package:provider/provider.dart';
+import '../../../../providers/mentor_notifier.dart';
 
-class ProfileScreen extends ConsumerWidget {
+class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends ConsumerState<ProfileScreen> with MentorGuidanceMixin {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      if (!mounted) return;
+      final mentor = context.read<MentorNotifier>().currentMentor;
+      await showMentorGuidanceIfFirstVisit(
+        screenKey: 'health_radar',
+        mentor: mentor,
+        context: 'health_radar_intro',
+      );
+      await showMentorGuidanceIfFirstVisit(
+        screenKey: 'prakriti_screen',
+        mentor: mentor,
+        context: 'prakriti_intro',
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final user = ref.watch(authProvider).value;
 
     if (user == null) {
@@ -102,9 +132,14 @@ class ProfileScreen extends ConsumerWidget {
             Text('Dosha Balance', style: AyushTextStyles.h2),
             const SizedBox(height: AyushSpacing.lg),
             
-            Container(
-              height: 300,
-              padding: const EdgeInsets.all(AyushSpacing.lg),
+            GestureDetector(
+              onLongPress: () => showMentorExplanation(
+                context: context,
+                contextKey: 'explain_dosha_radar',
+              ),
+              child: Container(
+                height: 300,
+                padding: const EdgeInsets.all(AyushSpacing.lg),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(AyushSpacing.radiusXl),
@@ -147,12 +182,18 @@ class ProfileScreen extends ConsumerWidget {
                 swapAnimationCurve: Curves.easeInOutBack,
               ),
             ).animate().fadeIn(delay: 200.ms, duration: 600.ms).scale(),
+            ),
 
             const SizedBox(height: AyushSpacing.xl),
 
             // Dominant Dosha Card
-            Container(
-              padding: const EdgeInsets.all(AyushSpacing.lg),
+            GestureDetector(
+              onLongPress: () => showMentorExplanation(
+                context: context,
+                contextKey: 'explain_dominant_prakriti',
+              ),
+              child: Container(
+                padding: const EdgeInsets.all(AyushSpacing.lg),
               decoration: BoxDecoration(
                 gradient: AyushColors.primaryGradient,
                 borderRadius: BorderRadius.circular(AyushSpacing.radiusXl),
@@ -177,6 +218,7 @@ class ProfileScreen extends ConsumerWidget {
                 ],
               ),
             ).animate().fadeIn(delay: 400.ms, duration: 500.ms).slideY(begin: 0.1),
+            ),
 
             const SizedBox(height: AyushSpacing.xl),
 
@@ -202,6 +244,27 @@ class ProfileScreen extends ConsumerWidget {
                 ],
               ),
             ).animate().fadeIn(delay: 600.ms, duration: 500.ms),
+
+            const SizedBox(height: AyushSpacing.xl),
+
+            // Your Guide Section
+            Text(
+              'YOUR GUIDE',
+              style: TextStyle(
+                fontSize: 13,
+                color: Colors.grey.shade500,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 1.2,
+              ),
+            ),
+            const SizedBox(height: AyushSpacing.md),
+            Row(
+              children: [
+                _buildMentorTile(MentorType.rabbit),
+                const SizedBox(width: 6),
+                _buildMentorTile(MentorType.sloth),
+              ],
+            ).animate().fadeIn(delay: 800.ms, duration: 500.ms),
 
             const SizedBox(height: 40),
           ],
@@ -229,5 +292,72 @@ class ProfileScreen extends ConsumerWidget {
       return 'Calm, loving, and grounded. When balanced, you are supportive and strong. When out of balance, you may feel sluggish or resistant to change.';
     }
     return 'Your unique mind-body constitution.';
+  }
+
+  Widget _buildMentorTile(MentorType mentor) {
+    final currentMentor = context.watch<MentorNotifier>().currentMentor;
+    final isSelected = currentMentor == mentor;
+    return Expanded(
+      child: GestureDetector(
+        onTap: () async {
+          await MentorService.saveMentor(mentor);
+          if (mounted) {
+            context.read<MentorNotifier>().updateMentor(mentor);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  '${mentor.displayName} is now your guide.',
+                  style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                ),
+                backgroundColor: mentor.accentColor,
+                behavior: SnackBarBehavior.floating,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              ),
+            );
+          }
+        },
+        child: Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: isSelected ? mentor.accentColor.withOpacity(0.08) : Colors.white,
+            borderRadius: BorderRadius.circular(14),
+            border: Border.all(
+              color: isSelected ? mentor.accentColor : Colors.grey.shade200,
+              width: isSelected ? 2 : 1,
+            ),
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                width: 56,
+                height: 56,
+                child: Lottie.asset(mentor.assetPath, repeat: true),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                mentor.displayName,
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                  color: isSelected ? mentor.accentColor : Colors.grey.shade700,
+                ),
+              ),
+              if (isSelected) ...[
+                const SizedBox(height: 4),
+                Container(
+                  width: 6,
+                  height: 6,
+                  decoration: BoxDecoration(
+                    color: mentor.accentColor,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

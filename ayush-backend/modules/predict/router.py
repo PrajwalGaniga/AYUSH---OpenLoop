@@ -248,3 +248,22 @@ def _get_interventions(alert_level: str, signal_flags: dict, prakriti: str) -> l
 
     # Sort by priority, return top 3
     return sorted(base, key=lambda x: x["priority"])[:3]
+
+@router.get("/radar/{user_id}")
+async def get_radar_analysis(user_id: str):
+    """
+    Fetches the latest Gemini 2.5 Flash LSTM surrogate analysis.
+    Returns 404 if not found (e.g., background task still running).
+    """
+    db = get_db()
+    radar_collection = db["radar_analysis"]
+    
+    doc = await radar_collection.find_one({"user_id": user_id})
+    if not doc:
+        raise HTTPException(status_code=404, detail="Radar analysis not yet available.")
+        
+    return {
+        "user_id": user_id,
+        "latest_date": doc.get("latest_date"),
+        "analysis": doc.get("analysis")
+    }

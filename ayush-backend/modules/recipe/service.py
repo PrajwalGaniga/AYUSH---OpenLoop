@@ -88,7 +88,9 @@ async def generate_recipe(request: RecipeGenerateRequest) -> dict:
                 response_text = response_text[3:-3]
             recipe_data = json.loads(response_text)
         except Exception as retry_e:
-            raise HTTPException(status_code=500, detail="Failed to parse AI recipe generation.")
+            print(f"[RECIPE ERROR] First error: {e}")
+            print(f"[RECIPE ERROR] Retry error: {retry_e}")
+            raise HTTPException(status_code=500, detail=f"Failed to parse AI recipe generation: {retry_e}")
 
     # Validate against schema just in case
     try:
