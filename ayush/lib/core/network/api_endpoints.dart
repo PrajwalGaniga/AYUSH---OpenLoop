@@ -36,4 +36,7 @@ class ApiEndpoints {
   // ── Biometrics (Tongue & Eye Analysis) ────────────────────────────────────
   static const String tongueAnalyze = '/biometrics/tongue';
   static const String eyeAnalyze = '/biometrics/eye';
+
+  // ── Daily Check-ins ───────────────────────────────────────────────────────
+  static const String checkins = '/checkins';
 }

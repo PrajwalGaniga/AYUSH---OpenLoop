@@ -21,6 +21,8 @@ from config.settings import settings
 from pathlib import Path
 from fastapi.staticfiles import StaticFiles
 from database.mongodb import get_db
+from modules.checkins.router import router as checkins_router
+from utils.scheduler import start_scheduler, stop_scheduler
 
 
 @asynccontextmanager
@@ -57,10 +59,15 @@ async def lifespan(app: FastAPI):
     await contact_requests_collection.create_index([("from_user_id", 1)])
     print("[Startup] Indexes created successfully.")
     
+    print("[Startup] Starting APScheduler...")
+    start_scheduler()
+    
     print("[Startup] Application is ready on the selected port!")
     yield
     
-    print("\n[Shutdown] Closing database connection...")
+    print("\n[Shutdown] Stopping APScheduler...")
+    stop_scheduler()
+    print("[Shutdown] Closing database connection...")
     await close_db()
     print("[Shutdown] Complete.")
 
@@ -109,6 +116,9 @@ app.include_router(biometrics_router, prefix="/api/v1/biometrics", tags=["Biomet
 
 # OJAS LSTM Prediction routes
 app.include_router(predict_router)
+
+# Daily Checkins routes
+app.include_router(checkins_router, prefix="/api/v1")
 
 # Mount static files for uploads
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")

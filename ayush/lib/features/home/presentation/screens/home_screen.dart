@@ -9,6 +9,7 @@ import '../../../auth/providers/auth_provider.dart';
 import '../../../onboarding/providers/onboarding_provider.dart';
 import '../../../food_scan/providers/delayed_meal_provider.dart';
 import '../../../food_scan/providers/food_scan_provider.dart';
+import '../widgets/daily_checkin_card.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -140,58 +141,64 @@ class HomeScreen extends ConsumerWidget {
                 AyushSpacing.pagePadding, 0,
               ),
               sliver: SliverToBoxAdapter(
-                child: Container(
-                  padding: const EdgeInsets.all(AyushSpacing.cardPadding),
-                  decoration: BoxDecoration(
-                    gradient: AyushColors.primaryGradient,
-                    borderRadius: BorderRadius.circular(AyushSpacing.radiusXl),
-                  ),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Your OJAS Score',
-                              style: AyushTextStyles.labelSmall.copyWith(
-                                color: Colors.white.withOpacity(0.8),
-                              ),
-                            ),
-                            const SizedBox(height: 4),
-                            Text(
-                              ojasScore > 0 ? '$ojasScore / 100' : 'Complete onboarding',
-                              style: AyushTextStyles.h1.copyWith(color: Colors.white),
-                            ),
-                            if (dominantDosha.isNotEmpty) ...[
-                              const SizedBox(height: 8),
-                              Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.2),
-                                  borderRadius: BorderRadius.circular(AyushSpacing.radiusFull),
-                                ),
-                                child: Text(
-                                  '$dominantDosha Prakriti',
-                                  style: AyushTextStyles.labelSmall.copyWith(color: Colors.white),
-                                ),
-                              ),
-                            ],
-                          ],
-                        ),
+                child: Column(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(AyushSpacing.cardPadding),
+                      decoration: BoxDecoration(
+                        gradient: AyushColors.primaryGradient,
+                        borderRadius: BorderRadius.circular(AyushSpacing.radiusXl),
                       ),
-                      const Icon(
-                        Icons.spa_outlined,
-                        color: Colors.white,
-                        size: 64,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Your OJAS Score',
+                                  style: AyushTextStyles.labelSmall.copyWith(
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  ojasScore > 0 ? '$ojasScore / 100' : 'Complete onboarding',
+                                  style: AyushTextStyles.h1.copyWith(color: Colors.white),
+                                ),
+                                if (dominantDosha.isNotEmpty) ...[
+                                  const SizedBox(height: 8),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                                    decoration: BoxDecoration(
+                                      color: Colors.white.withOpacity(0.2),
+                                      borderRadius: BorderRadius.circular(AyushSpacing.radiusFull),
+                                    ),
+                                    child: Text(
+                                      '$dominantDosha Prakriti',
+                                      style: AyushTextStyles.labelSmall.copyWith(color: Colors.white),
+                                    ),
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+                          const Icon(
+                            Icons.spa_outlined,
+                            color: Colors.white,
+                            size: 64,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ).animate(delay: 300.ms).fadeIn(duration: 600.ms).slideY(begin: 0.2),
+                    ),
+                    const SizedBox(height: AyushSpacing.xl),
+                    const DailyCheckinCard(),
+                  ],
+                ).animate().slideY(begin: 0.1, end: 0, duration: 500.ms).fadeIn(),
               ),
             ),
 
-            // ── Quick Actions ─────────────────────────────────────────────────
+            // ── Today's Action Plan ─────────────────────────────────────────────────
             SliverPadding(
               padding: const EdgeInsets.fromLTRB(
                 AyushSpacing.pagePadding, AyushSpacing.lg,
